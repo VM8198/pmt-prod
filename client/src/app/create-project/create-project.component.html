@@ -1,0 +1,205 @@
+<h3 class="card-header-title mb-1"><span class="icon-note"></span> Create Project</h3>
+<div class="card" >
+	<div class="card-body">
+		<form class="md-form" [formGroup]='addForm' style="color: #757575;">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="md-form form-group">
+						<label for="projecttitle">Project Title</label>
+						<input type="text" autocomplete= 'false | random-string' id="projecttitle"  formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" autocomplete="off" />
+						<div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+							<div *ngIf="f.title.errors.required">Project title  is required</div>
+							<div *ngIf="f.title.errors.maxlength">Project title  must be only 60 characters</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-11">
+					<div class="md-form form-group">
+						<label for="projectalias">Project Alias</label>
+						<input type="text" autocomplete= 'false | random-string' id="projectalias"  formControlName="uniqueId" class="form-control" autocomplete="off">
+					</div>
+				</div>
+				
+				<div class="col-md-11">
+					<div class="md-form form-group" >
+						<label for="desc">Description</label>
+						<textarea id="desc" rows="5" formControlName="desc" class="form-control rounded-0 md-textarea" [ngClass]="{ 'is-invalid': submitted && f.desc.errors }" ></textarea>
+						<div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
+							<div *ngIf="f.desc.errors.required">Project description is required</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="md-form form-group">
+						<label for="date-picker-example">Due Date</label>
+						<input type="text" id="date-picker"	formControlName="deadline"	class="form-control datepicker" [ngClass]="{ 'is-invalid': submitted && f.deadline.errors }" autocomplete="off">
+						<div *ngIf="submitted && f.deadline.errors" class="invalid-feedback">
+							<div *ngIf="f.deadline.errors.required">Project deadline is required</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<app-file-upload-dnd projectId="100" sectionId="107" maxFiles="1" maxSize="2" fileExt="JPG, JPEG, PNG" (uploadedFile)="onSelectFile($event)" ></app-file-upload-dnd>
+
+			<div class="text-center selected-avatar" *ngIf="url">
+				<img class="avatar-image margin-auto" [src]="url" style="height: 150px; width: 150px;">
+				<div class="delete-team-member">
+					<a href="javascript:void(0);" (click)="removeAvatar()"><span class="icon-trash"></span></a>
+				</div>
+			</div>
+			<div class="row float-left">
+				<button type="button" class="btn btn-primary mr-2 ml-2" data-toggle="modal" data-target="#basicExampleModal"> <span class="icon-user"></span> Select Project avatar</button>
+				<button type="submit" class="btn btn-default"  (click)="addProject(addForm.value)" [disabled]= "isDisable || addForm.invalid"><span class="icon-plus mr-1"></span>Create Project</button>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- Modal Start Here -->
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Choose Avatar</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="md-form form-group">
+				<ul class="project-avatar">
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/school.png')">
+							<img src="assets/avatar/school.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/mortarboard.png')">
+							<img src="assets/avatar/mortarboard.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/alarm-clock.png')">
+							<img src="assets/avatar/alarm-clock.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button"  (click)="addIcon('/avatar/stethoscope.png')">
+							<img src="assets/avatar/stethoscope.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/doctor.png')">
+							<img src="assets/avatar/doctor.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/bookshelf.png')">
+							<img src="assets/avatar/bookshelf.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/flask.png')">
+							<img src="assets/avatar/flask.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/customer-service.png')">
+							<img src="assets/avatar/customer-service.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/payment-method.png')">
+							<img src="assets/avatar/payment-method.png" height="56" width="56">
+						</button>	
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/beach.png')">
+							<img src="assets/avatar/beach.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/coding.png')">
+							<img src="assets/avatar/coding.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/maintenance.png')">
+							<img src="assets/avatar/maintenance.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/birthday-cake.png')">
+							<img src="assets/avatar/birthday-cake.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/conversation.png')">
+							<img src="assets/avatar/conversation.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/food.png')">
+							<img src="assets/avatar/food.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/shopping-basket.png')">
+							<img src="assets/avatar/shopping-basket.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/cart.png')">
+							<img src="assets/avatar/cart.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/pills.png')">
+							<img src="assets/avatar/pills.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/project-management.png')">
+							<img src="assets/avatar/project-management.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/start-up.png')">
+							<img src="assets/avatar/start-up.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/medicine.png')">
+							<img src="assets/avatar/medicine.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/responsive.png')">
+							<img src="assets/avatar/responsive.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/destination.png')">
+							<img src="assets/avatar/destination.png" height="56" width="56">
+						</button>
+					</li>
+					<li>
+						<button class="icon-button" (click)="addIcon('/avatar/police-car.png')">
+							<img src="assets/avatar/police-car.png" height="56" width="56">
+						</button>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- Modal End Here -->
+
+

@@ -1,0 +1,8 @@
+.body_content{
+	padding-left: 79px;
+}
+@media (max-width: 575px){
+	.body_content{
+		padding-left: 15px;
+	}
+}

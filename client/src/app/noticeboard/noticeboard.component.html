@@ -1,0 +1,166 @@
+<div class="container-fluid">
+	<h2 class="card-header-title"> <span class="icon-book-open mr-1"></span> Notice Board</h2>
+
+	<div *ngIf = "currentUser.userRole == 'developer'"> 
+  <!-- Card content -->
+  <div style="text-align: center;font-size: 25px;">
+    <!-- Title -->
+    <h4><a>Opps!</a></h4>
+    <!-- Text -->
+	<div *ngIf = "!allNotice.length">
+		<p>There are no new notice</p>
+	</div>
+  </div>
+</div>
+
+	<div class="noNoticeMessage" *ngIf = "currentUser.userRole == 'projectManager' && !allNotice.length"> 
+  <!-- Card content -->
+  <div>
+    <!-- Title -->
+    <h4><a>Sorry</a></h4>
+    <!-- Text -->
+	<div *ngIf = "!allNotice.length">
+		<p>There are no notices, <a routerLink="/add-notice" style="width: 100%;" class="collapsible-header waves-effect arrow-r"> add some</a> to get started!</p>
+	</div>
+  </div>
+</div>
+	<div class="row grid">
+		<div class="col-lg-3 col-md-4 col-sm-6 grid-item" *ngFor="let notice of allNotice">
+			<div class="card mb-1">
+				<div *ngFor="let image of notice.images; let i =index" class="image_box {{i == 0?'active':''}}">
+					<a [attr.data-lightbox]="notice._id" href="{{path}}{{image}}" >
+						<img class="img-fluid" src="{{path}}{{image}}" onerror="this.src='../assets/noticeboard.jpg'">
+						<a>
+							<div class="mask rgba-white-slight"></div>
+						</a>
+					</a>
+				</div>
+				<div class="card-body">
+					<div class="btn-group dropleft float-right">
+						<button *ngIf="currentUser.userRole=='projectManager'" type="button" style="border-radius: 50%;top: -39px;" class="btn btn-primary btn-floating btn_popover_menu " data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"><i class="fas fa-ellipsis-v"></i> 
+						</button>
+						<div class="dropdown-menu">
+							<input #noticeFile type="file" name="fileUpload" (change)="uploadFile($event,notice._id)" accept=".jpg, .png, .jpeg" hidden multiple>
+							<a class="dropdown-item btn-floating mt-0 mx-1" title="Edit Notice" data-toggle="modal" data-target="#editmodel" (click)="newNotice = notice"><span class="icon-pencil padding-top-1"></span></a>
+							<a class="dropdown-item btn-floating mt-0 mx-1" (click)="noticeFile.click()"><span class="icon-docs"></span></a>
+							<a class="dropdown-item btn-floating mt-0 mx-1" title="Delete Notice" (click)="deleteNotice(notice._id)"><span class="icon-trash"></span></a>
+						</div>
+					</div>
+					<h5 style="font-weight: 500;">{{notice.title}}</h5>
+					<p style="margin-bottom: 8px;"><span class="icon-calendar mr-2"></span>
+						<span>{{notice.expireon | date:'mediumDate'}}</span></p>
+						<a href="#" class="btn btn-primary margin-0" style="margin-left: 0px;" data-toggle="modal" data-target="#basicExampleModal" (click)="noticeById(notice._id)">Read More</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal edit Start Here -->
+	<div class="modal fade" id="editmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<h4 _ngcontent-c4="" style="padding: 17px 19px 0px;" id="exampleModalPreviewLabel" class="card-header-title"><span class="icon-pencil"></span> Edit Notice</h4>
+				<button type="button" style="margin-top: 20px;" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="card-body" *ngIf="newNotice">
+					<form style="width: 100%;" [formGroup]="editNoticeForm">
+						<div class="form-group">
+							<label for="title">Title</label>
+							<input type="text" id="title" formControlName="title" class="form-control" [(ngModel)]="newNotice.title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" autocomplete="off" />
+							<div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+								<div *ngIf="f.title.errors.required">Title  is required</div>
+								<div *ngIf="f.title.errors.maxLength">Title must be  contain 50 characters</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc">Discription</label>
+							<textarea class="form-control md-textarea " formControlName="desc" id="desc" rows="4" [(ngModel)]="newNotice.desc" [ngClass]="{ 'is-invalid': submitted && f.desc.errors }" style="resize: none;"></textarea>
+							<div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
+								<div *ngIf="f.desc.errors.required">Discription is required</div>
+								<div *ngIf="f.desc.errors.maxLength">Discription must be  contain 50 characters</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="switch">
+								<label>
+									Unpublish
+									<input type="checkbox" formControlName="published" [(ngModel)]="newNotice.published">
+									<span class="lever"></span>Publish
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<input placeholder="Selected days" id="expireon" type="date" formControlName="expireon" [(ngModel)]="newNotice.expireon" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.expireon.errors }" />
+							<div *ngIf="submitted && f.expireon.errors" class="invalid-feedback">
+								<div *ngIf="f.expireon.errors.required">Notice date is required</div>
+							</div>
+						</div>
+						<app-file-upload-dnd projectId="100" sectionId="107" maxFiles="10" maxSize="2" fileExt="JPG, JPEG, PNG" (uploadedFile)="changeFile($event)"></app-file-upload-dnd>
+						<div *ngIf="newNotice">
+							<div class="text-center notice_img" *ngFor="let url of newNotice.images ; let i=index;">
+								<div class="avatar-image margin-auto">
+									<img  src="{{path}}{{url}}" alt="images" style="height: 150px; width: 150px;">
+									<div class="delete_notice">
+										<a href="javascript:void(0);" (click)="deleteNoticeImage(i)"><i class="fas fa-trash fa-2x"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+						<button type="submit" id="my_button" class="btn btn-default btn-lg" (click)="updateNotice(newNotice, newNotice._id)" [disabled] = "isDisable || editNoticeForm.invalid">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- modal start here -->
+	<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="card-header-title" id="exampleModalLabel" *ngIf="singlenotice"><span class="icon-book-open mr-1"></span> {{singlenotice.title}}</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+					<div class="modal-body">
+						<div class="row">
+							<!-- <div class="col-md-4"> -->
+								<div class="main-img" *ngIf="singlenotice">
+									<div *ngFor = "let img of singlenotice.images" style="display: inline-block; margin: 0 0 15px 0;" class="col-md-4">
+										<img src="{{path}}{{img}}" style="height: 150px; width: 150px; padding-right: 15px;" alt="images">
+									</div>
+								</div>
+							<!-- </div> -->
+						</div>
+						<div class="row mt-1">
+							<div class="col-md-12">
+								<span class="icon-calendar mr-1 " aria-hidden="true"></span>
+								<span *ngIf="singlenotice">{{singlenotice.expireon | date:'mediumDate'}}</span>
+								<div class="desc pt-1">
+									<p *ngIf="singlenotice" style="text-align: justify; margin-bottom: 0px;">{{singlenotice.desc}}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="title">
+						<div class="float-right">
+							<div class="btn-group dropleft float-right">
+
+							</div>
+						</div>
+						<span class="icon-calendar mr-1 " aria-hidden="true"></span>
+						<span *ngIf="singlenotice">{{singlenotice.expireon | date:'mediumDate'}}</span>
+						<div class="desc pt-1">
+							<p *ngIf="singlenotice" style="text-align: justify; margin-bottom: 0px;">{{singlenotice.desc}}</p>
+						</div>
+					</div> -->
+			</div>
+		</div>
+<!-- modal end here -->

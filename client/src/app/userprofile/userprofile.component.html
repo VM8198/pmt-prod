@@ -1,0 +1,148 @@
+<div class="row">
+	<div class="col-md-3">
+		<div class="border_custom">
+			<div class="row p-2">
+				<div class="col-md-4 p-0">
+					<div class="profile_image">
+						<div class="profile_image_box ng-star-inserted" title="Profile Image"
+							touranchor="change-profile" ng-reflect-tour-anchor="change-profile">
+							<input type="file" id="profile" name="fileUpload" (change)="uploadFile($event)"
+								accept=".jpg, .png, .jpeg" hidden="true" style="display:none;">
+							<label for="profile" class="profile_and_cover_edit" title="Change Profile"><i
+									class="fas fa-edit"></i></label>
+							<img src="{{path}}{{currentUser.profilePhoto}}">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 p-0">
+					<div class="mx-0 my-auto">
+						<div class="name">
+							<span style="text-transform: capitalize;">{{currentUser.name}}</span>
+						</div>
+						<p style="padding-left: 10px; text-transform: capitalize;">{{currentUser.userRole}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="tabs_div">
+				<ul class="nav md-tabs row text-center mt-2" id="myTabMD" role="tablist">
+					<li class="nav-item col-md-12">
+						<a class="nav-link active" id="home-tab-md" data-toggle="tab" href="#home-md" role="tab"
+							aria-controls="home-md" aria-selected="true"><span class="icon-user mr-1"></span>About</a>
+					</li>
+					<li class="nav-item col-md-12">
+						<a class="nav-link" id="profile-tab-md" data-toggle="tab" href="#profile-md" role="tab"
+							aria-controls="profile-md" aria-selected="false"><span class="icon-list mr-1"></span>
+							Projects</a>
+					</li>
+					<li class="nav-item col-md-12"
+						*ngIf="currentUser.userRole=='admin' || currentUser.userRole=='projectManager'">
+						<a class="nav-link" id="contact-tab-md" data-toggle="tab" href="#contact-md" role="tab"
+							aria-controls="contact-md" aria-selected="false"><span class="icon-bell mr-1"></span>
+							Notification To All Team Members</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<div class="tab-content p-0" id="myTabContentMD">
+			<div class="tab-pane fade show active" id="home-md" role="tabpanel" aria-labelledby="home-tab-md">
+				<div class="card profile padding-15">
+					<h2><span class="icon-user mr-1"></span> About</h2>
+					<h3>{{currentUser.name}}</h3>
+					<p><span class="icon-envelope mr-1"></span><a style="color: black!important;"
+							href="mailto: {{currentUser.email}}"> {{currentUser.email}}</a></p>
+					<p *ngIf="currentUser.phone"><span class="icon-screen-smartphone mr-1"></span><a
+							style="color: black!important;" href="tel:+91{{currentUser.phone}}">
+							{{currentUser.phone}}</a></p>
+					<p *ngIf="!currentUser.phone"><span class="icon-screen-smartphone mr-1"></span><a
+							style="color: black!important;"><span routerLink="/editprofile/{{currentUser._id}}">Add
+								Number</span></a></p>
+					<button type="button" class="btn btn-primary" routerLink="/editprofile/{{currentUser._id}}"><span
+							class="icon-note"></span> Edit profile</button>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="profile-md" role="tabpanel" aria-labelledby="profile-tab-md">
+				<div class="card">
+					<h2><span class="icon-list"></span> Projects</h2>
+					<div class="project">
+						<div class="row border-bottom" *ngFor="let project of projects">
+							<div class="col-md-1 mb-10">
+								<div class="project_img">
+									<img src="{{path}}{{project.avatar}}" class="avatar_image"
+										onerror="this.src='../assets/4.jpeg'">
+								</div>
+							</div>
+							<div class="col-md-11">
+								<label class="txt_label1"
+									routerLink="/user-summary/{{currentUser._id}}/{{project._id}}">{{project.title}}</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="contact-md" role="tabpanel" aria-labelledby="contact-tab-md">
+				<div class="card">
+					<h2><span class="icon-bell mr-1"></span>Notification To All Team Members</h2>
+					<div class="notify">
+						<form [formGroup]="editTEmail">
+							<ng-select placeholder="Select Project" [items]="projects" bindLabel="title" bindValue="_id"
+								[closeOnSelect]="true" formControlName="projectId" (change)="projectSelected($event)">
+								<ng-template ng-label-tmp let-item="item" let-clear="clear">
+									<span class="ng-value-label"><img src="{{path}}{{item.avatar}}"
+											onerror="this.src='assets/icons/avatar.png'" width="20px" height="20px">
+										{{item.title}}</span>
+									<span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+								</ng-template>
+								<div class="row">
+									<ng-template ng-option-tmp let-item="item">
+										<div class="card testimonial-card">
+											<div class="card-up deep-purple lighten-2"></div>
+											<div class="avatar white img_section">
+												<img src="{{path}}{{item.avatar}}"
+													onerror="this.src='assets/icons/avatar.png'"
+													class="rounded-circle img-fluid">
+											</div>
+											<div class="card-body">
+												<h5 class="card-title mt-1">{{item.title}}</h5>
+												<h6 class="card-title">{{item.uniqueId}}</h6>
+											</div>
+										</div>
+									</ng-template>
+								</div>
+							</ng-select>
+							<div class="form-group">
+								<div class="form-group">
+									<div class="md-form">
+										<label for="inputMDEx">Subject</label>
+										<input type="text" id="inputMDEx" class="form-control"
+											formControlName="subject">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="form-group">
+									<div class="md-form">
+										<label for="inputMDEx">Message</label>
+										<input type="text" id="inputMDEx" class="form-control"
+											formControlName="content">
+									</div>
+								</div>
+							</div>
+							<label for="inputMDEx">Send To</label>
+							<select class="browser-default custom-select custom-select-lg" id="sendTo"
+								formControlName="sendTo">
+								<option value="{{this.total}}" selected>All Team</option>
+								<option *ngFor="let team of teams" value="{{team._id}}">{{team.name}}</option>
+							</select>
+							<br>
+							<!-- </div>  -->
+							<button type="button" class="btn btn-default ml-0" (click)="addNotification(editTEmail)"
+								[disabled]="isDisable || editTEmail.invalid">Send</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

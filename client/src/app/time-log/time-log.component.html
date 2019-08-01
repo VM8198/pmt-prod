@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="card card-cascade narrower col col-md-10 offset-1" >
+    <div class="view view-cascade gradient-card-header blue-gradient narrower py-3 mx-4 mb-3 px-3 d-flex justify-content-between align-items-center ">
+      <span class="white-text" style="font-size: 20px;">Team Members</span>   
+    </div> 
+    <div class="px-4">
+      <div class="table-wrapper">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th class="th-lg">
+                <span>Name</span>
+              </th>
+              <th class="th-lg">
+                <span>Total Time</span>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody >
+            <tr *ngFor="let team of projectTeam">
+              <td style="cursor: pointer" (click)="getTaskOfDeveloper(team)">{{team.name}}</td>
+              <td>{{team.totalTime}}</td>  
+            </tr>  
+          </tbody>  
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<h3 class="card-header-title"  *ngIf="displayTable"><span class="icon-clock mr-1"></span> Task</h3>   
+<div *ngIf="displayTable">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead>
+        <tr>
+          <th class="th-lg">
+            <span>Task</span>
+          </th>
+          <th class="th-lg">
+            <span>Unique-Id</span>
+          </th>
+          <th class="th-lg">
+            <span>Status</span>
+          </th>
+          <th class="th-lg">
+            <span>Time Taken</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let task of tasks ">
+        <tr *ngIf="task.status == 'testing' || task.status == 'complete'">
+          <td>{{task.title}}</td>
+          <td>{{task.uniqueId}}</td>
+          <td>{{task.status}}</td>
+          <td>{{getHHMMTime(task.timelog1.count?task.timelog1.count:'00:00')}}</td>  
+        </tr>  
+      </tbody>  
+    </table>
+  </div>
+</div>

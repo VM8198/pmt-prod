@@ -1,0 +1,70 @@
+.card-header{
+	background-color: #372e5f;
+}
+.md-form label {
+	position: relative;
+	padding-bottom: 10px;
+}
+.selected-avatar{
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  /*margin: 0 auto 5px;*/
+  display: inline-block;
+}
+.selected-avatar:hover .delete-team-member{
+  display: block;
+}
+.btn{
+  margin-left: 0!important;
+  margin-bottom: 0px!important;
+}
+.delete-team-member{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+}
+.delete-team-member a{
+  position: absolute;
+  display: table;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 24px;
+  width: 24px;
+}
+.delete-team-member a i{
+  color: red;
+}
+
+.error{ color: #B71C1C; }
+#userActions{
+  display: table-cell;
+  height: 150px;
+  width: 200px;
+  vertical-align: middle;
+  text-align: center;
+  color: #37474F;
+  background-color: #FFFFFF;
+  border: solid 2px #333333;
+  border-radius: 10px;
+}
+#userActions input{
+  width: 150px;
+  margin: auto;
+}

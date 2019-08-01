@@ -1,0 +1,243 @@
+<h3 class="card-header-title mb-1"><span class="icon-bell"></span> Notification</h3>
+<div *ngIf = "userNotification">
+	<div *ngIf = "!userNotification.length">
+		<p style="text-align: center;">No Notification Found</p>
+	</div>
+</div>
+<div class="card p-3" *ngIf = "userNotification">
+	<ul *ngFor="let data of userNotification" id="accordionEx" role="tablist" aria-multiselectable="true">
+		<li class="task" *ngIf ="data.type == 'task' && data.priority == '1'">
+			<div class="row">
+				<div class="notification_type">
+					<div class="unread1">
+						<div class="task_priority_highest">
+							<span class="icon-list" title="Highest"></span>
+							<span class="task_span">Task</span>
+						</div>
+					</div>
+				</div>
+				<div class="notification_content">
+					<div class="content">
+						<p innerHtml="{{data.content}}"></p>
+					</div>
+				</div>
+				<div class="notificaiton_time">
+					<label style="float: right; margin-right: 15px;">{{data.createdAt | timeAgo}}</label>
+				</div>
+			</div>
+		</li>
+		<li class="task" *ngIf ="data.type == 'task' && data.priority == '2'">
+			<div class="row">
+				<div class="notification_type">
+					<div class="unread1">
+						<div class="task_priority_high">
+							<span class="icon-list" title="High"></span>
+							<span class="task_span">Task</span>
+						</div>
+					</div> 
+				</div>
+				<div class="notification_content">
+					<div class="content" >
+						<p innerHtml="{{data.content}}"></p>
+					</div>
+				</div>
+				<div class="notification_date ml-auto">
+					<label style="float: right; margin-right: 15px;">{{data.createdAt | timeAgo}}</label>
+
+				</div>
+			</div>
+		</li>
+		<li class="task" *ngIf ="data.type == 'task' && data.priority == '3'">
+			<div class="row">
+				<div class="notification_type">
+					<div class="unread1">
+						<div class="task_priority_medium">
+							<span class="icon-list" title="Medium"></span>
+							<span class="task_span">Task</span>
+						</div>
+					</div>
+				</div>
+				<div class="notification_content">
+					<div class="content" >
+						<p innerHtml="{{data.content}}"></p>
+					</div>
+				</div> 
+				<div class="notification_date ml-auto">
+					<label style="float: right; margin-right: 15px;">{{data.createdAt | timeAgo}}</label>
+
+				</div>
+			</div>
+		</li>
+		<li class="task" *ngIf ="data.type == 'task' && data.priority == '4'">
+			<div class="row">
+				<div class="notification_type">
+					<div class="unread1">
+						<div class="task_priority_low">
+							<span class="icon-list" title="Low"></span>
+							<span class="task_span">Task</span>
+						</div>
+					</div>
+				</div>
+				<div class="notification_content">
+					<div class="content" >
+						<p innerHtml="{{data.content}}"></p>
+					</div>
+				</div>
+				<div class="notification_date ml-auto">
+					<label style="float: right; margin-right: 15px;">{{data.createdAt | timeAgo}}</label>
+
+				</div>
+			</div>
+		</li>
+		<li class="leave" *ngIf ="data.type == 'leave-accepted'" >
+			<div class="row">
+				<div class="notification_type">
+					<div class="leave_approved">
+						<span class="icon-like" title="Approved"></span>
+						<span class="leave_span">Leave</span>
+					</div>
+				</div>
+				<div class="notification_content">
+					<div class="content" >
+						<p innerHtml="{{data.content}}"></p>
+					</div>
+				</div>
+				<div class="notification_date ml-auto">
+					<label style="float: right; margin-right: 15px;">{{data.createdAt | timeAgo}}</label>
+
+				</div>
+			</div>
+		</li>
+		<li class="leave1" *ngIf ="data.type == 'leave-rejected'" >
+			<div class="row">
+				<div class="notification_type">
+					<div class="leave_rejected">
+						<span class="icon-dislike" title="Rejected"></span>
+						<span class="leave1_span">Leave</span>
+					</div>
+				</div>
+				<div class="notification_content">
+					<div class="content" >
+						<p innerHtml="{{data.content}}"></p>
+					</div>
+				</div>
+				<div class="notification_date ml-auto">
+					<label style="float: right; margin-right: 15px;">{{data.createdAt | timeAgo}}</label>
+
+				</div>
+			</div>
+		</li>
+		<li class="other" *ngIf ="data.type == 'other'" >
+			<div class="row">
+				<div class="notification_type">
+					<div class="other1">
+						<span class="icon-bell"></span>
+						<span class="other1_span">Other</span>
+					</div>
+				</div>
+				<div class="notification_content">
+					<div class="content" >
+						<p innerHtml="{{data.content}}"></p>
+					</div>
+				</div>
+				<div class="notification_date ml-auto">
+					<label style="float: right; margin-right: 15px;">{{data.createdAt | timeAgo}}</label>
+
+				</div>
+			</div>
+		</li>
+		<li class="comment" *ngIf ="data.type == 'comment'" >
+			<div class="row" >
+				<div class="notification_type p-0">
+					<div class="comment1">
+						<span class="icon-note" style="margin-left: 14px;"></span>
+						<span class="comment_span">Comment</span>
+					</div>
+				</div>
+				<div class=" notification_content">
+					<div class="content" >
+						<p innerHtml="{{data.content}}"></p>
+					</div>
+				</div>
+				<div class="notification_date ml-auto">
+					<label style="float: right; margin-right: 15px;">{{data.createdAt | timeAgo}}</label>
+				</div>
+			</div>
+		</li>
+		<li class="leave" *ngIf = "currentUser.userRole == 'projectManager' && data.type == 'leave'">
+			<div class="row" role="tab" data-toggle="collapse" data-parent="#accordionEx" [attr.href]="'#un'+data._id" aria-expanded="true" [attr.aria-controls]="'un'+data._id">
+				<div class="notification_type">
+					<div class="leave_approved">
+						<span class="icon-like" title="Approved"></span>
+						<span class="leave_span"style = "background-color: powderblue;">Leave</span>
+					</div>
+				</div>
+				<div class="notification_content">
+					<div class="content" >
+						<p class="notification_button" innerHtml="{{data.contentForPm}}"></p>
+					</div>
+				</div>
+				<div [id]="'un'+data._id" *ngFor= "let status of data.pmStatus; let i=index;"  class="collapse" role="tabpanel" data-parent="#accordionEx">
+					<div class="card-body" *ngIf = "i==0" style="float: right; margin-right: 15px;" >
+						<button type="button" #bName1 *ngIf = "!status.isPending" id="approved" class="btn btn-outline-secondary accepted" style="color: red;"  (click)="updateNotificationByStatus(data._id, bName1.id)">
+							<span class="icon-like a_icon"></span>Accepted</button>
+							<!-- <span *ngIf="status.leaveStatus = 'approved'">Leave is approved.</span> -->
+							<button type="button" *ngIf = "!status.isPending"  #bName id="rejected" class="btn btn-outline-secondary rejected" (click)="updateNotificationByStatus(data._id, bName.id)"><span class=" icon-dislike a_icon"></span>Rejected</button>
+							<!-- <span *ngIf="status.leaveStatus='rejected'">Leave is rejected.</span> -->
+						</div>
+					</div>
+					<div class="notification_date ml-auto">
+						<label style="float: right; margin-right: 15px;">{{data.createdAt | timeAgo}}</label>
+					</div>
+				</div>
+			</li>
+			<li class="leave" *ngIf = "currentUser.userRole == 'admin' && data.type == 'leave'">
+				<div class="row" role="tab" data-toggle="collapse" data-parent="#accordionEx" [attr.href]="'#un'+data._id" aria-expanded="true" [attr.aria-controls]="'un'+data._id">
+					<div class=" notification_type">
+						<div class="leave_approved">
+							<span class="icon-like" title="Approved"></span>
+							<span class="leave_span" style="background-color: #008a00; color: #fff;">Leave</span>
+						</div>
+					</div>
+					<div class="notification_content">
+						<div class="content" >
+							<p style="cursor: pointer;" innerHtml="{{data.contentForAdmin}}"></p>
+						</div>
+						<div [id]="'un'+data._id" class="collapse" role="tabpanel" data-parent="#accordionEx">
+							<table>
+								<tr>
+									<th>ProjectManager</th>
+									<th>Status</th>
+								</tr>
+								<tr *ngFor ="let pmId of data.pmStatus">
+									<td>{{pmId.pmanagerId}}</td>
+									<td>{{pmId.leaveStatus}}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="notification_date ml-auto">
+						<label style="float: right; margin-right: 15px;">{{data.createdAt | timeAgo}}</label>
+					</div>
+				</div>
+			</li>
+			<li class="leave" *ngIf = "data.type == 'leaveAccepted'">
+				<div class="row">
+					<div class=" notification_type">
+						<div class="leave_approved">
+							<span class="icon-like" title="Approved"></span>l
+							<span class="leave_span">Leave</span>
+						</div>
+					</div>
+					<div class=" notification_content">
+						<div class="content" >
+							<p innerHtml="{{data.content}}"></p>
+						</div>
+					</div>
+					<div class="notification_date ml-auto">
+						<label style="float: right; margin-right: 15px;">{{data.createdAt | timeAgo}}</label>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>

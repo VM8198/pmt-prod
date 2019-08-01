@@ -1,0 +1,78 @@
+
+.dropdown-menu{
+    background-color: transparent;
+    box-shadow: none; 
+    padding: 10px;
+    float: right;
+    top: -10px!important;
+    left: 15px!important;
+}
+.dropdown-item{
+    border-radius: 50%;
+}
+.dropdown-item i{
+    font-size: 17px;
+    padding-top: 0px;
+    transition: all 10s;
+}
+.title{
+	display: inline-block;
+	width: 100%;
+}
+.btn-floating i {
+	font-size: 15px!important;
+}
+.btn-group.dropleft.float-right{
+    display: inline-block;
+}
+a.dropdown-item.btn-floating {
+    display: inline-block;
+    width: 37px;
+    height: 37px;
+    text-align: center;
+    padding: 4px 7px;
+    line-height: 28px;
+    margin-bottom: 0 !important;
+    float: left!important;
+    background-color: #181123;
+    color: #fff;
+}
+.dropdown-menu.show {
+    display: block !important;
+    border: none;
+    min-width: auto !important
+}
+
+button.btn.btn-default.progress_summary {
+    float: none;
+    margin: auto;
+}
+.btn-group.dropleft.float-right .btn-floating{
+    float: right;
+    border: none;
+    box-shadow: none;
+}
+.btn-group.dropleft.float-right .btn-floating i{
+    width: auto;
+    line-height: 26px;
+}
+.btn-outline-default{
+    border: 2px solid #3998c5;
+    color: #3998c5!important;
+}
+.modal-footer {
+    padding: 5px;
+    border: none;
+}
+..card-title {
+     margin-bottom: 0!important; 
+}
+/*responsive*/
+@media(max-width: 575px){
+    .project_name h1{
+        font-size: 20px;
+    }
+    .sprint_button button{
+        padding: 10px!important;
+    }
+}

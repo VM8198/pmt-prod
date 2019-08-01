@@ -1,0 +1,52 @@
+<h3 class="card-header-title"><span class="icon-note"></span> Create Notice</h3>
+<div class="card" >
+	<div class="card-body">
+		<form class="md-form" [formGroup]='addForm' role="form" style="color: #757575;">
+			<div class="md-form form-group col-11">
+				<label for="projecttitle" style="margin: 0; padding: 0;">Notice Title</label>
+				<input type="text" autocomplete= 'false | random-string' id="projecttitle"  formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" autocomplete="off" />
+				<div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+					<div *ngIf="f.title.errors.required"> Notice Title is required</div>
+					<div *ngIf="f.title.errors.maxLength"> Notice Title is required</div>
+				</div>
+			</div>
+			<div class="md-form form-group col-11">
+				<label for="desc" style="margin: 0; padding: 0;">Notice Content</label>
+				<input type="text" id="desc" formControlName="desc"  autocomplete= 'false | random-string' class="form-control" [ngClass]="{ 'is-invalid': submitted && f.desc.errors }" autocomplete="off" /> 
+				<div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
+					<div *ngIf="f.desc.errors.required">Notice content is required</div>
+					<div *ngIf="f.desc.errors.maxLength"> Notice content is must be only 300 characters</div>
+				</div>
+			</div>
+
+			<div class="row"> 
+				<div class="col-md-4">
+					<div class="md-form form-group">
+						<input placeholder="Notice date" formControlName="expireon" type="text" id="expireon" class="form-control datepicker icon-calendar">
+					</div>
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<div class="switch">
+							<label>
+							Unpublish
+								<input type="checkbox" formControlName="published">
+								<span class="lever"></span>Publish
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+				<app-file-upload-dnd projectId="100" sectionId="107" maxFiles="10" maxSize="2" fileExt="JPG, JPEG, PNG" (uploadedFile)="changeFile($event)"></app-file-upload-dnd>
+			</div> 
+				<div class="col-md-4">
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary" (click)="addNotice(addForm.value)" [disabled] = "isDisable || addForm.invalid"><span class="icon-plus"></span> Create Notice</button>
+					</div>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+</div>

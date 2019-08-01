@@ -1,0 +1,396 @@
+<!-- <div *ngIf = "!tracks.tasks">
+	<p style="text-align: center;">No Task Found</p>
+</div> -->
+		<div class="float-right priority_btns">
+			
+	<div class="dropdown" *ngIf="currentUser.userRole=='projectManager' || currentUser.userRole=='admin'">
+					<button class="due_date_sorting_btn" type="button" aria-haspopup="true" aria-expanded="false">
+						Due Date
+						<span class="sorting_arrows">
+							<span class="ml-1" data-icon="&#xe078;" (click)="sortTasksByDueDate('asc')"></span>
+							<span class="ml-1" data-icon="&#xe07b;" (click)="sortTasksByDueDate('desc')"></span>
+						</span>
+					</button>
+					<button class="priority_sorting_btn" type="button" style="margin-left: 6px;" aria-haspopup="true" aria-expanded="false">
+						Priority 
+						<span class="sorting_arrows">
+							<span class="ml-1" data-icon="&#xe078;" (click)="sortTasksByPriority('asc')"></span>
+							<span class="ml-1" data-icon="&#xe07b;" (click)="sortTasksByPriority('desc')"></span>
+						</span>
+					</button>
+				</div>
+		</div>
+
+
+
+<div class="all_card" style="margin-top: 25px;margin-left: 15px;">
+	<div class="board" cdkDropList [cdkDropListData]="tracks" (cdkDropListDropped)="onTrackDrop($event)" cdkDropListOrientation="horizontal">
+		<div class="card-list mat-elevation-z1" *ngFor="let track of tracks" ng-repeat="-createdAt" [ngStyle]='{"width": "calc(100%/"+(tracks.length)+" - 12px)"}'>
+			<div class="card-header">
+				<span class="track_title"> <span class="{{track.icon}}"></span> {{track.title}}</span>
+				<span class="card_count_lbl">{{track.tasks.length}}</span>
+			</div>
+			<div class="card-list-content" cdkDropList [id]="track.id" [cdkDropListData]="track.tasks" [cdkDropListConnectedTo]="trackIds" (cdkDropListDropped)="onTalkDrop($event)">
+			<!-- 	<div *ngIf = "track.tasks.length == 0">
+					<p style="text-align: center;">No Task Found</p>	
+				</div> -->
+				<mat-card class="open_model" *ngFor="let task of track.tasks "cdkDrag [id]="task._id">
+					<mat-card-content>
+						<div class="card" [ngClass]="getPriorityClass(task.priority).class" data-toggle="tooltip" data-placement="bottom" [title]="getPriorityClass(task.priority).title">
+							<div class="card-body" style="padding: 0px;">
+								<div class="container" *ngIf=" task.status == 'in progress'">
+									<div class="row sprint">
+										<div class="col-sm-5" style="padding-left: 0; background-color: #62aacc; height: 40px;">
+											<section class="timer-button-container start_button">
+												<button class="timer-button" (click)="startTimer(task)" [id]="task._id">
+													<span class="icon-clock mr-1"></span>
+													{{ task.startText?task.startText:'Start' }}
+												</button>
+											</section>
+										</div>
+										<div class="col-sm-7" style="background-color: #dcdfe0; height: 40px;">
+											<section class="timer-counter-label" style="float: right;">
+												<div style="padding: 8px"> 
+													{{task.time?task.time:'00:00:00'}}
+												</div>
+											</section>
+										</div>
+									</div>
+								</div>
+								<div (click)="openModel(task)">
+									<div class="card-text text-bold" style="color: #333333 !important">{{task.title}}</div>
+									<div class="card-text">{{task.desc}}</div>
+									<ul>
+										<li>
+											<ul class="team-members">	
+												<li *ngIf="task.assignTo" [title]="getTitle(task.assignTo.name)">
+													<a href="javascript:void(0);">
+														<div class="user_profile_pic"><img src="{{path}}{{task.assignTo	.profilePhoto}}" class="img-rounded" routerLink = "/visit-user-profile/{{task.assignTo._id}}" onerror="this.src='assets/4.jpeg'" ></div>
+													</a>
+												</li>
+												<li *ngIf="!task.assignTo" class="add-member">
+													<a href="javascript:void(0);" title="Add Member">
+														<i class="fa fa-user-plus"></i>
+													</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+									<label class="float-right">{{task.uniqueId}}</label>
+									<label class="float-left"> <a style="color: black; cursor: pointer; text-transform: capitalize;" routerLink="/visit-user-profile/{{task.assignTo}}">{{(task.assignTo)?task.assignTo.name:'null'}}</a></label>
+								</div>
+							</div>
+						</div>
+					</mat-card-content>
+				</mat-card>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <div *ngIf = "!isTaskFound">
+	<p style="text-align: center;">No Task Found</p>
+</div> -->
+
+<!-- Task details Modal -->
+
+<div class="modal fade" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-full-height" role="document">
+		<div class="modal-content">
+			<h3 class="card-header-title" style="margin-left: 36px;margin-top: 13px;" id="myModalLabel"><span class="icon-note"></span> Task Details</h3>
+			<button *ngIf="currentUser.userRole == 'projectManager' || currentUser.userRole == 'admin'" style="right: 53px; left: auto; position: absolute;" class="btn btn-default" type="button" data-toggle="modal" data-target="#itemManipulationModel1" (click)="editTask(task); newTask = task"><span class="icon-pencil mr-1"></span>Edit</button>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span class="fa fa-times" style="top: 16px;bottom: 0;right: 20px;position: absolute;"></span>
+			</button>
+			<div class="modal-body" *ngIf="task">
+				<div class="container">
+					<table class="table-responsive" style="width: 100%;">
+						<tr>
+							<td style="width: 20px;">
+								<ul class="team-members">	
+									<li *ngIf="task.assignTo" [title]="getTitle(task.assignTo.name)">
+										<a href="javascript:void(0);">
+											<div class="user_profile_pic"><img src="{{path}}{{task.assignTo.profilePhoto}}" class="img-rounded" onerror="this.src='assets/4.jpeg'" style="outline: none;" routerLink = "/visit-user-profile/{{task.assignTo._id}}"></div>
+										</a>
+
+									</li>
+									<li *ngIf="!task.assignTo" class="add-member">
+										<a href="javascript:void(0);" title="Add Member">
+											<span class="icon-user-follow"></span>
+										</a>
+									</li>
+								</ul>
+							</td>
+							<td>
+								<p class="card-title text-left" style="color: #222;padding: 16px 10px;margin: 0;font-size: 16px;
+								font-weight: bold;;">{{task.title}}</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<div class="card-text" style="display: block;white-space: pre-line;margin: 4px 15px;">{{task.desc}}</div>
+							</td>
+						</tr>
+					</table>
+					<div class="row">
+						<div *ngFor="let image of task.images" class="col-sm-4">
+							<a  [attr.data-lightbox]="task._id" class="image_attachment"  *ngIf=" task.images.length>0" href="{{path}}{{image}}">
+								<img src="{{path}}{{image}}" width="100%" height="150"  class="comment_img" style="margin-bottom: 7px;height: 150px;">
+							</a>
+						</div>
+					</div>
+					<div class="details">
+						<div class="row">
+							<div class="col-md-4">
+								<p *ngIf="task.createdBy">
+									<label><strong>Created By: </strong></label>
+									<span>{{task.createdBy.name}}</span>
+								</p>
+							</div>
+							<div class="col-md-4">
+								<p *ngIf="task.createdAt">
+									<label><strong>CreatedDate: &nbsp;</strong></label>
+									<span>{{task.createdAt | date:'short'}}</span>
+								</p>
+							</div>
+							<div class="col-md-4">
+								<p *ngIf="task.status">
+									<label><strong>Status: &nbsp;</strong></label>
+									<span>{{task.status}}</span>
+								</p>
+							</div>
+							<div class="col-md-4">
+								<p *ngIf="task.estimatedTime">
+									<label><strong>estimated time: &nbsp;</strong></label>
+									<span>{{task.estimatedTime}} Hours</span>
+								</p>
+							</div>
+							<div class="col-md-4">
+								<p  *ngIf="task.timelog1">
+									<label><strong>Time Taken: &nbsp;</strong></label>
+									<span>
+										<!-- {{getHHMMTime(task.timelog1.difference?task.timelog1.difference:'00:00')}} -->
+										{{getTime(task.timelog1.count)}}
+									</span>
+								</p>
+							</div>
+						<!-- 	<div class="col-md-4">
+								<p  *ngIf="timeLog">
+									<label><strong>Time Taken: &nbsp;</strong></label>
+									<span>
+										{{getHHMMTime(timeLog.difference?timeLog.difference:'00:00')}}
+										
+									</span>
+								</p>
+							</div> -->
+							<div class="col-md-4">
+								<p>
+									<label><strong>Assign To: &nbsp;</strong></label>
+									<span>{{(task.assignTo)?task.assignTo.name:'null'}}</span>
+								</p>
+							</div>
+							<div class="col-md-4">
+								<p *ngIf="task.priority">
+									<label><strong>Prority: &nbsp;</strong></label>
+									<span>{{getPriorityClass(task.priority).title}}</span>
+								</p>
+							</div>
+							<div class="col-md-4">
+								<p *ngIf="task.dueDate">
+									<label><strong>DueDay: &nbsp;</strong></label>
+									<span>{{task.dueDate | date:'short'}}</span>
+								</p>
+							</div>
+							<div class="col-md-4">
+								<p *ngIf="task.sprint">
+									<label><strong>Sprint: &nbsp;</strong></label>
+									<span>{{task.sprint.title}}</span>
+								</p>
+							</div>
+							<div class="col-md-4">
+								<p *ngIf="task.status == 'complete'">
+									<label><strong>Completed Date: &nbsp;</strong></label>
+									<span>{{task.completedAt | date:'short'}}</span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn btn-primary btn-lg ml-0" data-dismiss="modal"> <span class="icon-trash"></span> Remove Assignment</button>
+					<button class="btn btn-primary  btn-lg " *ngIf="task.status == 'to do' && sprints =='active'" (click)="updateStatus('in progress', task)"> <span class="icon-control-start"></span> Start Progress</button>
+					<button class="btn btn-primary  btn-lg" *ngIf="task.status == 'in progress'" (click)="updateStatus('testing', task)"> <span class=" icon-action-redo"></span> Move To Testing</button>
+					<button class="btn btn-primary  btn-lg" *ngIf="task.status == 'testing'" (click)="updateStatus('complete', task)">Complete</button>
+					<div class="mb-1 mt-1">
+						<h2>Comments</h2>
+						<div *ngIf="comments && comments.length>0">
+							<div class="comment_area">
+								<div class="comment_section" *ngFor = "let i of comments">
+									<div class="card">
+										<div class="card-body">
+											<div class="team-members">	
+												<div *ngIf="i.userId" [title]="getTitle(i.userId.name)">
+													<a href="javascript:void(0);">
+														<div><img class="comment_profile" src="{{path}}{{currentUser.profilePhoto}}"  onerror="this.src='assets/4.jpeg'" >
+														</div></a>
+														<div class="comment_content">
+															<h5 class="mt-0 font-weight-bold " *ngIf="i.userId">
+																{{i.userId.name}}
+															</h5>
+															<span class="break" innerHtml="{{i.content}}">
+															</span>
+															<div class="row">
+																<div *ngFor="let img of i.images" class="col-sm-4">
+																	<a [attr.data-lightbox]="i._id"  class="image_attachment" *ngIf="i.images.length>0" href="{{path}}{{img}}">
+																		<img src="{{path}}{{img}}" width="100%" height="150"  class="comment_img" style="margin-bottom: 7px;height: 150px;">
+																	</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div *ngIf="comments && comments.length<=0">
+						<p>No comments on this be the first one to comments on...</p>
+					</div>
+					<div>
+						<ckeditor class="ckeditor margin-left-15" style="width:100%;" [editor]="Editor" [(ngModel)]="model.editorData" (ready)="onReady($event)" (change)="onChange($event)"></ckeditor>
+						<app-file-upload-dnd projectId="100" sectionId="107" maxFiles="10" maxSize="2" fileExt="JPG, JPEG, PNG" (uploadedFile)="changeFile($event)"></app-file-upload-dnd>
+						<button class="btn btn-default mt-1" (click)="sendComment(task._id)" [disabled]="(!comment && files.length==0) || isDisable"> <span class="icon-plus"></span> Add Comment</button>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Edit Modal -->
+	<div class="modal fade right" id="itemManipulationModel1" tabindex="-1" role="dialog" aria-labelledby="itemModal" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+
+			<div class="modal-content">
+
+				<div class="card card-cascade narrower modal-header view view-cascade "> 
+					<h5 class="modal-title" id="itemModal"><span class="icon-note"></span>{{modalTitle}}</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					</button>
+				</div>
+				<div class="modal-body view view-cascade">
+					<div class="container">
+						<form style="width: 100%;" [formGroup]="editTaskForm">
+							<div class="form-group col-12">
+								<label for="title">Title</label>
+								<input type="text" id="title" formControlName="title" [(ngModel)]="newTask.title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+								<div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+									<div *ngIf="f.title.errors.required">Project title is required</div>
+								</div>
+							</div>
+							<div class="form-group col-12">
+								<label for="desc">Discription</label>
+								<textarea id="desc" formControlName="desc" [(ngModel)]="newTask.desc" class="form-control md-textarea" [ngClass]="{ 'is-invalid': submitted && f.desc.errors }"></textarea>
+								<div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
+									<div *ngIf="f.desc.errors.required">Project description is required</div>
+								</div>
+							</div>
+
+							<div class="row no-margin no-padding  border" >
+								<div class="form-group col-12 col-lg-6 pt-1">
+									<label for="assignTo">Assign To</label>
+									<select  class="browser-default custom-select custom-select-lg mb-1" id="assignTo" formControlName="assignTo" *ngIf="newTask.assignTo" [(ngModel)]="newTask.assignTo._id" [ngClass]="{ 'is-invalid': submitted && f.assignTo.errors }">
+										<option *ngFor="let team of projectTeam" value="{{team._id}}">{{team.name}}</option>
+									</select>
+									<div *ngIf="submitted && f.assignTo.errors" class="invalid-feedback">
+										<div *ngIf="f.assignTo.errors.required">Please assign the task to some one</div>
+									</div>
+									
+									<select  class="browser-default custom-select custom-select-lg mb-1" id="assignTo" formControlName="assignTo" *ngIf="!newTask.assignTo" [ngClass]="{ 'is-invalid': submitted && f.assignTo.errors }">
+										<option *ngFor="let team of projectTeam" value="{{team._id}}">{{team.name}}</option>
+									</select>
+									<div *ngIf="submitted && f.assignTo.errors" class="invalid-feedback">
+										<div *ngIf="f.assignTo.errors.required">Please assign the task to some one</div>
+									</div>
+									
+								</div>
+								<div class="form-group col-12 col-lg-6 pt-1">
+									<label for="priority">Priority</label>
+									<select class="browser-default custom-select custom-select-lg mb-1" id="priority" formControlName="priority" [(ngModel)]="newTask.priority" [ngClass]="{ 'is-invalid': submitted && f.priority.errors }">
+										<option value="4">Low</option>
+										<option value="3">Medium</option>
+										<option value="2">High</option>
+										<option value="1">Highest</option>
+									</select>
+									<div *ngIf="submitted && f.priority.errors" class="invalid-feedback">
+										<div *ngIf="f.priority.errors.required">Priority is required</div>
+									</div>
+									
+								</div>
+								<div class="form-group col-12">
+									<label for="assignTo">Sprint</label>
+									<select  class="browser-default custom-select custom-select-lg mb-1" id="sprint" formControlName="sprint" *ngIf="newTask.sprint" [(ngModel)]="newTask.sprint._id" [ngClass]="{ 'is-invalid': submitted && f.sprint.errors }">
+										<option *ngFor="let sprint of sprints" value="{{sprint._id}}">{{sprint.title}} {{sprint.status}}</option>
+									</select>
+									<div *ngIf="submitted && f.sprint.errors" class="invalid-feedback">
+										<div *ngIf="f.sprint.errors.required">Sprint is required</div>
+									</div>
+									
+									<select  class="browser-default custom-select custom-select-lg mb-1" id="sprint" formControlName="sprint" *ngIf="!newTask.sprint" [ngClass]="{ 'is-invalid': submitted && f.sprint.errors }">
+										<option *ngFor="let sprint of sprints" value="{{sprint._id}}">{{sprint.title}} {{sprint.status}}</option>
+									</select>
+									<div *ngIf="submitted && f.sprint.errors" class="invalid-feedback">
+										<div *ngIf="f.sprint.errors.required">Sprint is required</div>
+									</div>
+									
+								</div>
+								<div class="form-group col-12 col-lg-5 pt-1">
+									<label for="estimatedTime">Estimated Time</label>
+									<div class="md-form form-group">
+
+										<input placeholder="Estimated time in hrs.." type="text" id="estimatedTime" class="form-control" formControlName="estimatedTime" [(ngModel)]="newTask.estimatedTime" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.estimatedTime.errors }" />
+										<div *ngIf="submitted && f.estimatedTime.errors" class="invalid-feedback">
+											<div *ngIf="f.estimatedTime.errors.required">Estimated time is required</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group col-12 col-lg-1 pt-1"></div>
+								<div class="form-group col-12 col-lg-5 pt-1">
+									<label for="dueDate">Due Days</label>
+									<input placeholder="Selected days" id="dueDate" type="text" formControlName="dueDate" ngModel="{{newTask.dueDate | date:'short'}}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dueDate.errors }" autocomplete="off">
+									<div *ngIf="submitted && f.dueDate.errors" class="invalid-feedback">
+										<div *ngIf="f.dueDate.errors.required">Due days is required</div>
+									</div>
+								</div>
+								<div class="form-group col-12">
+									<app-file-upload-dnd projectId="100" sectionId="107" maxFiles="10" maxSize="2" fileExt="JPG, JPEG, PNG" (uploadedFile)="changeFile($event)"></app-file-upload-dnd>
+								</div>
+							</div>
+							
+							<div *ngIf="newTask.images && newTask.images.length>0">
+								<div class="text-center selected-avatar" *ngFor="let url of newTask.images; let k=index;">
+									<img class="avatar-image margin-auto" src="{{path}}{{url}}" style="height: 150px; width: 150px;">
+									<div class="delete-team-member">
+										<a href="javascript:void(0);" (click)="removeAlreadyUplodedFile(k)"><span class="fas fa-trash fa-2x"></span></a>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					<div id="refresh_icon" style="display: none;"> 
+						<span aria-hidden="true" class="fa fa-refresh refresh"></span>
+					</div>
+					<div *ngIf="currentUser.userRole=='projectManager' && modalTitle == 'Edit Item'">
+						<button class="btn btn-primary" type="button" (click)="deleteTask(taskId)">Delete Task</button>
+					</div>
+					<button type="submit" id="save_changes" class="btn btn-primary" (click)="updateTask(newTask)" [disabled] = "isDisable">Save changes</button>
+				</div>
+
+			</div>
+
+		</div>

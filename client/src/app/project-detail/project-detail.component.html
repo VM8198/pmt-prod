@@ -1,0 +1,151 @@
+<div class="loader" *ngIf="loader">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+<div *ngIf="!loader">
+
+	<div class="row" *ngIf="pro || activeSprint">
+		<div class="col-8">
+			<div *ngIf="pro">
+				<h3 *ngIf="pro.title" class="card-header-title mb-1"><span class="mr-1" data-icon="&#xe06a;"></span> {{pro.title}}<sub>({{pro.uniqueId}})</sub></h3>
+			</div>
+			<div *ngIf="activeSprint">
+				<h5 *ngIf="activeSprint.duration>0" ><span class="icon-clock mr-1"></span><span title="Sprint Information" data-toggle="popover-hover" data-content="">{{activeSprint.remainingDays}} Days Remaining</span></h5>
+			</div>
+		</div>
+		<div class="col-4 md-form form-group">
+			<div class="sprint_button" *ngIf="activeSprint">
+				<span>{{activeSprint.title}}</span>
+				<select [(ngModel)]="activeSprint._id"   class="browser-default custom-select custom-select-sm" id="sprint" (change)="filterTracks($event.target.value)">
+					<option  *ngFor="let sprint of sprints" value="{{sprint._id}}">{{sprint.title}} {{sprint.status}}</option>
+				</select>
+				<div *ngIf="currentUser.userRole=='projectManager' || currentUser.userRole=='admin'">
+					<button type="submit" id="save_changes" class="btn btn-default" *ngIf="activeSprint.status == 'Active'" (click)="completeSprint(activeSprint._id)" > <span class="mr-1" data-icon="&#xe080;"></span> Complete Sprint</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="col-lg-5">
+			<div class="row md-form form-group">
+				<div class="col-1" style="text-align: center;top: 19px;font-size: 25px;">
+					<span class="mr-1" style="position: absolute; right: 0;" data-icon="&#xe090;"></span>
+				</div>
+				<div class="col-11">
+					<input type="text" id="exampleForm2" class="form-control" [(ngModel)]="searchText" (keyup)="onKey(searchText)" autocomplete="off">
+					<label for="exampleForm2" style="padding-left: 15px;">Search Here</label>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 add_task_item">
+			<div class="">
+				<div class="dropdown" *ngIf="currentUser.userRole=='projectManager' || currentUser.userRole=='admin'">
+					<button  *ngIf="currentUser.userRole=='projectManager' || currentUser.userRole=='admin'" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Item</button>
+					<div class="dropdown-menu dropdown-default">
+						<a class="dropdown-item" (click)="addItem('Task')"> <span data-icon="&#xe067;" class="mr-1"></span> Task</a>
+						<a class="dropdown-item" (click)="addItem('Bug')"> <span class="icon-energy mr-1"></span> Bug</a>
+						<a class="dropdown-item" (click)="addItem('Issue')"> <span class="icon-question mr-1"></span> Issue</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+	<app-child [developers]="developers" [tracks]='tracks' (task)="openModel($event)" (trackDrop)="onTrackDrop($event)" (talkDrop)="onTalkDrop($event)" [projectId]="projectId"></app-child>
+</div>
+
+
+<!-- Modal Start Here -->
+<div class="modal fade right" id="itemManipulationModel" tabindex="-1" role="dialog" aria-labelledby="itemModal" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">	
+			</button>
+			<div class="modal-body">
+				<h3 class="card-header-title" id="itemModal"><span class="icon-note"></span> {{modalTitle}}</h3>
+				<form style="width: 100%;" [formGroup]="editTaskForm">
+					<div class="form-group">
+						<label for="title">Title</label>
+						<input type="text" id="title" formControlName="title" [(ngModel)]="newTask.title" class="form-control" autocomplete="off" required="required" />
+						<div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+							<div>Title is required</div>
+							<div *ngIf="f.title.errors.maxLength">You can use maximum 50 characters</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="desc">Description</label>
+						<textarea id="desc" formControlName="desc" [(ngModel)]="newTask.desc" class="form-control md-textarea"></textarea>
+					</div>
+
+					<div class="row no-margin no-padding  border" >
+						<div class="form-group col-md-6 pt-1">
+							<label for="assignTo">Assign To</label>
+							<select  class="browser-default custom-select custom-select-lg mb-1" id="assignTo" formControlName="assignTo" *ngIf="newTask.assignTo" [(ngModel)]="newTask.assignTo._id" required="required">
+								<option *ngFor="let team of projectTeam" value="{{team._id}}">{{team.name}}</option>
+							</select>
+							<select class="browser-default custom-select custom-select-lg mb-1" id="assignTo" formControlName="assignTo" *ngIf="!newTask.assignTo">
+								<option>Select Developer</option>
+								<option *ngFor="let team of projectTeam" value="{{team._id}}">{{team.name}}</option>
+							</select>
+						</div>
+						<div class="form-group col-md-6 pt-1">
+							<label for="priority">Priority</label>
+							<select class="browser-default custom-select custom-select-lg mb-1" id="priority" formControlName="priority" [(ngModel)]="newTask.priority">
+								<option>Select Priority</option>
+								<option value="4">Low</option>
+								<option value="3">Medium</option>
+								<option value="2">High</option>
+								<option value="1">Highest</option>
+							</select>
+						</div>
+						<div class="form-group col-md-12">
+							<label for="assignTo">Sprint</label>
+							<select  class="browser-default custom-select custom-select-lg mb-1" id="sprint" formControlName="sprint"  *ngIf="newTask.sprint" [(ngModel)]="newTask.sprint._id">
+								<option *ngFor="let sprint of newSprint" value="{{sprint._id}}">{{sprint.title}} {{sprint.status}}</option>
+							</select>
+							<select  class="browser-default custom-select custom-select-lg mb-1" id="sprint" formControlName="sprint" *ngIf="!newTask.sprint">
+								<option *ngFor="let sprint of newSprint" value="{{sprint._id}}">{{sprint.title}} {{sprint.status}}</option>
+							</select>
+						</div>
+						<div class="form-group col-md-5">
+							<label for="dueDate">Due Days</label>
+							<input placeholder="Selected days" id="dueDate" type="text" formControlName="dueDate" [(ngModel)]="newTask.dueDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dueDate.errors }" autocomplete="off" />
+							<div *ngIf="submitted && f.dueDate.errors" class="invalid-feedback">
+								<div *ngIf="f.dueDate.errors.required">Due Days is required</div>
+							</div>
+						</div>
+						<div class="form-group col-md-1"></div>
+						<div class="form-group col-md-5">
+							<label for="estimatedTime">Estimated Time</label>
+							<div class="md-form form-group">
+								<input placeholder="Estimated time in hrs.." type="text" id="estimatedTime" class="form-control" formControlName="estimatedTime" [(ngModel)]="newTask.estimatedTime" autocomplete="off" autocomplete="off" />
+								<div *ngIf="submitted && f.estimatedTime.errors" class="invalid-feedback">
+									<div >Estimated Time is required</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="form-group col-md-12">
+							<app-file-upload-dnd projectId="100" sectionId="107" maxFiles="10" maxSize="2" fileExt="JPG, JPEG, PNG" (uploadedFile)="changeFile($event)"></app-file-upload-dnd>
+						</div>
+					</div>
+					
+				</form>
+				<div class="float-right">
+					
+					<button type="button" class="btn btn-default ml-0" data-dismiss="modal">Close</button>
+					<div id="refresh_icon" style="display: none;"> 
+						<span aria-hidden="true" class="icon-refresh"></span>
+					</div>
+					<div *ngIf="currentUser.userRole=='projectManager' && modalTitle == 'Edit Item'">
+						<button class="btn btn-deep-orange" type="button" (click)="deleteTask(task)"style="padding: 17px;">Delete Task</button>
+					</div>
+					<button type="submit" id="save_changes" class="btn btn-primary" (click)="saveTheData(editTaskForm.value)" [disabled]=" isDisable || editTaskForm.invalid">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

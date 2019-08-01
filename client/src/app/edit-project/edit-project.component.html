@@ -1,0 +1,316 @@
+<div class="loader" [hidden]="!loader">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+
+<div [formGroup]="updateForm">
+	<h3 class="card-header-title" style="line-height: 2;"><span class="icon-pencil"></span> Edit Project <button class="btn btn-default deletebtn float-right" (click)="deleteProject(availData)"><span class="icon-trash"></span></button></h3>
+	<div class="card">
+		<div class="card-body">
+			<div class="md-form form-group profile_image_box" *ngIf="availData">
+				<label for="profile" class="profile_and_cover_edit" title="Change Avatar" (click)="openmodal()"><span class="icon-pencil"></span></label>
+				<img src="{{basMediaUrl}}{{availData.avatar}}" onerror="this.src='assets/4.jpeg'">
+
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-sm-12">
+					<div class="md-form form-group" *ngIf="availData">
+						<input mdbInput type="text" id="projecttitle" class="form-control" formControlName="title" [(ngModel)]="availData.title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" autocomplete="off">
+						<label for="projecttitle" class="active">Project Title</label>
+						<div class="col-md-2" *ngIf="submitted && f.title.errors" class="invalid-feedback">
+							<div *ngIf="f.title.errors.required">Project title is required</div>
+							<div *ngIf="f.title.errors.maxlength">Project title must be only 60 characters</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-12">
+
+					<div class="md-form form-group active"  *ngIf="availData" [hidden]="!availData && !availData.deadline">
+						<input type="text" id="date-picker" formControlName="deadline"  class="form-control datepicker" ngModel="{{availData.deadline | date:'mediumDate' }}" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" autocomplete="off">
+						<label for="date-picker-example" class="active">Deadline</label>
+						<div class="col-md-2" *ngIf="submitted && f.deadline.errors" class="invalid-feedback">
+							<div *ngIf="f.title.errors.required">Project deadline is required</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-12">
+				<div class="md-form form-group" *ngIf="availData">
+					<input mdbInput type="text" id="desc" class="form-control" formControlName="desc" [(ngModel)]="availData.desc" autocomplete="off">
+					<label for="desc" class="active" >Project Discription</label>
+					<div class="col-md-2" *ngIf="submitted && f.desc.errors" class="invalid-feedback">
+						<div *ngIf="f.desc.errors.required">Project discription is required</div>
+						<div *ngIf="f.desc.errors.maxlength">Project title must be only 60 characters</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Developers list -->
+
+		<div class="card">
+			<h4 style="color: #181123; margin-top: 10px; margin-left: 20px;">Project Team</h4>
+			<div class="card-body">
+				<div class="container">
+					<div class="form-group">
+						<ng-select placeholder="Select Developers" [items]="dteam" [multiple]="true" bindLabel="name" bindValue="_id" [closeOnSelect]="false" formControlName="Teams" (add)="addDeveloper($event)" (remove)="removeDeveloper($event.value)" (clear)="clearSelection($event)" >
+							<ng-template ng-label-tmp let-item="item" let-clear="clear" >
+								<span class="ng-value-label"><img [src]="item.profilePhoto" onerror="this.src='assets/man.png'" width="20px" height="20px"> {{item.name}}</span>
+								<span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true"> × </span>
+							</ng-template>
+							<div class="row">
+								<ng-template ng-option-tmp let-item="item">
+									<div class="row border m-0 p-2">
+										<div class="col-md-3 col-sm-3 col-3">
+											<div class="img_section">
+												<img src="{{basMediaUrl}}{{item.profilePhoto}}" onerror="this.src='assets/man.png'" >
+											</div>
+										</div>
+										<div class="col-md-9 col-sm-9 col-9">
+											<span style="line-height: normal!important;margin: 0px 0px 5px 25px;min-height: auto !important;display: block;text-transform: capitalize;
+											">{{item.name}}</span>
+											<p style="font-size: 14px;line-height: normal; margin:0px 0px 0px 25px;text-transform: capitalize;">{{item.userRole}}</p>
+										</div>
+									</div>
+								</ng-template>
+							</div>
+						</ng-select>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-sm-6 col-12" *ngFor="let item of projectTeam">
+							<div class="border mb-1">
+								<div class="row p-2 m-0">
+									<div class="col-md-3 col-sm-3 col-3">
+										<div class="img_section">
+											<img src="{{basMediaUrl}}{{item.profilePhoto}}" onerror="this.src='assets/man.png'">
+										</div>
+									</div>
+									<div class="col-md-7 col-sm-7 col-7">
+										<span style="line-height: 2;text-transform: capitalize;">{{item.name}}</span>
+										<p style="font-size: 14px; margin: 0;text-transform: capitalize;">{{item.userRole}}</p>
+									</div>
+									<div class="col-md-2 col-sm-2 col-2">
+										<a href="javascript:void(0);" (click)="removeDeveloper(item)" class="icon_for_action" ><span class="icon-trash"></span></a>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+
+		<!-- Project manager -->
+
+		<div class="card mt-1 p-1">
+			<h4 style="color: #181123; margin-top: 10px; margin-left: 20px;">Project Manager</h4>
+			<div class="card-body">
+				<div class="container">
+					<div class="form-group">
+						<ng-select placeholder="Select ProjectManager" [items]="availableProjectMngr" [multiple]="true" bindLabel="name" bindValue="_id" [closeOnSelect]="false" formControlName="Teams" (add)="addProjectManager($event)" (remove)="removeProjectManager($event.value)" (clear)="clearSelection($event)">
+							<ng-template ng-label-tmp let-item="item" let-clear="clear">
+								<span class="ng-value-label"><img [src]="item.profilePhoto" onerror="this.src='assets/man.png'" width="20px" height="20px"> {{item.name}}</span>
+								<span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true"> × </span>
+							</ng-template>
+							<div>
+								<ng-template ng-option-tmp let-item="item">
+									<div class="row border m-2">
+										<div class="col-md-3"  style="margin-top: 10px;">
+											<div class="img_section">
+												<img src="{{basMediaUrl}}{{item.profilePhoto}}" onerror="this.src='assets/man.png'">
+											</div>
+										</div>
+										<div class="col-md-7 col-sm-7 col-7">
+											<span style="line-height: 2; margin-left: 35px;text-transform: capitalize;">{{item.name}}</span>
+											<p style="font-size: 14px; margin-left: 35px; margin-top: -15px;text-transform: capitalize;">{{item.userRole}}</p>
+										</div>
+									</div>
+								</ng-template>
+							</div>
+						</ng-select>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4" *ngFor="let item of projectMngrTeam">
+							<div class="border mb-1">
+								<div class="row padding-5">
+									<div class="col-md-3 col-sm-3 col-3">
+										<div class="img_section">
+											<img src="{{basMediaUrl}}{{item.profilePhoto}}" onerror="this.src='assets/man.png'">
+										</div>
+									</div>
+									<div class="col-md-7 col-sm-7 col-7">
+										<span style="line-height: 2;text-transform: capitalize;">{{item.name}}</span>
+										<p style="font-size: 14px;text-transform: capitalize;">{{item.userRole}}</p>
+									</div>
+									<div class="col-md-2 col-sm-2 col-2">
+										<a href="javascript:void(0);" (click)="removeProjectManager(item)" class="icon_for_action" ><span class="icon-trash"></span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<button type="submit" class="btn btn-default mt-1 float-left" (click)="updateProject(updateForm.value)" [disabled] = "isDisable || updateForm.invalid"  >Update Project</button>
+		</div>
+		<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Choose Avatar</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="md-form form-group">
+						<div class="file-field">
+							<app-file-upload-dnd projectId="100" sectionId="107" maxFiles="1" maxSize="2" fileExt="JPG, JPEG, PNG" (uploadedFile)="onSelectFile1($event)" ></app-file-upload-dnd>
+							<div class="text-center card selected-avatar mb-2" *ngIf="url">
+								<img class="avatar-image margin-auto" [src]="url">
+								<div class="delete-team-member">
+									<a href="javascript:void(0);" (click)="removeAvatar()"><i class="fas fa-trash fa-2x"></i></a>
+								</div>
+							</div>
+						</div>
+
+						<ul class="project-avatar">
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/school.png')">
+									<img src="assets/avatar/school.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/mortarboard.png')">
+									<img src="assets/avatar/mortarboard.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/alarm-clock.png')">
+									<img src="assets/avatar/alarm-clock.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button"  (click)="addIcon('/avatar/stethoscope.png')">
+									<img src="assets/avatar/stethoscope.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/doctor.png')">
+									<img src="assets/avatar/doctor.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/bookshelf.png')">
+									<img src="assets/avatar/bookshelf.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/flask.png')">
+									<img src="assets/avatar/flask.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/customer-service.png')">
+									<img src="assets/avatar/customer-service.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/payment-method.png')">
+									<img src="assets/avatar/payment-method.png" height="56" width="56">
+								</button>	
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/beach.png')">
+									<img src="assets/avatar/beach.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/coding.png')">
+									<img src="assets/avatar/coding.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/maintenance.png')">
+									<img src="assets/avatar/maintenance.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/birthday-cake.png')">
+									<img src="assets/avatar/birthday-cake.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/conversation.png')">
+									<img src="assets/avatar/conversation.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/food.png')">
+									<img src="assets/avatar/food.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/shopping-basket.png')">
+									<img src="assets/avatar/shopping-basket.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/cart.png')">
+									<img src="assets/avatar/cart.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/pills.png')">
+									<img src="assets/avatar/pills.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/project-management.png')">
+									<img src="assets/avatar/project-management.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/start-up.png')">
+									<img src="assets/avatar/start-up.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/medicine.png')">
+									<img src="assets/avatar/medicine.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/responsive.png')">
+									<img src="assets/avatar/responsive.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/destination.png')">
+									<img src="assets/avatar/destination.png" height="56" width="56">
+								</button>
+							</li>
+							<li>
+								<button class="icon-button" (click)="addIcon('/avatar/police-car.png')">
+									<img src="assets/avatar/police-car.png" height="56" width="56">
+								</button>
+							</li>
+						</ul>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

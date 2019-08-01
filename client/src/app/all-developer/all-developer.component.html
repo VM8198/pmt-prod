@@ -1,0 +1,59 @@
+<div class="loader" *ngIf="loader">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+<p class="h4 mb-1">Team Member Profile</p>
+<p class="h5 mb-1 text-left">Project Manager</p>
+<div class="row" *ngIf= "!loader">
+	<div class="col-md-4" *ngFor="let pManager of pmanagerId">
+		<div class="border mb-1">
+			<div class="row">
+				<div class="col-md-3">
+					<div class=" img_section">
+						<a routerLink = "/visit-user-profile/{{pManager._id}}">
+							<img src="{{path}}{{pManager.profilePhoto}}" onerror="this.src='../assets/man.png'" class="rounded-circle img-fluid img_content">
+							<img src="../assets/man.png">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="align-content-center d-flex flex-wrap">
+						<h4 style="font-size: 1.25rem;font-weight: 300; margin: 0; width: 100%; color: #3998c5;text-transform: capitalize;">{{pManager.name}}</h4>
+						<p style="font-size: 14px; margin-bottom: 0px;text-transform: capitalize;">{{pManager.userRole}}</p>
+					</div>
+				</div>
+				<div class="col-md-1">
+					<a (click)="deleteProjectManager(pManager)" class="icon_for_action"><span class="icon-trash"  style="color: black;"></span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<p class="h5 mb-1 text-left">Developers</p>
+<div class="row"  *ngIf= "!loader">
+	<div class="col-md-4" *ngFor="let team of Teams">
+		<div class="border mb-1">
+			<div class="row">
+				<div class="col-md-3">
+					<div class=" img_section">
+						<a routerLink = "/visit-user-profile/{{team._id}}">
+							<img src="{{path}}{{team.profilePhoto}}" onerror="this.src='../assets/man.png'" class="rounded-circle img-fluid img_content">
+							<img src="../assets/man.png">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="align-content-center d-flex flex-wrap">
+						<h4 style="font-size: 1.25rem;font-weight: 300; margin: 0; width: 100%; color: #3998c5;text-transform: capitalize;">{{team.name}}</h4>
+						<p style="font-size: 14px; margin-bottom: 0px;text-transform: capitalize;">{{team.userRole}}</p>
+					</div>
+				</div>
+				<div class="col-md-1">
+					<a (click)="deleteDeveloper(team)" class="icon_for_action"><span class="icon-trash"  style="color: black;"></span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>		

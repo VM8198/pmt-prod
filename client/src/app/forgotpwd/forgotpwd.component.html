@@ -1,0 +1,40 @@
+<div class="deep-purple-skin">
+	<div class="container mt-6">
+		<div class="card panels-card">
+			<div class="container">
+				<h5 class="top-nav-collapse white-text text-center py-4 waves-green" style="margin-top: -22px;">
+					<strong>Reset Password</strong>
+				</h5>
+				<div class="card-body box pt-1">
+					<form [formGroup]="resetPasswordForm">
+						<div class="md-form">
+							<i class="fa fa-lock prefix"></i>
+							<input mdbInput type="password" autocomplete="new-password" id="form2" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [type]="show ? 'text' : 'password'" />
+							<span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password" (click)="password()" [title]="pwd ? 'hide password' : 'show password'"></span>
+							<label for="form2">Password</label> 
+							<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+								<div *ngIf="f.password.errors.required">Password is required</div>
+								<div *ngIf="f.password.errors.minlength">Password must contain atleast 6 characters</div>
+								<div *ngIf="f.password.errors.maxlength">Password must be only 20 characters</div>
+							</div>
+						</div>
+						<div class="md-form">
+							<i class="fa fa-lock prefix"></i>
+							<input mdbInput type="password" autocomplete="new-password" id="form2" class="form-control" formControlName="confirmPassword" (input)="comparePassword(resetPasswordForm)" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" [type]="show1? 'text' : 'password'" />
+							<span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password" (click)="confirmPassword()" [title]="pwd1 ? 'hide password' : 'show1 password'"></span>
+							<label for="form2">Confirm-Password</label> 
+							<div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+								<div *ngIf="f.confirmPassword.errors.required">Password is required</div>
+								<div *ngIf="f.confirmPassword.errors.minlength">Password must contain atleast 6 characters</div>
+								<div *ngIf="f.confirmPassword.errors.maxlength">Password must be only 20 characters</div>
+							</div>
+						</div>
+						<div class="d-flex">
+							<button class="btn btn-primary" type="submit" (click)="resetPassword()" [disabled]="!match || isDisable">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>

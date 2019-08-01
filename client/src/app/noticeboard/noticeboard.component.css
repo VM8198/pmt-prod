@@ -1,0 +1,189 @@
+.notice-image .view{
+	border: 2px solid white;
+	height: 280px;
+	width: 100%;
+	/*overflow: hidden;*/
+}
+.notice-image img{
+	min-height: 100%;
+	min-width: 100%;
+	max-width: 100%;
+	/*object-fit: cover;*/
+}
+.text-center{
+	border-radius: 8px;
+	width: 30%;
+	text-align: center;
+	margin: 0px auto;
+	padding: 20px;
+}
+.notice-card{
+	width: 100%;
+	padding: 30px;
+}
+.masonary{
+	column-count: 5;
+	column-gap: 2;
+}
+.dropdown-menu{
+	background-color: transparent;
+	box-shadow: none; 
+	padding: 10px;
+	float: right;
+	top: -10px!important;
+	left: 15px!important;
+}
+.dropdown-item{
+	border-radius: 50%;
+}
+.dropdown-item i{
+	font-size: 17px;
+	padding-top: 0px;
+	transition: all 10s;
+}
+.title{
+	display: inline-block;
+	width: 100%;
+}
+.btn-floating {
+	background-color: #181123;
+}
+.btn-floating span {
+	font-size: 17px!important;
+	color: white!important;
+	padding: 12px 10px;
+}
+.btn-floating i{
+	font-size: 15px!important;
+}
+.image_box{
+	display: none;
+}
+.image_box.active{
+	display: block;
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+}
+.image_box img.img-fluid {
+	min-width: 100%;
+	object-fit: cover;
+	min-height: 100%;
+}
+.notice_img{
+	position: relative;
+	width: 150px;
+	height: 150px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	/*margin: 0 auto 5px;*/
+	display: inline-block;
+}
+.notice_img:hover .delete_notice{
+	display: block;
+}
+
+.selected-avatar{
+	position: relative;
+	width: 150px;
+	height: 150px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	/*margin: 0 auto 5px;*/
+	display: inline-block;
+}
+.selected-avatar:hover .delete-team-member{
+	display: block;
+}
+.delete-team-member{
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	height: 100px;
+	width: 100px;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+	border-radius: 50%;
+	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+}
+.delete-team-member a{
+	position: absolute;
+	display: table;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	height: 24px;
+	width: 24px;
+}
+.delete-team-member a i{
+	color: red;
+}
+.delete_notice a i{
+	color: red;
+}
+.delete_notice a {
+	position: absolute;
+	display: table;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	height: 24px;
+	width: 24px;
+}
+.delete_notice {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	height: 100px;
+	width: 100px;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+	border-radius: 50%;
+	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+}
+.notice_img1{
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+.no-data{
+	height: 150px;
+	width: 150px;
+}
+.noNoticeMessage{
+	/*display: none;*/
+	margin-top: 180px;
+	font-size: 20px;
+	text-align: center;	
+}
+
+/*responsive*/
+@media(max-width: 991px){
+	.dropdown-menu{
+     padding: 0px;
+     top: 1px!important;
+}
+}
+@media(max-width: 575px){
+	.dropdown-menu{
+     padding: 0px;
+     top: 1px!important;
+}
+}

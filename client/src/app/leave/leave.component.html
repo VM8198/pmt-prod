@@ -1,0 +1,103 @@
+<div class="container-fluid ">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-header-title"><span class="mr-1" data-icon="&#xe066;"></span> Apply Leave</h3>
+				</div>
+				<div class="card-body card-body-cascade text-center">
+					<div class="container-fluid">
+						<form [formGroup]='addForm' autocomplete="off">
+
+							<div class="btn-group btn-group-toggle d-flex flex-column flex-md-row" data-toggle="buttons">
+
+								<label class="btn btn-outline-default" (click)="showOneDay()">
+									<button  value="1-day" class="btn_style"><span class="fas fa-hand-point-up"></span> Single Day</button> 
+								</label>
+								<label class="btn btn-outline-default" (click)="showMoreDays()">
+									<button  value="more-day" class="btn_style"><span class="fas fa-hand-spock"></span> Multiple Days</button>
+								</label>
+							</div>
+							<span [hidden]="!showMoreDayss">
+								<div class="row border">
+									<div class="col-md-6">
+										<div class="md-form">
+											<span class="icon-calendar prefix"></span>
+											<input placeholder="Starting date" formControlName="startingDate" type="text" id="startDate" class="form-control datepicker" style="margin-bottom: 30px;" autocomplete="off" >	
+										</div>	
+									</div>
+									<div class="col-md-6">
+										<div class="md-form">
+											<span class="icon-calendar prefix"></span>
+											<input placeholder="Ending date" formControlName="endingDate" type="text" id="endDate" class="form-control datepicker" autocomplete="off" style="margin-bottom: 30px;">
+											<!-- <label for="form-control datepicker">End Date</label> -->
+										</div>	
+									</div>
+								</div>
+							</span>
+							<div [hidden]="!showOneDays">
+								<div class="col-md-12 border">
+									<div class="md-form">
+										<i class="icon-calendar prefix"></i>
+										<input placeholder="Single date" formControlName="singleDate" type="text" id="startDateFor1" class="form-control datepicker" style="margin-bottom: 30px;" autocomplete="off">
+									</div>	
+								</div>
+								<div class="col-md-6">
+									<p style="text-align: left; margin-bottom: 10px;color: #372e5f;"><b>Duration:-</b></p>
+									<div class="form-group">
+										<div class="form-check" style="text-align: left; padding: 0;">
+											<input type="radio" class="form-check-input" id="leaveDuration1" formControlName="leaveDuration" value="0.5" autocomplete="off">
+											<label class="form-check-label" for="leaveDuration1" value="1-day">Half Day</label>	
+										</div>
+										<div class="form-check" style="text-align: left; padding: 0;">
+											<input type="radio" class="form-check-input" id="leaveDuration3" formControlName="leaveDuration" value="1" autocomplete="off">
+											<label class="form-check-label" for="leaveDuration3" value="1-day">Full Day</label>
+										</div>
+									</div>
+								</div>
+							</div> 
+							<div class="col-md-6">
+								<p style="text-align: left; margin-bottom: 10px; color: #372e5f;"><b>Reason:-</b></p>
+								<div class="custom-control custom-radio" style="text-align: left; padding: 0;">
+									<input type="radio" class="custom-control-input" id="SickLeave" formControlName="typeOfLeave" value="Sick_Leave" [ngClass]="{ 'is-invalid': submitted && f.typeOfLeave.errors }" autocomplete="off">
+									<label class="custom-control-label" for="SickLeave">Sick Leave</label>
+								</div>
+								<div class="custom-control custom-radio" style="text-align: left; padding: 0;">
+									<input type="radio" class="custom-control-input" id="Emergencyleave" formControlName="typeOfLeave" value="Emergency_Leave" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.typeOfLeave.errors }" checked>
+									<label class="custom-control-label" for="Emergencyleave">Emergency leave</label>
+								</div>
+								<div class="custom-control custom-radio" style="text-align: left; padding: 0;">
+									<input type="radio" class="custom-control-input" id="withoutpay" formControlName="typeOfLeave" value="Leave_WithoutPay" [ngClass]="{ 'is-invalid': submitted && f.typeOfLeave.errors }" autocomplete="off">
+									<label class="custom-control-label" for="withoutpay">without pay</label>
+								</div>
+								<div class="custom-control custom-radio" style="text-align: left; padding: 0;">
+									<input type="radio" class="custom-control-input" id="PersonalLeave" formControlName="typeOfLeave" value="Personal_Leave" [ngClass]="{ 'is-invalid': submitted && f.typeOfLeave.errors }" autocomplete="off">
+									<label class="custom-control-label" for="PersonalLeave" style="margin-bottom: 30px;">Personal Leave</label>
+
+									<div  class="col-md-2" *ngIf="submitted && f.typeOfLeave.errors" class="invalid-feedback">
+										<div *ngIf="f.typeOfLeave.errors.required">leave is required </div>
+									</div>
+								</div>
+							</div>
+							<div class="area">
+								<div class="form-group purple-border " style="text-align: left; padding: 0;width:100%;">
+									<label for="exampleFormControlTextarea4" style="color: #372e5f;"><b>Reason For Leave:-</b></label>
+									<textarea class="form-control" formControlName="reasonForLeave" id="exampleFormControlTextarea4" rows="4"></textarea>
+								</div>
+							</div>
+							<app-file-upload-dnd projectId="100" sectionId="107" maxFiles="10" maxSize="2" fileExt="JPG, JPEG, PNG, PDF" (uploadedFile)="changeFile($event)" class="img_high"></app-file-upload-dnd>
+							<div class="col-md-12 float-right">
+								<button type="button" class="btn btn-outline-deep-purple waves-effect btn-default" (click)="addLeave(addForm.value)" [disabled]="isDisable " >Submit</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+

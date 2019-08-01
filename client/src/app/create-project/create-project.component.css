@@ -1,0 +1,212 @@
+select{
+	display: inline-block;
+}
+
+/*:host ::ng-deep .ng-dropdown-panel{
+	position: relative !important;
+  }*/
+
+  .card{
+    padding: 10px;
+  }
+  input#date-picker {
+    height: 41px;
+  }
+  button{
+   display: table;
+   border:none;
+ }
+ .form-body{
+   border-top: 1px solid #ddd;
+   overflow: auto;
+   padding: 0 24px;
+ }
+ .project-avatar{
+   margin: 0;
+   padding: 0;
+   list-style-type: none;
+ }
+ .project-avatar-list
+ {
+   cursor: pointer;
+   display: inline-block;
+   position: relative;
+
+ }
+ .icon-button{
+   background: transparent;
+   border: 0;
+   cursor: pointer;
+   line-height: 1;
+   margin: 0;
+   padding: 0;
+ }
+ ul.project-avatar{
+   display: inline-block;
+   width: 100%;
+ }
+ ul.project-avatar li {
+   display: inline-block;
+   margin: 5px;
+   float: left;
+   padding: 3px;
+   border: 2px solid transparent;
+ }
+ ul.project-avatar li:hover {
+   border-color: #000;
+ }
+ .card-header{
+  color: #181123!important;
+  background-color: white!important;
+}
+
+
+/*mulitple select*/
+
+/*.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+*/
+
+.img_section{
+  height: 60px;
+  width: 60px;
+  margin: 0 auto;
+}
+.img_section img{
+  max-height: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.card.testimonial-card .card-body h5 {
+  padding: 0 5px;
+  font-size: 18px;
+}
+
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host > div + div {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background-color: #dfdff5;
+}
+
+:host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding: 10px;
+  margin: 5px 0px;
+}
+.card.testimonial-card .card-body {
+  padding: 0;
+  text-align: center;
+}
+
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host::-webkit-scrollbar {
+  width: 5px;
+}
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+:host ::ng-deep span.ng-value-label img {
+  float: left;
+  margin-right: 10px;
+  margin-top: 2px;
+  border-radius: 0px;
+}
+:host ::ng-deep span.ng-value-icon.right{
+	margin-left: 8px;
+}
+:host ::ng-deep .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value{
+	background-color: #6657a9
+}
+:host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected{
+	color: #372e5f;
+}
+
+.selected-avatar{
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 5px;
+}
+.selected-avatar:hover .delete-team-member{
+  display: block;
+}
+.delete-team-member{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+}
+.delete-team-member a{
+  position: absolute;
+  display: table;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 24px;
+  width: 24px;
+}
+.delete-team-member a i{
+  color: red;
+}
+
+@media (max-width: 374px) {
+}

@@ -1,0 +1,276 @@
+.table th{
+	font-size: 20px;
+	vertical-align: middle;
+	padding:8px;
+	margin: 0;
+	white-space: nowrap;
+}
+.table td{
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.a_icon{
+	font-size: 28px;
+	color:green;
+	margin-right: 5px;
+}
+.r_icon{
+	font-size: 30px;
+	color:red;
+	margin-left: 27px;
+}
+.view{
+	height: 87px;
+	margin-bottom: 20px;
+}
+.table td.description{
+	white-space: normal;
+}
+.sign{
+	float: right;
+}
+.dropdown{
+	margin-bottom: 10px;
+}
+.card{
+	max-width: 100%;
+	width: 100%;
+}
+.selected{
+	display: none;
+}
+.unselected{
+	display: block;
+}
+.table a{
+	display: table;
+	margin: auto;
+}
+.nav-link {
+	display: block;
+	padding: 0 !important; 
+	cursor: pointer;
+	font-size: 24px;
+	line-height: 48px;
+}
+.fa-caret-up,
+.fa-caret-down{
+	font-size: 20px;
+}
+button.btn.btn-outline-white.btn-rounded.btn-sm.px-2 {
+	height: 35px;
+	width: 35px;
+	padding: 6px;
+	background-color: #181123;
+}
+.md-form .prefix {
+	font-size: 24px !important;
+	margin-top: 24px;   
+}
+.md-form i{
+	color: white;
+}
+.search .btn i{
+	color: white !important;
+	font-size: 14px;
+}
+
+#exampleForm2 {
+	color: #000;
+	font-size: 18px;
+	color: #000;
+}
+.md-form {
+	position: relative;
+	margin-bottom: auto;
+	margin-right: -22px;
+	margin-left: -84px;
+	/*margin-left: auto;*/
+	/*margin-right: 15px;*/
+	margin-top: auto;
+}
+
+.dropdown-menu{
+	background-color: transparent;
+	box-shadow: none; 
+	padding: 10px;
+	float: right;
+	top: -30px!important;
+	left: -24px!important;
+}
+.nav-tabs {
+	border: 0;
+	padding: 0.7rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-bottom: 30px;
+	z-index: 2;
+	position: relative;
+}
+.deep-purple img{
+	color: white !important;
+}
+.card_border{
+	border: 4px solid #b670df;
+}
+.footer_1{
+	background-color: lightblue;
+	padding: 0px;
+}
+
+.leaveInfo{
+	text-align: center;
+}
+
+.leaveInfo p{
+	margin: 0;
+}
+
+.leaveHeading{
+	margin: 20px;
+	font-weight: bold;
+	padding: 10px;
+}
+.leaveCount{
+	background-color: #e6e6e6;
+	padding: 10px;   
+	margin-right: 5px;
+	height: 80px;	
+}
+.leave_icon img{
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+}
+.card_custom{
+	width: 100%;
+	border-radius: 3px;
+	padding: 6px;
+	display: inline-block;
+}
+.total_leave{
+	display: inline-block;
+	width: 100%;
+	padding: 15px;
+}
+.avatar a {
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
+	overflow: hidden;
+	position: relative;
+}
+.avatar a img{
+	-o-object-fit: cover;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	min-height: 100%;
+	min-width: 100%;
+}
+a.image_attachment {
+	color: #3292ae;
+}
+.view img{
+	display: inline-block;
+	margin-right: 15px;
+}
+input[type=text]{
+	width: 0px;
+	border: none !important;
+	box-shadow: none !important;
+	margin: 0;
+	float: left;
+	height: 31px !important;
+	box-sizing: border-box;
+	transition: all 0.5s;
+}
+input[type=text]::placeholder{
+	color: gray;
+	font-size: 18px;
+}
+.search .btn{
+	box-shadow: none !important;
+	height: 33px;
+	width: 31px;
+	float: right;
+	background-color: #3998c5;
+}
+.search {
+	border: 2px solid #fff;
+	height: 35px;
+	width: 35px;
+	border-radius: 50px;
+	outline: none;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	transition: all 0.5s;
+	overflow: hidden;
+}
+.search.open{
+	width: 250px;
+}
+.search.open input[type=text]{
+	width: calc(100% - 43px);
+	padding: 0px 0px 0px 20px;
+	transition: all 0s;
+}
+.btn-outline-primary {
+	border: 2px solid #3998c5;
+	color: #3998c5 !important;
+	background-color: transparent;
+}
+.btn-outline-default {
+	border: 2px solid #181123;
+	color: #181123 !important;
+	background-color: transparent;
+}
+.col-md-3{
+	padding: 0px!important;
+}
+.btn-floating{    
+	outline: none;
+	border: none;
+	padding: 2px 2px 11px 2px;
+	background-color: #6c5d84;
+}
+.leaves_name h3{
+	padding: 15px;
+	max-width: calc(100% - 400px); 
+	float: left;
+	margin: 0; 
+	color: #3998c5;
+}
+
+
+.noLeaves p{
+	text-align: center;
+	font-size: 20px;
+	color: #9b9c9a;
+	margin-top: 40px;
+
+}
+
+/*responsive*/
+@media (max-width: 991px){
+	.nav-link[_ngcontent-c4] {
+		font-size: 17px;
+	}
+}
+
+@media (max-width: 575px){
+	.nav-link{    
+		font-size: 16px;
+		line-height: 20px;
+	}
+	.leaves_name h3{
+		font-size: 16px;
+		max-width: calc(100% - 200px); 
+	}
+	.table th{
+		font-size: 15px;
+	}
+}

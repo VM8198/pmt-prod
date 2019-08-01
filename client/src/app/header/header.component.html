@@ -1,0 +1,410 @@
+<!-- <header>
+  <div id="slide-out" class="side-nav">
+    <ul class="custom-scrollbar">
+      <li>
+        <div class="profile_section" routerLink="/userprofile/{{currentUser._id}}">
+          <div class="profile_picture" >
+            <img src="{{path}}{{currentUser.profilePhoto}}" onerror="this.src='assets/4.jpeg'">
+          </div>
+          <div class="user_name text-center">
+            <h3 style="text-transform: capitalize;">{{currentUser.name}}</h3>
+          </div>
+        </div>
+      </li>
+      <li>
+        <ul style="overflow-y: auto;" class="collapsible collapsible-accordion">
+
+          <li class=" item_list" *ngIf = "projects">
+            <a class="collapsible-header waves-effect arrow-r" id="projects"  [class.disabled] = "projects.length == 0" >
+              <span style="outline: none;" routerLink="/view-projects">
+                <span class="mr-1" data-icon="&#xe067;"></span> Projects
+              </span>
+            </a>
+            <div class="collapsible-body">
+              <ul>
+                <li *ngFor="let project of projects">
+                  <a routerLink="/project-details/{{project._id}}" class="collapsible-header waves-effect" style="width: 100%;" (click)="closeNav()"><span class="icon-bar-chart mr-1"></span>{{project.title}}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li *ngIf="currentUser.userRole=='projectManager'"><a routerLink="/create-project" style="width: 100%;" class="collapsible-header waves-effect arrow-r" (click)="closeNav()"><span class="icon-note mr-1"></span> Create Project</a>
+          </li>
+
+          <li class=" item_list" *ngIf="projects"><a *ngIf="currentUser.userRole == 'projectManager' || currentUser.userRole == 'admin'" routerLink="/all-item-list" style="width: 100%;" class="collapsible-header waves-effect arrow-r" [class.disabled] = "projects.length == 0" (click)="closeNav()" id="item_list" ><span class="mr-1" data-icon="&#xe06a;"></span> Item List</a></li>
+          <li *ngIf="currentUser.userRole=='projectManager' || currentUser.userRole=='admin' "><a routerLink="/add-notice" style="width: 100%;" class="collapsible-header waves-effect arrow-r" (click)="closeNav()"><span class="icon-flag mr-1"></span> Add Notice</a></li>
+          <li><a routerLink="/noticeboard" style="width: 100%;" class="collapsible-header waves-effect arrow-r" (click)="closeNav()"><span class="icon-book-open mr-1"></span>   Notice Board</a></li>
+          <li *ngIf="currentUser.userRole=='admin' "><a routerLink="/add-employee" style="width: 100%;" class="collapsible-header waves-effect arrow-r" (click)="closeNav()"><span class="fas fa-flag-checkered"></span> Add Employee</a></li>
+          <li ><a routerLink="/all-employee" style="width: 100%;" class="collapsible-header waves-effect arrow-r" (click)="closeNav()"><span class="far fa-user"></span> All Employee</a></li>
+          <li *ngIf="currentUser.userRole=='projectManager'" class=" item_list">
+            <a style="width: 100%;" class="collapsible-header waves-effect arrow-r" 
+            (click) ="getAllProjects()" [class.disabled] = "projects.length == 0" id="visit_team_members" *ngIf= "projects"><span class="icon-users mr-1"></span> Visit Team-members
+
+            <span class="fa fa-angle-down rotate-icon" *ngIf = "projects.length != 0"></span></a>
+            <div class="collapsible-body">
+              <ul>
+                <li *ngFor="let project of finalArr">
+                  <a routerLink="/project-team/{{project._id}}" class="collapsible-header waves-effect" style="width: 100%;" (click)="closeNav()"><span class="icon-bar-chart"></span>{{project.title}}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li *ngIf="currentUser.userRole=='projectManager' || currentUser.userRole=='admin'"><a routerLink="/all-leave-app" style="width: 100%;" class="collapsible-header waves-effect arrow-r" (click)="closeNav()"><span class="icon-docs mr-1"></span> All Leave Application</a></li>
+          <li  *ngIf="currentUser.userRole=='developer' || currentUser.userRole=='user' "><a routerLink="/myleave" style="width: 100%;" class="collapsible-header waves-effect arrow-r" (click)="closeNav()"><span class="fas fa-user-tie"></span> MyLeave</a></li>
+          <li  *ngIf="currentUser.userRole=='developer' || currentUser.userRole=='user' || currentUser.userRole=='projectManager'  "><a routerLink="/leave" style="width: 100%;" class="collapsible-header waves-effect arrow-r" (click)="closeNav()"><span class="fab fa-wpforms"></span> Leave Form</a></li>
+          <li class="only_for_mobile"><a  class="dropdown-item" routerLink="/userprofile" (click)="closeNav()"> <span class="icon-user mr-1"></span> My Profile</a></li>
+          <li class="only_for_mobile"><a class="dropdown-item" (click)="logout()" (click)="closeNav()"><span class="icon-logout mr-1"></span> Log Out</a></li>
+
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+  <nav class="navbar fixed-top navbar-toggleable-md navbar-dark">
+    <div class="float-left">
+      <ol class="breadcrumb hidden-lg-down">
+        <li>
+          <a data-activates="slide-out" class="button-collapse" (click)="openNav()" ><span class="fa fa-bars"></span></a>
+        </li>
+        <li class="breadcrumb-item active"><a>Dashboard</a></li>
+      </ol>
+    </div>
+    <div class="float-right">
+      <ol class="breadcrumb hidden-lg-down">
+        <a routerLink="/notification" class="only_for_mobile" title="Notifications" data-toggle="tooltip" data-placement="right" style="color: #fff;">
+          <span class="icon-bell" style="font-size: 20px;" aria-hidden="true"  >
+            <span class="notification_count animated bounce">
+              <span class="custom_badge ">{{newNotification}}</span>
+            </span>
+          </span>
+        </a>
+      </ol>
+    </div>
+  </nav>
+</header> -->
+
+
+<header>
+  <button class="nav_toggle_btn float-left">
+    <span class="fa fa-bars"></span> Dashboard
+  </button>
+  <div class="menu_content_with_overlay">
+    <nav>
+      <ul style="overflow-y: auto;" class="collapsible collapsible-accordion">
+        <li class="item_list" class="p-0">
+          <div class="item_link profile_section" routerLink="/userprofile/{{currentUser._id}}" (click)="closeNav()">
+            <div class="profile_picture">
+
+              <img src="{{path}}{{currentUser.profilePhoto}}" onerror="this.src='assets/4.jpeg'">
+            </div>
+            <div class="user_name text-center">
+              <h3 style="text-transform: capitalize;">{{currentUser.name}}</h3>
+            </div>
+          </div>
+        </li>
+        <!--     <li class="item_list" *ngIf = "projects">
+          <a class="collapsible-header waves-effect" id="projects" [class.disabled] = "projects.length == 0" >
+              <span class="mr-1" data-icon="&#xe067;"></span> Projects
+              <span class="fa fa-angle-down rotate-icon" *ngIf = "projects.length != 0"></span>
+          </a>
+          <div class="collapsible-body" *ngIf="projects && projects.length">
+            <ul>{{project}}
+              <li class="item_list" *ngFor="let project of projects">
+                <a routerLink="/project-details/{{project._id}}" class="waves-effect item_link" (click)="closeNav()">
+                  <span class="icon-bar-chart mr-1"></span>{{project.title}}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> -->
+        <li class="item_list">
+          <a routerLink="/view-projects" class="waves-effect item_link" (click)="closeNav()">
+            <span class="icon-note mr-1"></span> View Project
+          </a>
+        </li>
+        <li class="item_list" *ngIf="currentUser.userRole=='projectManager'">
+          <a routerLink="/create-project" class="waves-effect item_link" (click)="closeNav()">
+            <span class="icon-note mr-1"></span> Create Project
+          </a>
+        </li>
+        <li class="item_list" *ngIf="projects">
+          <a routerLink="/all-item-list" class="waves-effect item_link" (click)="closeNav()" id="item_list"
+            [class.disabled]="projects.length == 0">
+            <span class="mr-1" data-icon="&#xe06a;"></span> Item List
+          </a>
+        </li>
+        <li class="item_list" *ngIf="currentUser.userRole=='projectManager' || currentUser.userRole=='admin' ">
+          <a routerLink="/add-notice" class="waves-effect item_link" (click)="closeNav()">
+            <span class="icon-flag mr-1"></span> Add Notice
+          </a>
+        </li>
+        <li class="item_list">
+          <a routerLink="/noticeboard" class="waves-effect item_link" (click)="closeNav()">
+            <span class="icon-book-open mr-1"></span> Notice Board
+          </a>
+        </li>
+        <li class="item_list" *ngIf="currentUser.userRole=='admin' ">
+          <a routerLink="/add-employee" class="waves-effect item_link" (click)="closeNav()">
+            <span class="fas fa-flag-checkered"></span> Add Employee
+          </a>
+        </li>
+        <li class="item_list" *ngIf="currentUser.userRole == 'admin' || currentUser.userRole == 'projectManager'">
+          <a routerLink="/all-employee" class="waves-effect item_link" (click)="closeNav()">
+            <span class="far fa-user"></span> All Employee
+          </a>
+        </li>
+        <!--       <li class="item_list" er*ngIf="currentUser.userRole=='projectManager' || currentUser.userRole=='admin'">
+          <a class="collapsible-header waves-effect" [class.disabled] = "projects.length == 0" id="visit_team_members" *ngIf= "projects">
+            <span class="icon-users mr-1"></span> Visit Team-members
+            <span class="fa fa-angle-down rotate-icon" *ngIf = "projects.length != 0"></span>
+          </a>
+          <div class="collapsible-body">
+            <ul>
+              <li class="item_list" *ngFor="let project of finalArr">
+                <a routerLink="/project-team/{{project._id}}" class="waves-effect item_link" (click)="closeNav()">
+                  <span class="icon-bar-chart mr-1"></span>{{project.title}}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> -->
+        <li class="item_list" *ngIf="currentUser.userRole=='projectManager' || currentUser.userRole=='admin'">
+          <a routerLink="/all-leave-app" class="waves-effect item_link" (click)="closeNav()">
+            <span class="icon-docs mr-1"></span> All Leave Application
+          </a>
+        </li>
+        <li class="item_list" *ngIf="currentUser.userRole=='developer' || currentUser.userRole=='user' ">
+          <a routerLink="/myleave" class="waves-effect item_link" (click)="closeNav()">
+            <span class="fas fa-user-tie"></span> MyLeave
+          </a>
+        </li>
+        <li class="item_list">
+          <a routerLink="/leave" class="waves-effect item_link" (click)="closeNav()">
+            <span class="fab fa-wpforms"></span> Leave Form
+          </a>
+        </li>
+        <li class="only_for_mobile item_list">
+          <a routerLink="/userprofile" class="waves-effect item_link" (click)="closeNav()">
+            <span class="icon-user mr-1"></span> My Profile
+          </a>
+        </li>
+        <li class="only_for_mobile item_list">
+          <a (click)="logout()" class="waves-effect item_link" (click)="closeNav()">
+            <span class="icon-logout mr-1"></span> Log Out
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<div class="side_fixed_nav">
+  <div class="top_icon">
+    <div class="second_icon dropdown" id="plus_details" *ngIf="currentUser.userRole=='projectManager'">
+      <a href="" class="star_link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
+          class="icon-plus" style="font-size: 20px;color: #181123;" aria-hidden="true"></span></a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" [routerLink]="['/create-project']"> <span class="icon-folder-alt mr-1"></span>
+          Project</a>
+        <a class="dropdown-item" (click)="addItem('Task')"><span data-icon="&#xe067;" class="mr-1"></span> Task</a>
+        <a class="dropdown-item" (click)="addItem('Bug')"><span class="icon-energy mr-1"></span> Bug</a>
+        <a class="dropdown-item" (click)="addItem('Issue')"> <span class="icon-question mr-1"></span> Issue</a>
+      </div>
+    </div>
+  </div>
+  <div class="second_icon dropdown">
+    <div class="bottom_icon">
+      <div class="second_icon">
+        <a routerLink="/notification" class="star_link" title="Notifications" data-toggle="tooltip"
+          data-placement="right" style="color: #181123;"><span class="icon-bell" style="font-size: 20px;"
+            aria-hidden="true">
+            <span class="notification_count animated bounce" *ngIf="newNotification > 0">
+              <span class="custom_badge ">{{newNotification}}</span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+    <a href="" class="star_link" data-toggle="tooltip" title="Your profile and settings" data-placement="right"></a>
+    <ul class="team-members">
+      <li id="login_details">
+        <a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="user_profile_pic"><img src="{{path}}{{currentUser.profilePhoto}}" class="img-rounded"
+              onerror="this.src='assets/4.jpeg'"></div>
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)="logout()"><span class="icon-logout mr-1"></span> Log Out</a>
+          <a class="dropdown-item" routerLink="/userprofile"> <span class="icon-user mr-1"></span> My Profile</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+
+
+  <!-- Select project -->
+  <div class="modal fade right" id="editModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-lg container" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h3 class="card-header-title" id="myModalLabel"><span class="icon-note"></span>{{modalTitle}}</h3>
+          <form style="width: 100%;" [formGroup]="editTaskForm">
+            <div class="form-group col-12 col-lg-12 pt-1">
+              <ng-select placeholder="Select Project" [items]="demoprojects" bindLabel="title" bindValue="_id"
+                [closeOnSelect]="true" formControlName="projectId" (change)="projectSelected($event)">
+                <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                  <span class="ng-value-label"><img src="{{path}}{{item.avatar}}"
+                      onerror="this.src='assets/icons/avatar.png'" width="20px" height="20px"> {{item.title}}</span>
+                  <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                </ng-template>
+                <div class="row">
+                  <ng-template ng-option-tmp let-item="item">
+                    <div class="card testimonial-card">
+                      <div class="card-up deep-purple lighten-2"></div>
+                      <div class="avatar white img_section">
+                        <img src="{{path}}{{item.avatar}}" onerror="this.src='assets/icons/avatar.png'"
+                          class="rounded-circle img-fluid">
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title mt-1">{{item.title}}</h5>
+                        <h6 class="card-title">{{item.uniqueId}}</h6>
+                      </div>
+                    </div>
+                  </ng-template>
+                </div>
+              </ng-select>
+            </div>
+            <div>
+
+              <!-- Add Task Modal -->
+
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div [hidden]="!task.projectId">
+              <div class="form-group col-11">
+                <label for="title">Title</label>
+                <input type="text" id="title" formControlName="title" [(ngModel)]="task.title" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.title.errors }" autocomplete="off" />
+                <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                  <div *ngIf="f.title.errors.required">Title is required</div>
+                  <div *ngIf="f.title.errors.maxLength">You can use maximum 50 characters</div>
+                </div>
+              </div>
+              <div class="form-group col-11">
+                <label for="desc">Discription</label>
+
+                <textarea id="desc" formControlName="desc" [(ngModel)]="task.desc" class="form-control md-textarea"
+                  [ngClass]="{ 'is-invalid': submitted && f.desc.errors }"></textarea>
+                <div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
+                  <div *ngIf="f.desc.errors.required">Project Discription is required</div>
+                </div>
+
+              </div>
+
+              <div class="row no-margin no-padding  border">
+                <div class="form-group col-12 col-lg-6 pt-1">
+                  <label for="assignTo">Assign To</label>
+                  <select class="browser-default custom-select custom-select-lg mb-1" required id="assignTo"
+                    formControlName="assignTo" *ngIf="task.assignTo" [(ngModel)]="task.assignTo._id"
+                    [ngClass]="{ 'is-invalid': submitted && f.assignTo.errors }">
+                    <option *ngFor="let team of developers" value="{{team._id}}">{{team.name}}</option>
+                  </select>
+                  <div *ngIf="submitted && f.assignTo.errors" class="invalid-feedback">
+                    <div *ngIf="f.assignTo.errors.required">You have to assign task to some one</div>
+                  </div>
+
+                  <select class="browser-default custom-select custom-select-lg mb-1" id="assignTo"
+                    formControlName="assignTo" *ngIf="!task.assignTo"
+                    [ngClass]="{ 'is-invalid': submitted && f.assignTo.errors }">
+                    <option *ngFor="let team of developers" value="{{team._id}}">{{team.name}}</option>
+                  </select>
+                  <div *ngIf="submitted && f.assignTo.errors" class="invalid-feedback">
+                    <div *ngIf="f.assignTo.errors.required">You have to assign task to some one</div>
+                  </div>
+                </div>
+                <div class="form-group col-12 col-lg-6 pt-1">
+                  <label for="priority">Priority</label>
+                  <select class="browser-default custom-select custom-select-lg mb-1" name="priority" id="priority"
+                    formControlName="priority" [(ngModel)]="task.priority"
+                    [ngClass]="{ 'is-invalid': submitted && f.priority.errors }">
+                    <option value="4">Low</option>
+                    <option value="3">Medium</option>
+                    <option value="2">High</option>
+                    <option value="1">Highest</option>
+                  </select>
+                  <div *ngIf="submitted && f.priority.errors" class="invalid-feedback">
+                    <div *ngIf="f.priority.errors.required">Task priority is required</div>
+                  </div>
+
+                </div>
+                <div class="form-group col-12">
+                  <label for="assignTo">Sprint</label>
+                  <select class="browser-default custom-select custom-select-lg mb-1" id="sprint"
+                    formControlName="sprint" *ngIf="task.sprint" [(ngModel)]="task.sprint._id"
+                    [ngClass]="{ 'is-invalid': submitted && f.sprint.errors }">
+                    <option *ngFor="let sprint of newSprint" value="{{sprint._id}}">{{sprint.title}} {{sprint.status}}
+                    </option>
+                  </select>
+                  <div *ngIf="submitted && f.sprint.errors" class="invalid-feedback">
+                    <div *ngIf="f.sprint.errors.required">Project sprint is required</div>
+                  </div>
+
+                  <select class="browser-default custom-select custom-select-lg mb-1" id="sprint"
+                    formControlName="sprint" *ngIf="!task.sprint"
+                    [ngClass]="{ 'is-invalid': submitted && f.sprint.errors }">
+                    <option *ngFor="let sprint of newSprint" value="{{sprint._id}}">{{sprint.title}} {{sprint.status}}
+                    </option>
+                  </select>
+                  <div *ngIf="submitted && f.sprint.errors" class="invalid-feedback">
+                    <div *ngIf="f.sprint.errors.required">Project sprint is required</div>
+                  </div>
+                </div>
+                <div class="form-group col-5">
+                  <label for="dueDate">Due Days</label>
+                  <input placeholder="Selected days" id="dueDate" type="text" formControlName="dueDate"
+                    [(ngModel)]="task.dueDate" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.dueDate.errors }" autocomplete="off" />
+                  <div *ngIf="submitted && f.dueDate.errors" class="invalid-feedback">
+                    <div *ngIf="f.dueDate.errors.required">Due days is required</div>
+                  </div>
+                </div>
+                <div class="form-group col-1"></div>
+                <div class="form-group col-5">
+                  <label for="estimatedTime">Estimated Time</label>
+                  <div class="md-form form-group">
+                    <input placeholder="Estimated time in hrs.." type="text" name="estimatedTime" id="estTime"
+                      class="form-control" formControlName="estimatedTime" [(ngModel)]="task.estimatedTime"
+                      autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.estimatedTime.errors }"
+                      autocomplete="off" />
+                    <div *ngIf="submitted && f.estimatedTime.errors" class="invalid-feedback">
+                      <div *ngIf="f.estimatedTime.errors.required">Estimated time is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-12">
+                  <app-file-upload-dnd projectId="100" sectionId="107" maxFiles="10" maxSize="2"
+                    fileExt="JPG, JPEG, PNG" (uploadedFile)="changeFile($event)"></app-file-upload-dnd>
+                </div>
+              </div>
+              <div class="float-right">
+                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal"
+                  (click)="closeNav()">Close</button>
+                <button type="submit" class="btn btn-primary btn-lg" (click)="saveTheData(editTaskForm.value)"
+                  [disabled]=" isDisable">Save changes</button>
+
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>

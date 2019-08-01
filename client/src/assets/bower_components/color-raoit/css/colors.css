@@ -1,0 +1,706 @@
+/* SPECIAL COLORS */
+
+
+
+
+
+/* Twitter Bootstrap */
+
+.bg-bs-danger { background-color: #d9534f !important; }
+.bg-bs-plain { background-color: #f9f9f9 !important; }
+.bg-bs-info { background-color: #5bc0de !important; }
+.bg-bs-primary { background-color: #428bca !important; }
+.bg-bs-success { background-color: #5cb85c !important; }
+
+.text-bs-danger { color: #d9534f !important; }
+.text-bs-plain { color: #f9f9f9 !important; }
+.text-bs-info { color: #5bc0de !important; }
+.text-bs-primary { color: #428bca !important; }
+.text-bs-success { color: #5cb85c !important; }
+
+.border-bs-danger { border-color: #d9534f !important; }
+.border-bs-plain { border-color: #f9f9f9 !important; }
+.border-bs-info { border-color: #5bc0de !important; }
+.border-bs-primary { border-color: #428bca !important; }
+.border-bs-success { border-color: #5cb85c !important; }
+
+
+
+
+
+
+
+
+/* Ionic */
+
+.bg-ionic-light { background-color:#ffffff !important; }
+.bg-ionic-stable { background-color:#eeeeee !important; }
+.bg-ionic-positive { background-color:#387ef5 !important; }
+.bg-ionic-calm { background-color:#11c1f3 !important; }
+.bg-ionic-balanced { background-color:#33cd5f !important; }
+.bg-ionic-energized { background-color:#ffc900 !important; }
+.bg-ionic-assertive { background-color:#ef473a !important; }
+.bg-ionic-royal { background-color:#886aea !important; }
+.bg-ionic-dark { background-color:#444444 !important; }
+
+.text-ionic-light { color:#ffffff !important; }
+.text-ionic-stable { color:#eeeeee !important; }
+.text-ionic-positive { color:#387ef5 !important; }
+.text-ionic-calm { color:#11c1f3 !important; }
+.text-ionic-balanced { color:#33cd5f !important; }
+.text-ionic-energized { color:#ffc900 !important; }
+.text-ionic-assertive { color:#ef473a !important; }
+.text-ionic-royal { color:#886aea !important; }
+.text-ionic-dark { color:#444444 !important; }
+
+.border-ionic-light { border-color:#ffffff !important; }
+.border-ionic-stable { border-color:#eeeeee !important; }
+.border-ionic-positive { border-color:#387ef5 !important; }
+.border-ionic-calm { border-color:#11c1f3 !important; }
+.border-ionic-balanced { border-color:#33cd5f !important; }
+.border-ionic-energized { border-color:#ffc900 !important; }
+.border-ionic-assertive { border-color:#ef473a !important; }
+.border-ionic-royal { border-color:#886aea !important; }
+.border-ionic-dark { border-color:#444444 !important; }
+
+
+
+
+
+
+
+
+
+/* Semantic UI */
+
+
+.bg-semantic-red{ background-color: #B03060 !important; }
+.bg-semantic-orange{ background-color: #FE9A76 !important; }
+.bg-semantic-yellow{ background-color: #FFD700 !important; }
+.bg-semantic-olive{ background-color: #32CD32 !important; }
+.bg-semantic-green{ background-color: #016936 !important; }
+.bg-semantic-teal{ background-color: #008080 !important; }
+.bg-semantic-blue{ background-color: #0E6EB8 !important; }
+.bg-semantic-violet{ background-color: #EE82EE !important; }
+.bg-semantic-purple{ background-color: #B413EC !important; }
+.bg-semantic-pink{ background-color: #FF1493 !important; }
+.bg-semantic-brown{ background-color: #A52A2A !important; }
+.bg-semantic-grey{ background-color: #A0A0A0 !important; }
+.bg-semantic-black{ background-color: #000000 !important; }
+
+.text-semantic-red{ color: #B03060 !important; }
+.text-semantic-orange{ color: #FE9A76 !important; }
+.text-semantic-yellow{ color: #FFD700 !important; }
+.text-semantic-olive{ color: #32CD32 !important; }
+.text-semantic-green{ color: #016936 !important; }
+.text-semantic-teal{ color: #008080 !important; }
+.text-semantic-blue{ color: #0E6EB8 !important; }
+.text-semantic-violet{ color: #EE82EE !important; }
+.text-semantic-purple{ color: #B413EC !important; }
+.text-semantic-pink{ color: #FF1493 !important; }
+.text-semantic-brown{ color: #A52A2A !important; }
+.text-semantic-grey{ color: #A0A0A0 !important; }
+.text-semantic-black{ color: #000000 !important; }
+
+.border-semantic-red{ border-color: #B03060 !important; }
+.border-semantic-orange{ border-color: #FE9A76 !important; }
+.border-semantic-yellow{ border-color: #FFD700 !important; }
+.border-semantic-olive{ border-color: #32CD32 !important; }
+.border-semantic-green{ border-color: #016936 !important; }
+.border-semantic-teal{ border-color: #008080 !important; }
+.border-semantic-blue{ border-color: #0E6EB8 !important; }
+.border-semantic-violet{ border-color: #EE82EE !important; }
+.border-semantic-purple{ border-color: #B413EC !important; }
+.border-semantic-pink{ border-color: #FF1493 !important; }
+.border-semantic-brown{ border-color: #A52A2A !important; }
+.border-semantic-grey{ border-color: #A0A0A0 !important; }
+.border-semantic-black{ border-color: #000000 !important; }
+
+
+
+
+
+
+
+/* Foundation */
+
+.bg-foundation-primary { background-color:  #00558b !important; }
+.bg-foundation-secondary { background-color:  #f1f1f1 !important; }
+.bg-foundation-alert { background-color:  #F04124 !important; }
+.bg-foundation-info { background-color:  #A0D3E8 !important; }
+.bg-foundation-success { background-color:  #43AC6A !important; }
+.bg-foundation-warning { background-color:  #F08A24 !important; }
+.bg-foundation-dark { background-color:  #232323 !important; }
+.bg-foundation-gray { background-color:  #dfdfdf !important; }
+
+.text-foundation-primary { color:  #00558b !important; }
+.text-foundation-secondary { color:  #f1f1f1 !important; }
+.text-foundation-alert { color:  #F04124 !important; }
+.text-foundation-info { color:  #A0D3E8 !important; }
+.text-foundation-success { color:  #43AC6A !important; }
+.text-foundation-warning { color:  #F08A24 !important; }
+.text-foundation-dark { color:  #232323 !important; }
+.text-foundation-gray { color:  #dfdfdf !important; }
+
+.border-foundation-primary { border-color:  #00558b !important; }
+.border-foundation-secondary { border-color:  #f1f1f1 !important; }
+.border-foundation-alert { border-color:  #F04124 !important; }
+.border-foundation-info { border-color:  #A0D3E8 !important; }
+.border-foundation-success { border-color:  #43AC6A !important; }
+.border-foundation-warning { border-color:  #F08A24 !important; }
+.border-foundation-dark { border-color:  #232323 !important; }
+.border-foundation-gray { border-color:  #dfdfdf !important; }
+
+
+
+
+
+
+
+
+
+/* W3 CSS */
+.w3-amber {color:#000!important;background-color:#ffc107!important}
+.w3-aqua {color:#000!important;background-color:#00ffff!important}
+.w3-blue {color:#fff!important;background-color:#2196F3!important}
+.w3-light-blue { color:#000!important;background-color:#87CEEB!important}
+.w3-brown {color:#fff!important;background-color:#795548!important}
+.w3-cyan {color:#000!important;background-color:#00bcd4!important}
+.w3-blue-grey, ,.w3-blue-gray { color:#fff!important;background-color:#607d8b!important}
+.w3-green {color:#fff!important;background-color:#4CAF50!important}
+.w3-light-green { color:#000!important;background-color:#8bc34a!important}
+.w3-indigo {color:#fff!important;background-color:#3f51b5!important}
+.w3-khaki {color:#000!important;background-color:#f0e68c!important}
+.w3-lime {color:#000!important;background-color:#cddc39!important}
+.w3-orange {color:#000!important;background-color:#ff9800!important}
+.w3-deep-orange { color:#fff!important;background-color:#ff5722!important}
+.w3-pink {color:#fff!important;background-color:#e91e63!important}
+.w3-purple {color:#fff!important;background-color:#9c27b0!important}
+.w3-deep-purple { color:#fff!important;background-color:#673ab7!important}
+.w3-red {color:#fff!important;background-color:#f44336!important}
+.w3-sand {color:#000!important;background-color:#fdf5e6!important}
+.w3-teal {color:#fff!important;background-color:#009688!important}
+.w3-yellow {color:#000!important;background-color:#ffeb3b!important}
+.w3-white {color:#000!important;background-color:#fff!important}
+.w3-black {color:#fff!important;background-color:#000!important}
+.w3-grey ,.w3-gray {color:#000!important;background-color:#bbb!important}
+.w3-light-grey, ,.w3-light-gray { color:#000!important;background-color:#f1f1f1!important}
+.w3-dark-grey, ,.w3-dark-gray { color:#fff!important;background-color:#616161!important}
+.w3-pale-red { color:#000!important;background-color:#ffdddd!important}
+.w3-pale-green { color:#000!important;background-color:#ddffdd!important}
+.w3-pale-yellow { color:#000!important;background-color:#ffffcc!important}
+.w3-pale-blue { color:#000!important;background-color:#ddffff!important}
+.w3-text-red { color:#f44336!important}
+.w3-text-green { color:#4CAF50!important}
+.w3-text-blue { color:#2196F3!important}
+.w3-text-yellow { color:#ffeb3b!important}
+.w3-text-white { color:#fff!important}
+.w3-text-black { color:#000!important}
+.w3-text-grey, ,.w3-text-gray { color:#757575!important}
+.w3-text-amber{color:#ffc107!important}
+.w3-text-aqua{color:#00ffff!important}
+.w3-text-light-blue{color:#87CEEB!important}
+.w3-text-brown{color:#795548!important}
+.w3-text-cyan{color:#00bcd4!important}
+.w3-text-blue-grey,.w3-text-blue-gray{color:#607d8b!important}
+.w3-text-light-green{color:#8bc34a!important}
+.w3-text-indigo{color:#3f51b5!important}
+.w3-text-khaki{color:#b4aa50!important}
+.w3-text-lime{color:#cddc39!important}
+.w3-text-orange{color:#ff9800!important}
+.w3-text-deep-orange{color:#ff5722!important}
+.w3-text-pink{color:#e91e63!important}
+.w3-text-purple{color:#9c27b0!important}
+.w3-text-deep-purple{color:#673ab7!important}
+.w3-text-sand{color:#fdf5e6!important}
+.w3-text-teal{color:#009688!important}
+.w3-text-light-grey,.w3-text-light-gray {color:#f1f1f1!important}
+.w3-text-dark-grey,.w3-text-dark-gray {color:#3a3a3a!important}
+.w3-border-red {border-color:#f44336!important}
+.w3-border-green {border-color:#4CAF50!important}
+.w3-border-blue {border-color:#2196F3!important}
+.w3-border-yellow {border-color:#ffeb3b!important}
+.w3-border-white {border-color:#fff!important}
+.w3-border-black {border-color:#000!important}
+.w3-border-grey .w3-border-gray {border-color:#bbb!important}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------ALL COLORS------------------------------*/
+
+/*Background Colors*/
+.bg-AliceBlue { background-color: AliceBlue !important;}
+.bg-AntiqueWhite { background-color: AntiqueWhite !important;}
+.bg-Aqua { background-color: Aqua !important;}
+.bg-Aquamarine { background-color: Aquamarine !important;}
+.bg-Azure { background-color: Azure !important;}
+.bg-Beige { background-color: Beige !important;}
+.bg-Bisque { background-color: Bisque !important;}
+.bg-Black { background-color: Black !important;}
+.bg-BlanchedAlmond { background-color: BlanchedAlmond !important;}
+.bg-Blue { background-color: Blue !important;}
+.bg-BlueViolet { background-color: BlueViolet !important;}
+.bg-Brown { background-color: Brown !important;}
+.bg-BurlyWood { background-color: BurlyWood !important;}
+.bg-CadetBlue { background-color: CadetBlue !important;}
+.bg-Chartreuse { background-color: Chartreuse !important;}
+.bg-Chocolate { background-color: Chocolate !important;}
+.bg-Coral { background-color: Coral !important;}
+.bg-CornflowerBlue { background-color: CornflowerBlue !important;}
+.bg-Cornsilk { background-color: Cornsilk !important;}
+.bg-Crimson { background-color: Crimson !important;}
+.bg-Cyan { background-color: Cyan !important;}
+.bg-DarkBlue { background-color: DarkBlue !important;}
+.bg-DarkCyan { background-color: DarkCyan !important;}
+.bg-DarkGoldenRod { background-color: DarkGoldenRod !important;}
+.bg-DarkGray { background-color: DarkGray !important;}
+.bg-DarkGreen { background-color: DarkGreen !important;}
+.bg-DarkGrey { background-color: DarkGrey !important;}
+.bg-DarkKhaki { background-color: DarkKhaki !important;}
+.bg-DarkMagenta { background-color: DarkMagenta !important;}
+.bg-DarkOliveGreen { background-color: DarkOliveGreen !important;}
+.bg-DarkOrange { background-color: DarkOrange !important;}
+.bg-DarkOrchid { background-color: DarkOrchid !important;}
+.bg-DarkRed { background-color: DarkRed !important;}
+.bg-DarkSalmon { background-color: DarkSalmon !important;}
+.bg-DarkSeaGreen { background-color: DarkSeaGreen !important;}
+.bg-DarkSlateBlue { background-color: DarkSlateBlue !important;}
+.bg-DarkSlateGray { background-color: DarkSlateGray !important;}
+.bg-DarkSlateGrey { background-color: DarkSlateGrey !important;}
+.bg-DarkTurquoise { background-color: DarkTurquoise !important;}
+.bg-DarkViolet { background-color: DarkViolet !important;}
+.bg-DeepPink { background-color: DeepPink !important;}
+.bg-DeepSkyBlue { background-color: DeepSkyBlue !important;}
+.bg-DimGray { background-color: DimGray !important;}
+.bg-DimGrey { background-color: DimGrey !important;}
+.bg-DodgerBlue { background-color: DodgerBlue !important;}
+.bg-FireBrick { background-color: FireBrick !important;}
+.bg-FloralWhite { background-color: FloralWhite !important;}
+.bg-ForestGreen { background-color: ForestGreen !important;}
+.bg-Fuchsia { background-color: Fuchsia !important;}
+.bg-Gainsboro { background-color: Gainsboro !important;}
+.bg-GhostWhite { background-color: GhostWhite !important;}
+.bg-Gold { background-color: Gold !important;}
+.bg-Goldenrod { background-color: Goldenrod !important;}
+.bg-Gray { background-color: Gray !important;}
+.bg-Green { background-color: Green !important;}
+.bg-GreenYellow { background-color: GreenYellow !important;}
+.bg-Grey { background-color: Grey !important;}
+.bg-HoneyDew { background-color: HoneyDew !important;}
+.bg-HotPink { background-color: HotPink !important;}
+.bg-IndianRed { background-color: IndianRed !important;}
+.bg-Indigo { background-color: Indigo !important;}
+.bg-Ivory { background-color: Ivory !important;}
+.bg-Khaki { background-color: Khaki !important;}
+.bg-Lavender { background-color: Lavender !important;}
+.bg-LavenderBlush { background-color: LavenderBlush !important;}
+.bg-LawnGreen { background-color: LawnGreen !important;}
+.bg-LemonChiffon { background-color: LemonChiffon !important;}
+.bg-LightBlue { background-color: LightBlue !important;}
+.bg-LightCoral { background-color: LightCoral !important;}
+.bg-LightCyan { background-color: LightCyan !important;}
+.bg-LightGoldenRodYellow { background-color: LightGoldenRodYellow !important;}
+.bg-LightGray { background-color: LightGray !important;}
+.bg-LightGreen { background-color: LightGreen !important;}
+.bg-LightGrey { background-color: LightGrey !important;}
+.bg-LightPink { background-color: LightPink !important;}
+.bg-LightSalmon { background-color: LightSalmon !important;}
+.bg-LightSeaGreen { background-color: LightSeaGreen !important;}
+.bg-LightSkyBlue { background-color: LightSkyBlue !important;}
+.bg-LightSlateGray { background-color: LightSlateGray !important;}
+.bg-LightSlateGrey { background-color: LightSlateGrey !important;}
+.bg-LightSteelBlue { background-color: LightSteelBlue !important;}
+.bg-LightYellow { background-color: LightYellow !important;}
+.bg-Lime { background-color: Lime !important;}
+.bg-LimeGreen { background-color: LimeGreen !important;}
+.bg-Linen { background-color: Linen !important;}
+.bg-Magenta { background-color: Magenta !important;}
+.bg-Maroon { background-color: Maroon !important;}
+.bg-MediumAquaMarine { background-color: MediumAquaMarine !important;}
+.bg-MediumBlue { background-color: MediumBlue !important;}
+.bg-MediumOrchid { background-color: MediumOrchid !important;}
+.bg-MediumPurple { background-color: MediumPurple !important;}
+.bg-MediumSeaGreen { background-color: MediumSeaGreen !important;}
+.bg-MediumSlateBlue { background-color: MediumSlateBlue !important;}
+.bg-MediumSpringGreen { background-color: MediumSpringGreen !important;}
+.bg-MediumTurquoise { background-color: MediumTurquoise !important;}
+.bg-MediumVioletRed { background-color: MediumVioletRed !important;}
+.bg-MidnightBlue { background-color: MidnightBlue !important;}
+.bg-MintCream { background-color: MintCream !important;}
+.bg-MistyRose { background-color: MistyRose !important;}
+.bg-Moccasin { background-color: Moccasin !important;}
+.bg-NavajoWhite { background-color: NavajoWhite !important;}
+.bg-Navy { background-color: Navy !important;}
+.bg-OldLace { background-color: OldLace !important;}
+.bg-Olive { background-color: Olive !important;}
+.bg-OliveDrab { background-color: OliveDrab !important;}
+.bg-Orange { background-color: Orange !important;}
+.bg-OrangeRed { background-color: OrangeRed !important;}
+.bg-Orchid { background-color: Orchid !important;}
+.bg-PaleGoldenRod { background-color: PaleGoldenRod !important;}
+.bg-PaleGreen { background-color: PaleGreen !important;}
+.bg-PaleTurquoise { background-color: PaleTurquoise !important;}
+.bg-PaleVioletRed { background-color: PaleVioletRed !important;}
+.bg-PapayaWhip { background-color: PapayaWhip !important;}
+.bg-PeachPuff { background-color: PeachPuff !important;}
+.bg-Peru { background-color: Peru !important;}
+.bg-Pink { background-color: Pink !important;}
+.bg-Plum { background-color: Plum !important;}
+.bg-PowderBlue { background-color: PowderBlue !important;}
+.bg-Purple { background-color: Purple !important;}
+.bg-Red { background-color: Red !important;}
+.bg-RosyBrown { background-color: RosyBrown !important;}
+.bg-RoyalBlue { background-color: RoyalBlue !important;}
+.bg-SaddleBrown { background-color: SaddleBrown !important;}
+.bg-Salmon { background-color: Salmon !important;}
+.bg-SandyBrown { background-color: SandyBrown !important;}
+.bg-SeaGreen { background-color: SeaGreen !important;}
+.bg-SeaShell { background-color: SeaShell !important;}
+.bg-Sienna { background-color: Sienna !important;}
+.bg-Silver { background-color: Silver !important;}
+.bg-SkyBlue { background-color: SkyBlue !important;}
+.bg-SlateBlue { background-color: SlateBlue !important;}
+.bg-SlateGray { background-color: SlateGray !important;}
+.bg-SlateGrey { background-color: SlateGrey !important;}
+.bg-Snow { background-color: Snow !important;}
+.bg-SpringGreen { background-color: SpringGreen !important;}
+.bg-SteelBlue { background-color: SteelBlue !important;}
+.bg-Tan { background-color: Tan !important;}
+.bg-Teal { background-color: Teal !important;}
+.bg-Thistle { background-color: Thistle !important;}
+.bg-Tomato { background-color: Tomato !important;}
+.bg-Turquoise { background-color: Turquoise !important;}
+.bg-Violet { background-color: Violet !important;}
+.bg-Wheat { background-color: Wheat !important;}
+.bg-White { background-color: White !important;}
+.bg-WhiteSmoke { background-color: WhiteSmoke !important;}
+.bg-Yellow { background-color: Yellow !important;}
+.bg-YellowGreen { background-color: YellowGreen !important;}
+
+
+
+
+/* Text Color */
+.text-AliceBlue { color: AliceBlue !important;}
+.text-AntiqueWhite { color: AntiqueWhite !important;}
+.text-Aqua { color: Aqua !important;}
+.text-Aquamarine { color: Aquamarine !important;}
+.text-Azure { color: Azure !important;}
+.text-Beige { color: Beige !important;}
+.text-Bisque { color: Bisque !important;}
+.text-Black { color: Black !important;}
+.text-BlanchedAlmond { color: BlanchedAlmond !important;}
+.text-Blue { color: Blue !important;}
+.text-BlueViolet { color: BlueViolet !important;}
+.text-Brown { color: Brown !important;}
+.text-BurlyWood { color: BurlyWood !important;}
+.text-CadetBlue { color: CadetBlue !important;}
+.text-Chartreuse { color: Chartreuse !important;}
+.text-Chocolate { color: Chocolate !important;}
+.text-Coral { color: Coral !important;}
+.text-CornflowerBlue { color: CornflowerBlue !important;}
+.text-Cornsilk { color: Cornsilk !important;}
+.text-Crimson { color: Crimson !important;}
+.text-Cyan { color: Cyan !important;}
+.text-DarkBlue { color: DarkBlue !important;}
+.text-DarkCyan { color: DarkCyan !important;}
+.text-DarkGoldenRod { color: DarkGoldenRod !important;}
+.text-DarkGray { color: DarkGray !important;}
+.text-DarkGreen { color: DarkGreen !important;}
+.text-DarkGrey { color: DarkGrey !important;}
+.text-DarkKhaki { color: DarkKhaki !important;}
+.text-DarkMagenta { color: DarkMagenta !important;}
+.text-DarkOliveGreen { color: DarkOliveGreen !important;}
+.text-DarkOrange { color: DarkOrange !important;}
+.text-DarkOrchid { color: DarkOrchid !important;}
+.text-DarkRed { color: DarkRed !important;}
+.text-DarkSalmon { color: DarkSalmon !important;}
+.text-DarkSeaGreen { color: DarkSeaGreen !important;}
+.text-DarkSlateBlue { color: DarkSlateBlue !important;}
+.text-DarkSlateGray { color: DarkSlateGray !important;}
+.text-DarkSlateGrey { color: DarkSlateGrey !important;}
+.text-DarkTurquoise { color: DarkTurquoise !important;}
+.text-DarkViolet { color: DarkViolet !important;}
+.text-DeepPink { color: DeepPink !important;}
+.text-DeepSkyBlue { color: DeepSkyBlue !important;}
+.text-DimGray { color: DimGray !important;}
+.text-DimGrey { color: DimGrey !important;}
+.text-DodgerBlue { color: DodgerBlue !important;}
+.text-FireBrick { color: FireBrick !important;}
+.text-FloralWhite { color: FloralWhite !important;}
+.text-ForestGreen { color: ForestGreen !important;}
+.text-Fuchsia { color: Fuchsia !important;}
+.text-Gainsboro { color: Gainsboro !important;}
+.text-GhostWhite { color: GhostWhite !important;}
+.text-Gold { color: Gold !important;}
+.text-Goldenrod { color: Goldenrod !important;}
+.text-Gray { color: Gray !important;}
+.text-Green { color: Green !important;}
+.text-GreenYellow { color: GreenYellow !important;}
+.text-Grey { color: Grey !important;}
+.text-HoneyDew { color: HoneyDew !important;}
+.text-HotPink { color: HotPink !important;}
+.text-IndianRed { color: IndianRed !important;}
+.text-Indigo { color: Indigo !important;}
+.text-Ivory { color: Ivory !important;}
+.text-Khaki { color: Khaki !important;}
+.text-Lavender { color: Lavender !important;}
+.text-LavenderBlush { color: LavenderBlush !important;}
+.text-LawnGreen { color: LawnGreen !important;}
+.text-LemonChiffon { color: LemonChiffon !important;}
+.text-LightBlue { color: LightBlue !important;}
+.text-LightCoral { color: LightCoral !important;}
+.text-LightCyan { color: LightCyan !important;}
+.text-LightGoldenRodYellow { color: LightGoldenRodYellow !important;}
+.text-LightGray { color: LightGray !important;}
+.text-LightGreen { color: LightGreen !important;}
+.text-LightGrey { color: LightGrey !important;}
+.text-LightPink { color: LightPink !important;}
+.text-LightSalmon { color: LightSalmon !important;}
+.text-LightSeaGreen { color: LightSeaGreen !important;}
+.text-LightSkyBlue { color: LightSkyBlue !important;}
+.text-LightSlateGray { color: LightSlateGray !important;}
+.text-LightSlateGrey { color: LightSlateGrey !important;}
+.text-LightSteelBlue { color: LightSteelBlue !important;}
+.text-LightYellow { color: LightYellow !important;}
+.text-Lime { color: Lime !important;}
+.text-LimeGreen { color: LimeGreen !important;}
+.text-Linen { color: Linen !important;}
+.text-Magenta { color: Magenta !important;}
+.text-Maroon { color: Maroon !important;}
+.text-MediumAquaMarine { color: MediumAquaMarine !important;}
+.text-MediumBlue { color: MediumBlue !important;}
+.text-MediumOrchid { color: MediumOrchid !important;}
+.text-MediumPurple { color: MediumPurple !important;}
+.text-MediumSeaGreen { color: MediumSeaGreen !important;}
+.text-MediumSlateBlue { color: MediumSlateBlue !important;}
+.text-MediumSpringGreen { color: MediumSpringGreen !important;}
+.text-MediumTurquoise { color: MediumTurquoise !important;}
+.text-MediumVioletRed { color: MediumVioletRed !important;}
+.text-MidnightBlue { color: MidnightBlue !important;}
+.text-MintCream { color: MintCream !important;}
+.text-MistyRose { color: MistyRose !important;}
+.text-Moccasin { color: Moccasin !important;}
+.text-NavajoWhite { color: NavajoWhite !important;}
+.text-Navy { color: Navy !important;}
+.text-OldLace { color: OldLace !important;}
+.text-Olive { color: Olive !important;}
+.text-OliveDrab { color: OliveDrab !important;}
+.text-Orange { color: Orange !important;}
+.text-OrangeRed { color: OrangeRed !important;}
+.text-Orchid { color: Orchid !important;}
+.text-PaleGoldenRod { color: PaleGoldenRod !important;}
+.text-PaleGreen { color: PaleGreen !important;}
+.text-PaleTurquoise { color: PaleTurquoise !important;}
+.text-PaleVioletRed { color: PaleVioletRed !important;}
+.text-PapayaWhip { color: PapayaWhip !important;}
+.text-PeachPuff { color: PeachPuff !important;}
+.text-Peru { color: Peru !important;}
+.text-Pink { color: Pink !important;}
+.text-Plum { color: Plum !important;}
+.text-PowderBlue { color: PowderBlue !important;}
+.text-Purple { color: Purple !important;}
+.text-Red { color: Red !important;}
+.text-RosyBrown { color: RosyBrown !important;}
+.text-RoyalBlue { color: RoyalBlue !important;}
+.text-SaddleBrown { color: SaddleBrown !important;}
+.text-Salmon { color: Salmon !important;}
+.text-SandyBrown { color: SandyBrown !important;}
+.text-SeaGreen { color: SeaGreen !important;}
+.text-SeaShell { color: SeaShell !important;}
+.text-Sienna { color: Sienna !important;}
+.text-Silver { color: Silver !important;}
+.text-SkyBlue { color: SkyBlue !important;}
+.text-SlateBlue { color: SlateBlue !important;}
+.text-SlateGray { color: SlateGray !important;}
+.text-SlateGrey { color: SlateGrey !important;}
+.text-Snow { color: Snow !important;}
+.text-SpringGreen { color: SpringGreen !important;}
+.text-SteelBlue { color: SteelBlue !important;}
+.text-Tan { color: Tan !important;}
+.text-Teal { color: Teal !important;}
+.text-Thistle { color: Thistle !important;}
+.text-Tomato { color: Tomato !important;}
+.text-Turquoise { color: Turquoise !important;}
+.text-Violet { color: Violet !important;}
+.text-Wheat { color: Wheat !important;}
+.text-White { color: White !important;}
+.text-WhiteSmoke { color: WhiteSmoke !important;}
+.text-Yellow { color: Yellow !important;}
+.text-YellowGreen { color: YellowGreen !important;}
+
+
+
+
+/*Border Color*/
+
+.border-AliceBlue { border-color: AliceBlue !important;}
+.border-AntiqueWhite { border-color: AntiqueWhite !important;}
+.border-Aqua { border-color: Aqua !important;}
+.border-Aquamarine { border-color: Aquamarine !important;}
+.border-Azure { border-color: Azure !important;}
+.border-Beige { border-color: Beige !important;}
+.border-Bisque { border-color: Bisque !important;}
+.border-Black { border-color: Black !important;}
+.border-BlanchedAlmond { border-color: BlanchedAlmond !important;}
+.border-Blue { border-color: Blue !important;}
+.border-BlueViolet { border-color: BlueViolet !important;}
+.border-Brown { border-color: Brown !important;}
+.border-BurlyWood { border-color: BurlyWood !important;}
+.border-CadetBlue { border-color: CadetBlue !important;}
+.border-Chartreuse { border-color: Chartreuse !important;}
+.border-Chocolate { border-color: Chocolate !important;}
+.border-Coral { border-color: Coral !important;}
+.border-CornflowerBlue { border-color: CornflowerBlue !important;}
+.border-Cornsilk { border-color: Cornsilk !important;}
+.border-Crimson { border-color: Crimson !important;}
+.border-Cyan { border-color: Cyan !important;}
+.border-DarkBlue { border-color: DarkBlue !important;}
+.border-DarkCyan { border-color: DarkCyan !important;}
+.border-DarkGoldenRod { border-color: DarkGoldenRod !important;}
+.border-DarkGray { border-color: DarkGray !important;}
+.border-DarkGreen { border-color: DarkGreen !important;}
+.border-DarkGrey { border-color: DarkGrey !important;}
+.border-DarkKhaki { border-color: DarkKhaki !important;}
+.border-DarkMagenta { border-color: DarkMagenta !important;}
+.border-DarkOliveGreen { border-color: DarkOliveGreen !important;}
+.border-DarkOrange { border-color: DarkOrange !important;}
+.border-DarkOrchid { border-color: DarkOrchid !important;}
+.border-DarkRed { border-color: DarkRed !important;}
+.border-DarkSalmon { border-color: DarkSalmon !important;}
+.border-DarkSeaGreen { border-color: DarkSeaGreen !important;}
+.border-DarkSlateBlue { border-color: DarkSlateBlue !important;}
+.border-DarkSlateGray { border-color: DarkSlateGray !important;}
+.border-DarkSlateGrey { border-color: DarkSlateGrey !important;}
+.border-DarkTurquoise { border-color: DarkTurquoise !important;}
+.border-DarkViolet { border-color: DarkViolet !important;}
+.border-DeepPink { border-color: DeepPink !important;}
+.border-DeepSkyBlue { border-color: DeepSkyBlue !important;}
+.border-DimGray { border-color: DimGray !important;}
+.border-DimGrey { border-color: DimGrey !important;}
+.border-DodgerBlue { border-color: DodgerBlue !important;}
+.border-FireBrick { border-color: FireBrick !important;}
+.border-FloralWhite { border-color: FloralWhite !important;}
+.border-ForestGreen { border-color: ForestGreen !important;}
+.border-Fuchsia { border-color: Fuchsia !important;}
+.border-Gainsboro { border-color: Gainsboro !important;}
+.border-GhostWhite { border-color: GhostWhite !important;}
+.border-Gold { border-color: Gold !important;}
+.border-Goldenrod { border-color: Goldenrod !important;}
+.border-Gray { border-color: Gray !important;}
+.border-Green { border-color: Green !important;}
+.border-GreenYellow { border-color: GreenYellow !important;}
+.border-Grey { border-color: Grey !important;}
+.border-HoneyDew { border-color: HoneyDew !important;}
+.border-HotPink { border-color: HotPink !important;}
+.border-IndianRed { border-color: IndianRed !important;}
+.border-Indigo { border-color: Indigo !important;}
+.border-Ivory { border-color: Ivory !important;}
+.border-Khaki { border-color: Khaki !important;}
+.border-Lavender { border-color: Lavender !important;}
+.border-LavenderBlush { border-color: LavenderBlush !important;}
+.border-LawnGreen { border-color: LawnGreen !important;}
+.border-LemonChiffon { border-color: LemonChiffon !important;}
+.border-LightBlue { border-color: LightBlue !important;}
+.border-LightCoral { border-color: LightCoral !important;}
+.border-LightCyan { border-color: LightCyan !important;}
+.border-LightGoldenRodYellow { border-color: LightGoldenRodYellow !important;}
+.border-LightGray { border-color: LightGray !important;}
+.border-LightGreen { border-color: LightGreen !important;}
+.border-LightGrey { border-color: LightGrey !important;}
+.border-LightPink { border-color: LightPink !important;}
+.border-LightSalmon { border-color: LightSalmon !important;}
+.border-LightSeaGreen { border-color: LightSeaGreen !important;}
+.border-LightSkyBlue { border-color: LightSkyBlue !important;}
+.border-LightSlateGray { border-color: LightSlateGray !important;}
+.border-LightSlateGrey { border-color: LightSlateGrey !important;}
+.border-LightSteelBlue { border-color: LightSteelBlue !important;}
+.border-LightYellow { border-color: LightYellow !important;}
+.border-Lime { border-color: Lime !important;}
+.border-LimeGreen { border-color: LimeGreen !important;}
+.border-Linen { border-color: Linen !important;}
+.border-Magenta { border-color: Magenta !important;}
+.border-Maroon { border-color: Maroon !important;}
+.border-MediumAquaMarine { border-color: MediumAquaMarine !important;}
+.border-MediumBlue { border-color: MediumBlue !important;}
+.border-MediumOrchid { border-color: MediumOrchid !important;}
+.border-MediumPurple { border-color: MediumPurple !important;}
+.border-MediumSeaGreen { border-color: MediumSeaGreen !important;}
+.border-MediumSlateBlue { border-color: MediumSlateBlue !important;}
+.border-MediumSpringGreen { border-color: MediumSpringGreen !important;}
+.border-MediumTurquoise { border-color: MediumTurquoise !important;}
+.border-MediumVioletRed { border-color: MediumVioletRed !important;}
+.border-MidnightBlue { border-color: MidnightBlue !important;}
+.border-MintCream { border-color: MintCream !important;}
+.border-MistyRose { border-color: MistyRose !important;}
+.border-Moccasin { border-color: Moccasin !important;}
+.border-NavajoWhite { border-color: NavajoWhite !important;}
+.border-Navy { border-color: Navy !important;}
+.border-OldLace { border-color: OldLace !important;}
+.border-Olive { border-color: Olive !important;}
+.border-OliveDrab { border-color: OliveDrab !important;}
+.border-Orange { border-color: Orange !important;}
+.border-OrangeRed { border-color: OrangeRed !important;}
+.border-Orchid { border-color: Orchid !important;}
+.border-PaleGoldenRod { border-color: PaleGoldenRod !important;}
+.border-PaleGreen { border-color: PaleGreen !important;}
+.border-PaleTurquoise { border-color: PaleTurquoise !important;}
+.border-PaleVioletRed { border-color: PaleVioletRed !important;}
+.border-PapayaWhip { border-color: PapayaWhip !important;}
+.border-PeachPuff { border-color: PeachPuff !important;}
+.border-Peru { border-color: Peru !important;}
+.border-Pink { border-color: Pink !important;}
+.border-Plum { border-color: Plum !important;}
+.border-PowderBlue { border-color: PowderBlue !important;}
+.border-Purple { border-color: Purple !important;}
+.border-Red { border-color: Red !important;}
+.border-RosyBrown { border-color: RosyBrown !important;}
+.border-RoyalBlue { border-color: RoyalBlue !important;}
+.border-SaddleBrown { border-color: SaddleBrown !important;}
+.border-Salmon { border-color: Salmon !important;}
+.border-SandyBrown { border-color: SandyBrown !important;}
+.border-SeaGreen { border-color: SeaGreen !important;}
+.border-SeaShell { border-color: SeaShell !important;}
+.border-Sienna { border-color: Sienna !important;}
+.border-Silver { border-color: Silver !important;}
+.border-SkyBlue { border-color: SkyBlue !important;}
+.border-SlateBlue { border-color: SlateBlue !important;}
+.border-SlateGray { border-color: SlateGray !important;}
+.border-SlateGrey { border-color: SlateGrey !important;}
+.border-Snow { border-color: Snow !important;}
+.border-SpringGreen { border-color: SpringGreen !important;}
+.border-SteelBlue { border-color: SteelBlue !important;}
+.border-Tan { border-color: Tan !important;}
+.border-Teal { border-color: Teal !important;}
+.border-Thistle { border-color: Thistle !important;}
+.border-Tomato { border-color: Tomato !important;}
+.border-Turquoise { border-color: Turquoise !important;}
+.border-Violet { border-color: Violet !important;}
+.border-Wheat { border-color: Wheat !important;}
+.border-White { border-color: White !important;}
+.border-WhiteSmoke { border-color: WhiteSmoke !important;}
+.border-Yellow { border-color: Yellow !important;}
+.border-YellowGreen { border-color: YellowGreen !important;}
+
+
+
+
+
+
+/* text shadow */
+.text-shadow-0-0-black{ text-shadow: 0px 0px 2px #333; }
+.text-shadow-0-1-black{ text-shadow: 0px 1px 2px #333; }
+.text-shadow-1-0-black{ text-shadow: 1px 0px 2px #333; }
+.text-shadow-1-1-black{ text-shadow: 1px 1px 2px #333; }
+

@@ -1,0 +1,37 @@
+*[role="form"] {
+	padding: 15px;
+	margin: 0 auto;
+	border-radius: 0.3em;
+	background-color: #ffff;
+	border: 1px solid;
+	margin-top: 80px;
+	border: 1px solid black;
+}
+h2{
+	text-align: center;
+	margin: 20px 0 20px 0;
+}
+.card.panels-card{
+	width: 500px;
+	margin: 0 auto;
+	max-width: 100%;
+}
+.form-group .form-control{
+	padding: 10px 15px;
+	box-sizing: border-box;
+	height: 50px;
+	border: 1px solid #4b405a;
+	box-shadow: none!important;
+}
+#pwdi{
+	float: right;
+	margin: -50px 0 0 0 !important;
+	color: #000;
+}
+.field-icon {
+  float: right;
+  margin: -45px 0 0 0;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}

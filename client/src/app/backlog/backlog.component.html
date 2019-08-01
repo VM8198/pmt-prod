@@ -1,0 +1,176 @@
+<div class="row">
+    <div class="col-6 project_name">
+        <h1 *ngIf="projectOne">{{projectOne.title}}</h1>
+    </div>
+    <div class="col-6 sprint_button">
+        <button type="submit" class="btn btn-default float-right mt-1"  title="Edit Notice" data-toggle="modal" data-target="#addsprint"><span class="icon-note mr-1"></span>Create Sprint</button>
+    </div>
+</div>
+<div class="project_bord">
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-12 margin-tb-20" *ngFor="let sprint of sprints" style="margin-bottom: 20px;">
+            <div class="card card-cascade narrower">
+                <div style="background-color: #e7ebee; padding: 12px 10px">
+                    <h4 class="card-title">{{sprint.title}} / {{sprint.status}}</h4>
+                </div>
+                <div class="btn-group dropleft float-right">
+                    <button type="button" style="border-radius: 50%;" class="btn btn-default btn-floating btn_popover_menu padding-0" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"><span class="fas fa-ellipsis-v"></span> 
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item btn-floating mt-0" title="Edit Sprint" data-toggle="modal" data-target="#editmodel" (click)="editSprintData(sprint)"><span class="icon-pencil padding-top-1" style="color: white"></span></a>
+                        <a class="dropdown-item btn-floating btn-gplus mt-0" title="Delete Sprint" (click)="deleteSprint(sprint._id)"><span class="icon-trash" style="color: white"></span></a>
+                    </div>
+                </div>
+                <div class="card-body card-body-cascade margin-bottom-0">
+                    <p *ngIf="sprint.startDate"><span class="icon-calendar margin-right-5"></span>Start:<span>{{sprint.startDate | date}}</span></p>
+                    <p *ngIf="sprint.endDate"><span class="icon-calendar margin-right-5"></span>End:<span>{{sprint.endDate | date}}</span></p>
+                    <p class="card-text">{{sprint.goal}}</p>
+                    <ul class="list-group list-group-flush" style="margin-top: -15px;">
+                        <li class="list-group-item">To Do: <b style=" color: #FF5722;padding: 7px;border-radius: 12px;text-shadow: 1px 0px;">{{getTaskCount(sprint._id, 'to do')}}</b></li>
+                        <li class="list-group-item">In Progress: <b style="color: #ead634;padding: 7px;border-radius: 12px;text-shadow: 1px 0px;">{{getTaskCount(sprint._id, 'in progress')}}</b></li>
+                        <li class="list-group-item">Testing: <b style="color: #FF9800;padding: 7px;border-radius: 12px;text-shadow: 1px 0px;">{{getTaskCount(sprint._id, 'testing')}}</b></li>
+                        <li class="list-group-item">Complete: <b style="color: #639828;padding: 7px;border-radius: 12px;text-shadow: 1px 0px;">{{getTaskCount(sprint._id, 'complete')}}</b></li>
+                    </ul>
+                    <button *ngIf="sprint.status == 'Active'" class="btn btn-default" (click)="completeSprint(sprint._id)">Complete Sprint</button> 
+                    <!-- <button *ngIf="!this.Active && sprint.status == 'Complete'" class="btn btn-default" data-toggle="modal" data-target="#startmodel" (click)="sprintById(sprint._id)" disabled>Completed Sprint</button> -->
+                    <button *ngIf="!Active && sprint.status != 'Complete'" class="btn btn-default" data-toggle="modal" data-target="#startmodel" (click)="editSprintData(sprint)">Start Sprint</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Create Sprint Start Here -->
+<div class="modal fade" id="addsprint" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 _ngcontent-c4="" class="modal-title" id="exampleModalPreviewLabel"><span class="icon-pencil mr-1"></span>Create Sprint</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body px-10">
+                <div class="container">
+                    <div class="row">
+                        <form style="width: 100%;"  [formGroup]='addForm'>
+                            <div class="md-form form-group">
+                                <label for="title">Sprint Name</label>
+                                <input type="text" id="title" formControlName="title" class="form-control" autocomplete="off">
+                            </div>
+                            <div class="md-form form-group">
+                                <label for="desc">Sprint Goal</label>
+                                <textarea type ="text" id="desc" formControlName="goal" class="md-textarea form-control" rows="4" ></textarea>
+                            </div>
+                            <div class="md-form form-group">
+                                <span class="icon-calendar prefix"></span>
+                                <input  type="text" formControlName="startDate"  id="addStartDate" class="form-control datepicker"  autocomplete="off"  style="margin-bottom: 30px;" autocomplete="on">
+                            </div>
+                            <div class="md-form form-group">
+                                <span class="icon-calendar prefix"></span>
+                                <input  type="text" formControlName="endDate"  id="addEndDate" class="form-control datepicker" autocomplete="on" style="margin-bottom: 30px;">
+                            </div>    
+                        </form>
+                    </div>
+                    <div class="row">
+                        <h5>{{prdead | date:'mediumDate'}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" id="my_button" class="btn btn-outline-default" (click)="addSprint(addForm.value)" [disabled]="isDisable || addForm.invalid">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Create Sprint End Here -->
+<!-- Modal edit Sprint Start Here -->
+<div class="modal fade" id="editmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 _ngcontent-c4="" class="card-header-title" id="exampleModalPreviewLabel"><span class="icon-pencil"></span> Edit Sprint</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body px-10">
+                <div class="container">
+                    <div class="row">
+                        <form style="width: 100%;"  [formGroup]="editSprintForm">
+                            <div class="md-form form-group" *ngIf="newsprint">
+                                <label for="title" class="active">Sprint Name</label>
+                                <input type="text" id="title" formControlName="title" class="form-control" [(ngModel)]="newsprint.title" autocomplete="off">
+                            </div>
+                            <div class="md-form form-group" *ngIf="newsprint">
+                                <span class="icon-calendar prefix"></span>
+                                <input type="text" placeholder="Starting date" formControlName="startDate" id="editstartDate" class="form-control datepicker" style="margin-bottom: 30px;" ngModel="{{newsprint.startDate | date}}" autocomplete="off">
+                            </div>
+                            <div class="md-form form-group" *ngIf="newsprint">
+                                <span class="icon-calendar prefix"></span>
+                                <input  type="text" placeholder="Ending date" formControlName="endDate" id="editendDate" class="form-control datepicker" style="margin-bottom: 30px;" ngModel="{{newsprint.endDate | date}}" autocomplete="off">
+                            </div>    
+                            <div class="md-form form-group" *ngIf="newsprint">
+                                <label for="desc" class="active">Sprint Goal</label>
+                                <input type ="text" id="desc" formControlName="goal" class="form-control md-textarea" [(ngModel)]="newsprint.goal" autocomplete="off">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <h5>Project Deadline:{{prdead | date:'mediumDate'}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+                <button type="submit" id="my_button" class="btn btn-default btn-lg" (click)="updateSprint(newsprint)" [disabled]="isDisable || editSprintForm.invalid">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal edit Sprint End Here -->
+<!-- Modal Start Sprint Start Here -->
+<div class="modal fade" id="startmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 _ngcontent-c4="" class="modal-title" id="exampleModalPreviewLabel" style="
+                color: purple;" *ngIf="singlesprint"><span class="icon-pencile"></span>{{singlesprint.title}}Start Sprint</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body px-10">
+                <div class="container">
+                    <div class="row">
+                        <form style="width: 100%;"  [formGroup]="addForm">
+                            <div class="md-form form-group"  *ngIf="newsprint">
+                                <label for="title" class="active">Sprint Name</label>
+                                <input type="text" id="title" formControlName="title" class="form-control" [(ngModel)]="newsprint.title" autocomplete="off">
+                            </div>
+                            <div class="md-form form-group"  *ngIf= "newsprint">
+                                <span class="icon-calendar prefix"></span>
+                                <input placeholder="Starting date" formControlName="startDate" ngModel="{{newsprint.startDate | date}}"type="text" id="startDate" class="form-control datepicker" style="margin-bottom: 30px;" autocomplete="off">
+                            </div>
+                            <div class="md-form form-group" *ngIf= "newsprint">
+                                <span class="icon-calendar prefix"></span>
+                                <input placeholder="Ending date" formControlName="endDate" ngModel="{{newsprint.endDate | date}}" type="text" id="endDate" class="form-control datepicker" style="margin-bottom: 30px;" autocomplete="off">
+                            </div>
+                            <!-- <div class="col-6">
+                                <span *ngIf="projectOne">Project Deadline:{{projectOne.deadline | date:'mediumDate'}}</span>
+                            </div> -->
+                        </form>
+                    </div>
+                    <div class="row">
+                        <h5>Project Deadline:{{prdead | date:'mediumDate'}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+                <button type="submit" id="my_button" class="btn btn-default btn-lg" data-dismiss="modal" (click)="startSprint(newsprint)">Start</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal edit Sprint End Here -->

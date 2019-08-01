@@ -1,0 +1,143 @@
+<h3 class="card-header-title"> <span class="icon-user-follow"></span> Add Employee </h3>
+<div class="card">
+	<div class="card-body">
+		<form [formGroup]="addEmployeeForm" autocomplete="off">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="md-form form-group">
+						<label for="name">Name</label>
+						<input type="text" (input)="validateName(addEmployeeForm.value)" formControlName="name"
+							autocomplete='false | random-string' class="form-control" id="firstName"
+							class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+							autocomplete="off" />
+						<span id="message1" style="color: red; font-size: 14px;"></span>
+						<div class="col-md-2" *ngIf="submitted && f.name.errors" class="invalid-feedback">
+							<div *ngIf="f.name.errors.required">Name is required</div>
+							<div *ngIf="f.name.errors.minlength">Name must be at least 2 characters</div>
+							<div *ngIf="f.name.errors.pattern">Please enter only alphabates</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-4">
+					<div class="md-form form-group">
+						<label for="email">Email</label>
+						<input type="email" autocomplete='false | random-string' formControlName="email"
+							class="form-control" id="email" class="form-control"
+							[ngClass]="{ 'is-invalid': submitted && f.email.errors }" autocomplete="off" />
+							<!-- <span id="message2" style="color: red; font-size: 14px;"></span> -->
+						<div class="col-md-2" *ngIf="submitted && f.email.errors" class="invalid-feedback">
+							<div *ngIf="f.email.errors.required">Email is required</div>
+							<div *ngIf="f.email.errors.email">Please enter valid Email</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="md-form form-group">
+						<label for="phone">Phone No.</label>
+
+						<input type="tel" (input)="validatePhone(addEmployeeForm.value)" [(ngModel)]="phone"
+							autocomplete='false | random-string' formControlName="phone" class="form-control" id="phone"
+							class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+							autocomplete="off"><span id="message" style="color: red; font-size: 14px;"></span>
+
+						<div class="col-md-4" *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+							<div *ngIf="f.phone.errors.minlength">Phone must be only 10 digits</div>
+							<div *ngIf="f.phone.errors.maxlength">Phone must be only 10 digits</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-4">
+					<div class="md-form form-group">
+						<label for="password">Password</label>
+						<input type="password" autocomplete="new-password" formControlName="password"
+							class="form-control" id="password" class="form-control"
+							[ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+							[type]="show ? 'text' : 'password'" />
+
+						<span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"
+							(click)="password()" [title]="pwd ? 'hide password' : 'show password'"></span>
+
+						<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+							<div *ngIf="f.password.errors.required">Password is required</div>
+							<div *ngIf="f.password.errors.minlength">Password must contain atleast 6 characters</div>
+							<div *ngIf="f.password.errors.maxlength">Password must be only 20 characters</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="md-form form-group">
+						<input placeholder="Joining date" type="text" id="date-picker-example"
+							class="form-control datepicker" formControlName="date"
+							[ngClass]="{ 'is-invalid': submitted && f.date.errors }" autocomplete="off">
+						<div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+							<div *ngIf="f.date.errors.required">Joining date is required</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-4">
+					<div class="md-form form-group">
+						<select class="custom-select custom-select-lg" formControlName="userRole"
+							[ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+							<option value="" disabled selected>Choose user Role</option>
+							<option value="admin">Admin</option>
+							<option value="projectManager">Project Manager</option>
+							<option value="developer">Developer</option>
+						</select>
+						<div *ngIf="submitted && f.userRole.errors" class="invalid-feedback">
+							<div *ngIf="f.userRole.errors.required">Please select userRole</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="md-form form-group">
+						<label for="experience">Experience (Before Joining)</label>
+						<input type="text" autocomplete='false | random-string' formControlName="experience"
+							class="form-control" id="experience" autocomplete="off">
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="file-field">
+						<div class="btn btn-primary btn-sm float-left waves-effect waves-light"
+							(click)="profile.click()">Browse files
+							<input type="file" #profile formControlName="profile" class="form-control"
+								(change)="addFile($event)" accept="image/png, image/jpeg, image/jpg" hidden>
+						</div>
+						<div class="file-path-wrapper">
+							<input class="file-path validate" type="text" placeholder="Upload Your Profile Photo">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="file-field">
+						<div class="btn btn-primary btn-sm float-left waves-effect waves-light" (click)="cv.click()">
+							Browse files
+							<input type="file" #cv formControlName="cv" class="form-control" (change)="addFile($event)"
+								accept=".pdf" hidden>
+						</div>
+						<div class="file-path-wrapper">
+							<input class="file-path validate" type="text" placeholder="Upload Your CV">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="md-form form-group">
+						<button type="submit" class="btn btn-default ml-0" (click)="addEmployee(addEmployeeForm)"
+							[disabled]="isDisable || addEmployeeForm.invalid">Add Employee</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

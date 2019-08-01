@@ -1,0 +1,196 @@
+
+
+
+<div *ngIf="pro">
+	<h3 class="card-header-title"><span class="mr-1" data-icon="&#xe067;"></span>{{pro.title}}</h3>
+</div>
+		
+			<div class="sprint_button" *ngIf="activeSprint">
+				<select [(ngModel)]="activeSprint._id"   class="browser-default custom-select custom-select-sm" id="sprint" (change)="filterTracks($event.target.value)">
+					<option  *ngFor="let sprint of sprints" value="{{sprint._id}}">{{sprint.title}} {{sprint.status}}</option>
+
+				</select>
+			</div>
+		<div class="row">
+			<div class="col-sm-6 top" *ngIf="project">
+				<div class="card">
+					<div class="card-body">
+						<h2 style="margin-top: 50px;"><i class="fas fa-tasks"></i> Total Number Of Tasks:</h2>
+						<p>Total Task In Project : <b>{{getTask()}}</b></p>
+						<canvas id="pieChart5"></canvas>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6" style="margin-top: 50px;">
+				<div class="card" style="margin-top: -20px;">
+					<div class="card-body">
+						<h3 style="margin-top: 78px;"><i class="fas fa-tasks"></i> Task Status:</h3>
+					</div>
+					<canvas id="myChart" style="width: 50%;"></canvas>
+				</div>
+			</div>
+		</div>
+		<h3 class="mt-2"><i class="fas fa-tasks"></i> High and Highest Priority Tasks</h3>
+		<div class="row" style="margin-top: 25px;">
+			<div class="col-sm-6" style="padding-left: 0px;">
+				<div class="card">
+					<div class="card-body">
+						<h3 style="text-align:center;margin-top: 30px;">Highest Priority</h3>
+						<canvas id="lineChart"></canvas>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6" style="padding-right: 0px;">
+				<div class="card">
+					<div class="card-body">
+						<h3 style="text-align:center;margin-top: 30px;">High Priority</h3>
+						<canvas id="lineChart1"></canvas>
+					</div>
+
+				</div>
+				
+			</div><hr/>
+
+		</div>
+
+	<!-- </div>
+	</div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+	<div class="row">
+		<div class="col-sm">
+			<div class="card">
+
+		
+				<div class="card-body">
+
+	
+					<h4 class="card-title"><a><strong><i class="fas fa-tasks"></i> Total task in the project</strong></a></h4>
+					<p class="card-text" *ngIf="project">{{project.length}}</p>
+
+				</div>
+
+			</div>
+		</div>
+		<div class="col-sm">
+			<div class="card">
+
+			
+				<div class="card-body" >
+
+			
+					<h4 class="card-title" ><a><i class="fas fa-tasks"></i> Number Of task in each track </a></h4><hr/>
+					<div class="card-text" >
+						<ul class="list-group" *ngFor="let track of tracks">
+							<li class="list-group-item active">{{track.id}}</li>
+							<li class="list-group-item">{{track.tasks.length}}</li>
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<div class="col-sm">
+			<div class="card">
+
+			
+				<div class="card-body">
+
+			
+					<h4 class="card-title"><a><i class="fas fa-list-alt"></i> List of team members along with the number of task in each track</a></h4>
+		
+					<div class="card-text">
+						<ul class="list-group" *ngFor="let user of projectTeam">
+							<li class="list-group-item ">{{user.name}}
+			
+
+							</li>
+							
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<div class="col-sm">
+			<div class="card">
+
+
+				<div class="card-body">
+
+
+					<h4 class="card-title"><a><i class="fas fa-list-alt"></i> Total Number of High Priority tasks and Highest priority tasks in TODO, IN PROGRESS AND TESTING</a></h4>
+	
+					<div class="card-text">
+						<ul class="list-group" >
+							<li class="list-group-item ">Highest
+								<ul *ngFor="let track of tracks">
+									<li>{{track.id}}</li>
+									<li>{{track.tasks.priority}}</li>
+								</ul>
+							</li>
+							
+						</ul>
+						<ul class="list-group" >
+							<li class="list-group-item ">High
+								<ul *ngFor="let track of tracks">
+									<li>{{track.id}}</li>
+									<li>{{track.tasks.priority}}</li>
+								</ul>
+							</li>
+							
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+ -->

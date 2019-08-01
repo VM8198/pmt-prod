@@ -1,0 +1,285 @@
+/*h2{
+	padding: 100px 0 0 580px;
+}
+label{
+	padding: 10px 0  0 550px;
+}
+button{
+	margin: 30px 0  0 590px;
+}
+input{
+	margin: 5px 0  0 550px;
+}
+textarea{
+	margin: 5px 0  0 550px;
+  }*/
+  *[role="form"] {
+   max-width: 530px;
+   padding: 15px;
+   margin: 0 auto;
+   border-radius: 0.3em;
+   background-color: #ffff;
+   border: 1px solid;
+   margin-top: 80px;
+ }
+ h2{ 
+   font-size: 30px;
+   color: #000000;    
+ }
+
+ button{
+   display: table;
+   margin: 0px auto;
+ }
+ .deletebtn{
+  float: right;
+  margin-top: 0px;    
+} 
+.img_section{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+}
+.img_section img{
+  min-height: 100%;
+  min-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+
+}
+.card.testimonial-card .card-body h5 {
+  padding: 0 5px;
+  font-size: 18px;
+}
+
+
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host > div + div {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+:host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding: 10px;
+  margin: 5px 0px;
+}
+.card.testimonial-card .card-body {
+  padding: 0;
+  text-align: center;
+}
+
+
+
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host::-webkit-scrollbar {
+  width: 0px;
+}
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+:host ::ng-deep span.ng-value-label img {
+  float: left;
+  margin-right: 10px;
+  margin-top: 2px;
+  border-radius: 0px;
+}
+:host ::ng-deep span.ng-value-icon.right{
+	margin-left: 8px;
+}
+:host ::ng-deep .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value{
+	background-color: #3998c5;
+}
+:host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected{
+	color: #372e5f;
+}
+
+
+/* delete icon team member css */
+.card-body .card:hover .delete-team-member{
+	display: block;
+}
+.delete-team-member{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+}
+.delete-team-member a{
+	position: absolute;
+  display: table;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 48px;
+  width: 48px;
+}
+.delete-team-member a i{
+  color: red;
+}
+
+
+/*Delete avatar*/
+.delete-team-member1{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+}
+.card-body .card:hover .delete-team-member1{
+  display: block;
+}
+.delete-team-member1 a{
+  position: absolute;
+  display: table;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 48px;
+  width: 48px;
+}
+.delete-team-member1 a i{
+  color: red;
+}
+.text-center.card.selected-avatar.mb-2 {
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+}
+.text-center.card.selected-avatar.mb-2 img{
+  min-height: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  max-width: 100%;  
+  object-fit: cover;
+  margin: auto;
+}
+
+.profile_image_box label.profile_and_cover_edit {
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  left: 89px;
+  background-color: #6c757d;
+  z-index: 1111;
+  text-align: center;
+  color: #fff;
+  padding: 3px 10px 30px 30px;
+  cursor: pointer;
+  border-radius: 0px 0px 0px 100%;
+  font-size: 19px;
+  margin: 0;
+  line-height: 0px;
+  transition: all 0.1s;
+}
+.profile_image_box img{
+  height: 150px;
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.profile_image_box:hover label.profile_and_cover_edit {
+  opacity: 0.75;
+}
+
+.project-avatar{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.project-avatar-list
+{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+
+}
+.icon-button{
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+ul.project-avatar{
+  display: inline-block;
+  width: 100%;
+}
+ul.project-avatar li {
+  display: inline-block;
+  margin: 5px;
+  float: left;
+  padding: 3px;
+  border: 2px solid transparent;
+}
+ul.project-avatar li:hover {
+  border-color: #000;
+}
+
+.card-header {
+  background-color: #372e5f !important;
+}
+.selected-avatar:hover .delete-team-member{
+  display: block;
+  color: red;
+}
+.icon_for_action span{
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  line-height: 16px;
+  display: table;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+@media (max-width: 575px) {
+  :host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  -ms-flex: 100%;
+  flex: 100%;
+  max-width: 100%;
+}
+}

@@ -1,0 +1,15 @@
+/**[role="form"] {
+	 max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    border-radius: 0.3em;
+    background-color: #ffff;
+    border: 1px solid;
+    margin-top: 80px;
+}
+
+button:focus{
+	display: table;
+	margin: 0px auto;
+   border:none;
+}*/

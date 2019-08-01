@@ -1,0 +1,130 @@
+<!-- <div id="myModal" class="modal fade" role="dialog" data-backdrop= "static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="attendance">
+
+               
+                <h4 class="modal-title">{{greet}} {{currentUser.name}}</h4>
+                <p style="font-size: 20px; color:black;">please check-in first!</p>
+                <button type="submit" class="btn btn-default checkIn-btn" (click)="checkIn(currentEmployeeId)" *ngIf="!checkInStatus"><span style="color: black;">CheckIn</span></button>
+            </div>
+        </div>
+
+    </div>
+</div> -->
+<div class="loader" *ngIf="loader">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="noProjects" *ngIf = "currentUser.userRole == 'developer'"> 
+
+  <!-- Card content -->
+  <div *ngIf="projects">
+      
+  <div *ngIf = "projects.length == 0">
+    <!-- Title -->
+    <h4><a>Opps!</a></h4>
+    <!-- Text -->
+    <div>
+        <p>There are no projects</p>
+    </div>
+</div>
+  </div>
+</div>
+
+
+<div class="noProjects" *ngIf = "currentUser.userRole == 'projectManager'"> 
+  <!-- Card content -->
+  <div *ngIf="projects">
+      
+  <div *ngIf = "projects.length == 0">
+    <!-- Title -->
+    <h4 style="color: #9b9c9a; font-size: 20px;">Sorry</h4>
+    <!-- Text -->
+    <div>
+        <p style="color: #9b9c9a; font-size: 20px;">There are no projects, <a routerLink="/create-project" style="width: 100%; color: black;" class="collapsible-header waves-effect arrow-r"> Create New Project</a> to get started!</p>
+    </div>
+</div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-sm-6 col-lg-3 margin-tb-20" *ngFor="let project of projects" >
+        <div *ngIf="!project.isDelete" class="card card-cascade narrower">
+            <div class="view view-cascade overlay" style="background-color: #e7ebee; box-shadow: none;">
+                <img routerLink="/project-details/{{project._id}}" class="img-fluid title_image margin-auto width-80" src="{{path}}{{project.avatar}}" alt="Card image cap" onerror="this.src='assets/4.jpeg'">
+                <div class="margin-top-10 margin-bottom-10 text-center">
+                    <h5 routerLink="/project-details/{{project._id}}" class="font-weight-bold card-title">{{project.title}}</h5>
+                </div>
+                <div class="tib">
+                    <div class="row text-center margin-20">
+                        <div class="col-4">
+                            <strong title="task" class="text-center">
+                                <p><span class="icon-list mr-1"></span></p>
+                                <p><span class="badge">{{getLength(project, 'TASK')}}</span></p>
+                            </strong>
+                        </div>
+                        <div class="col-4">
+                            <strong title="Issue" class="text-center" > 
+                                <p><span class="icon-energy mr-1"></span></p>
+                                <p><span class="badge">{{getLength(project, 'ISSUE')}}</span></p>
+                            </strong>
+                        </div>
+                        <div class="col-4">
+                            <strong title="Bug" class=" text-center">
+                                <p><span class="icon-question mr-1"></span></p>
+                                <p><span class="badge">{{getLength(project, 'BUG')}}</span></p>
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group dropleft float-right">
+                <button type="button" style="border-radius: 50%;" class="btn btn-primary btn-floating btn_popover_menu padding-0" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"><i class="fas fa-ellipsis-v"></i> 
+                </button>
+                <div class="dropdown-menu" style="width: 255px;">
+                 <a class="dropdown-item btn-floating  mt-0 mx-1" *ngIf="currentUser.userRole=='projectManager' || currentUser.userRole=='admin'" title="Edit Project" routerLink="/edit-project/{{project._id}}"><span class="icon-pencil padding-top-1"></span></a>
+                 <a class="dropdown-item btn-floating mt-0 mx-1" [title]="project.Teams.length + ' Team-Members'"><span class="icon-users text-white"></span></a>
+                 <a class="dropdown-item btn-floating  mt-0 mx-1" title="Project Summary" routerLink="/summary/{{project._id}}"><span data-icon="&#xe077;" aria-hidden="true"></span></a>
+                 <a class="dropdown-item btn-floating btn-gplus mt-0 mx-1" *ngIf="currentUser.userRole=='projectManager' || currentUser.userRole=='admin'" title="Time Log" routerLink="/time-log/{{project._id}}"><span class="icon-clock"></span></a>
+                 <a class="dropdown-item btn-floating btn-gplus mt-0 mx-1" *ngIf="currentUser.userRole=='projectManager' || currentUser.userRole=='admin'" title="Project backlog" routerLink="/backlog/{{project._id}}"><i class="fas fa-running"></i></a>
+             </div>
+         </div>
+
+         <div class="card-body card-body-cascade margin-bottom-0 text-center">
+            <h5 class="deep-purple-text">
+                <span class="fab fa-react">{{getTechName('fa-react')}}</span>
+                <!-- <span style="text-align: center; margin: 0; padding: 0"><img src="assets/favicon.png"></span> -->
+            </h5>
+            <ul *ngFor ="let proj of project.pmanagerId"> 
+                <li class="font-weight-bold">
+                    {{proj.name}}
+                </li></ul>
+                <p style="color: #aba7a7; margin-top: 5px;"><span class="icon-calendar mr-1"></span> <span>{{getDate(project.createdAt)}}</span></p>
+                <p class="card-text">{{project.desc}}</p>
+                <button class="btn btn-default progress_summary" (mouseover)="mouseOver(project)">Progress</button>
+                <div class="summary card z-depth-4"  *ngIf="hoveredProject">
+                    <h4 style="color: #3998c5; margin-top: 15px;">{{hoveredProject.title}}</h4>
+                    <h5 style="color: #948e8e;">Project Progress</h5>
+                    <div class="form-row pt-1">
+                        <div class="col-4">
+                            <button class="btn btn-warning btn-sm m-auto" style="font-size: 12px;">{{getTaskCount('to do')}}</button>
+                            <p class="pt-1"><span class="icon-folder-alt"></span> To Do</p>
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-info btn-sm m-auto" style="font-size: 12px;"> {{getTaskCount('in progress')}}</button>
+                            <p class="pt-1"><span class="icon-hourglass"></span> In Progress</p>
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-indigo btn-sm m-auto" style="display: block;font-size: 12px;"> {{getTaskCount('testing')}}</button>
+                            <p class="pt-1"><span class="icon-settings"></span> Testing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

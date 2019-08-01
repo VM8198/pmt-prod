@@ -1,0 +1,52 @@
+<div class="row">
+	<div class="col-md-6 ">
+		<div class=" md-form form-group w-100 ">
+			<span class="prefix" data-icon="&#xe090;"></span>
+			<input type="text"  id="exampleForm2" class="form-control" [(ngModel)]="searchText"  (keyup)="onKey(searchText)" autocomplete="off" >
+			<label for="exampleForm2">search text goes here</label>
+		</div>
+	</div>
+	<div class="col-md-3 all_prjct_drpdown">
+		<div class="form-group">
+			<select class="browser-default custom-select custom-select-lg mb-3" id="projectId" *ngIf="projects" (change)="getDeveloper( trackChangeDeveloperWise = $event.target.value)">
+				<option value="all" selected>All Projects</option>
+				<option *ngFor="let project of projects" value="{{project._id}}">{{project.title}}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="col-md-3">
+		<div class="btn_content text-right">
+			<button type="button" class="btn btn-default add_employee" routerLink="/add-employee"><span class="icon-plus mr-1"></span> Add Employee</button>
+		</div>
+	</div>
+</div>
+<div *ngIf="!developers.length">
+	<p style="text-align: center;font-size: 20px;margin-top: 30px;">Sorry, No Developers Found in this Project.</p>
+</div>
+<div class="row">
+	<div class="col-lg-4 col-md-6 col-12" *ngFor="let developer of developers">
+		<div class="border mb-1">
+			<div class="row">
+				<div class="col-3">
+					<div class=" img_section">
+						<a routerLink = "/visit-user-profile/{{developer._id}}">
+							<img src="{{path}}{{developer.profilePhoto}}" onerror="this.src='../assets/man.png'" class="rounded-circle img-fluid img_content">
+						</a>
+					</div>
+				</div>
+				<div class="col-7">
+					<div class="align-content-center d-flex flex-wrap">
+						<h4 style="font-size: 1.25rem;font-weight: 300; margin: 0; width: 100%; color: #3998c5; text-transform: capitalize;">{{developer.name}}</h4>
+						<p style="font-size: 14px; margin-bottom: 0px; text-transform: capitalize;" >{{developer.userRole}}</p>
+					</div>
+				</div>
+				<div class="col-2 m-auto">
+					<div class="icons">
+						<a class="mr-2" routerLink="/editprofile/{{developer._id}}"><span class="icon-pencil" style="color: black;"></span></a>
+						<a (click)="deleteEmployee(developer)"><span class="icon-trash" style="color: black;"></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>		

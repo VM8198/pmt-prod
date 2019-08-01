@@ -1,0 +1,211 @@
+.reset_password{
+	float: right;
+	margin-top: 5px;
+}
+.img_card img{
+	min-width: 100%;
+	min-height: 100%;
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: cover;
+}
+.user_detail{
+	margin-top: 15px;
+}
+.notify_btn{
+	text-align: right;
+  width: 100%;
+  display: table;
+}
+.nav-tabs .nav-link.active {
+	background-color: #42396D;
+}
+.nav-link{
+	color: black;
+}
+.profile_image{
+  overflow: hidden;
+  border-radius: 2px;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 100%;
+}
+.profile_content{
+	max-width: calc(100% - 250px);
+}
+.profile_image label.profile_and_cover_edit {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #6c757d;
+  z-index: 1111;
+  text-align: center;
+  color: #fff;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 0;
+  font-size: 15px;
+  margin: 0;
+  line-height: 16px;
+  transition: all 0.5s;
+}
+.profile_image_box{
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.profile_image_box img{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+}
+.profile_image_box:hover label.profile_and_cover_edit {
+  opacity: 0.75;
+}
+.card{
+  width: 100%;
+  padding: 20px;
+}
+.contant ul li{
+  display: inline-block;
+  margin-right: 15px;
+}
+.name{
+  color: #3998c5;
+  position: relative;
+  font-size: 30px;
+  padding-left: 10px;
+}
+h2{
+  color: #3998c5;
+}
+.nav-item .nav-link{
+  padding: 15px;
+  text-align: left;
+  border-left: 4px solid transparent;
+}
+.nav-item .nav-link.active{
+  border-color: #3998c5;
+}
+.profile i{
+  font-size: 22px;
+}
+.project{
+  height:100%;
+}
+.project_img{
+  height: 60px;
+  width: 60px;
+  overflow: hidden;
+  border-radius: 50%;    
+  margin: 10px auto;
+}
+.project_img img{
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+}
+.project label{
+  font-size: 18px;
+  line-height: 4;
+  cursor: pointer;
+  /*margin-left: -21px;*/
+}
+.border_custom{
+  border: 1px solid #dcdcdc;
+  padding: 15px;
+}
+.profile p{
+  font-size: 20px;
+}
+.img_section{
+  height: 60px;
+  width: 60px;
+  margin: 0 auto;
+}
+.img_section img{
+  max-height: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+.card.testimonial-card .card-body h5 {
+  padding: 0 5px;
+  font-size: 18px;
+}
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host > div + div {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background-color: #dfdff5;
+}
+:host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  -ms-flex: 0 0 25%;
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 10px;
+  margin: 5px 0px;
+}
+.card.testimonial-card .card-body {
+  padding: 0;
+  text-align: center;
+}
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host::-webkit-scrollbar {
+  width: 5px;
+}
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+:host ::ng-deep .ng-dropdown-panel-items.scroll-host::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+:host ::ng-deep span.ng-value-label img {
+  float: left;
+  margin-right: 10px;
+  margin-top: 2px;
+  border-radius: 0px;
+}
+:host ::ng-deep span.ng-value-icon.right{
+  margin-left: 8px;
+}
+:host ::ng-deep .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value{
+  background-color: #6657a9
+}
+:host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected{
+  color: #372e5f;
+}
+
+@media (max-width: 575px){
+  .profile_image label.profile_and_cover_edit{
+
+  }
+  .img_section{
+    height: 30px;
+    width: 30px;
+  }
+  .profile_image {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+  }
+}

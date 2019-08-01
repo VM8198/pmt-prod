@@ -1,0 +1,135 @@
+/*.card-header.bg-default {
+    text-align: center;
+    color: white;
+    background-color: #372e5f;
+}
+.card{
+	margin: 0 auto;
+	width: 400px;
+    max-width: 100%;
+}
+table {
+    width: 100%;
+}
+img{
+	border-radius: 50%;
+	height: 30px;
+	width: 30px;
+}
+
+*/
+.fas, .far{
+  margin-right: 10px !important;
+}
+.dropdown .dropdown-menu .dropdown-item:hover, .dropdown .dropdown-menu .dropdown-item:active {
+ background-color: #b3b3b3 !important;
+}
+
+/*.img_section{
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+  }*/
+/*.img_section img{
+  max-height: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  margin: 0 auto;
+  }*/
+  .action-icon{
+    margin-top: -18px;
+    float: left
+  }
+/*.btn_section{
+	width: 20px;
+}
+.drop_btn{
+	width: 65%;
+}
+.dropdown-content {
+  bottom: 12.5px;
+  left: 30px;
+  box-shadow: 0 2px 8px 5px rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 5px;
+  border-radius: 10px 10px 10px 0px;
+}
+.dropdown-content a.dropdown-item {
+  text-align: left;
+  padding: 5px 15px;
+  font-size: 13px;
+  border-radius: 5px!important;
+}
+.dropdown-item.active, .dropdown-item:active, .dropdown-item:hover {
+  background-color: #b3b3b3 !important;
+  color: white;
+}
+.dropdown-content.open{
+  display: block !important;
+  opacity: 1;
+  }*/
+
+  .fa-ellipsis-v{
+    color: #4B515D;
+  }
+  .h4{
+    color: black;
+  }
+  .prefix{
+    margin-top:18px;
+    font-size: 27px;
+  }
+  .avatar{
+    position: relative;
+  }
+  .img-fluid, .section img, .section .view, .card img {
+    
+    height: 100% !important;
+    object-fit: cover;
+  }
+  .card-wrapper {
+    height:425px !important;
+  }
+  .mb-3 {
+   margin-bottom: 15px !important; 
+ }
+ a.rotate-btn.btn-default {
+  display: inline-block;
+  color: white;
+  font-size: 14px;
+  padding: 10px 20px;
+  font-weight: 600;
+}
+.img_section{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+      margin: 10px 20px;
+}
+.img_section img{
+  min-height: 100%;
+  min-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  filter: opacity(0.8);
+}
+.align-content-center.d-flex.flex-wrap{
+  height: 100%;
+}
+.icon_for_action span{
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  line-height: 16px;
+  display: table;
+  top: 0;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  margin: auto 0;
+}

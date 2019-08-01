@@ -1,0 +1,15 @@
+.form-group .form-control{
+    padding: 10px 15px;
+    box-sizing: border-box;
+    height: 50px;
+    border: 1px solid #4b405a;
+    box-shadow: none!important;
+}
+a.btn.btn-link {
+    text-decoration: none;
+}
+.card{
+    width: 700px;
+    margin: 0 auto;
+    max-width: 100%;
+}

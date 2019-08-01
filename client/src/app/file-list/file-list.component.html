@@ -1,0 +1,38 @@
+<div class="loader" *ngIf="loader">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<div class="container" *ngIf="!loader">
+
+	<div class="row justify-content-between">
+		<h2 class="text-center">Uploaded Files</h2>
+		<button class="btn btn-default float-right" (click)="fileUpload.click()">
+			<span class="icon-paper-clip mr-1"></span> Add Files
+			<input type="file" name="uploadedFiles" #fileUpload multiple id="fileUpload" hidden (change)="onfileChange($event.target.files)">
+		</button>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>File</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let file of files; let i = index; ">
+					<td>{{i+1}}</td>
+					<td>{{file.split('/')[7]}}</td>
+					<td>
+						<a class="btn btn-link padding-5" href="{{file}}" target="_blank"><i class="fas fa-file-download"></i></a>
+						<a class="btn btn-link padding-5" (click)="deleteFile(file.split('/')[7])"><i class="far fa-trash-alt"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

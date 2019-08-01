@@ -1,0 +1,61 @@
+<!-- <div *ngIf="loader"><img src="../assets/loading.gif" class="loader"></div> -->
+<div class="loader" *ngIf="loader">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+
+<h4 class="card-header-title mb-1"><span class="icon-clock mr-1"></span>Logs</h4>
+		<div class="table-responsive">
+			<table class="table table-hover mb-0" *ngIf="!logFunctionSwap && !logFinalStep && !loader">
+				<thead class="text-secondary">
+					<tr>
+						<th class="th-lg">Title</th>
+						<th class="th-lg">Unique-ID</th>
+						<th class="th-lg table_content">Desc</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let i of projectName" routerLink="{{i._id}}">
+						<td>{{i.title}}</td>
+						<td>{{i.uniqueId}}</td>
+						<td class="table_content">{{i.desc}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table table-hover mb-0" *ngIf="logFunctionSwap">
+				<tr>
+					<th class="th-lg">Name</th>
+					<th class="th-lg">UserRole</th>
+				</tr>
+				<tr *ngFor="let i of teams" routerLink="{{i._id}}">
+					<td>{{i.name}}</td>
+					<td>{{i.userRole}}</td>
+				</tr>
+			</table>
+			<table class="table table-hover mb-0" *ngIf="logFinalStep">
+				<tr>
+					<th class="th-lg">Type</th>
+					<th class="th-lg">OPreation</th>
+					<th class="th-lg">Date-Time</th>
+				</tr>
+				<tr *ngFor="let i of finalArray">
+					<td>{{i.type}}</td>
+					<td>
+						<span>
+							<tr *ngFor="let j of i.timeLog">
+								<td>{{j.operation}}</td>
+							</tr>
+						</span>
+					</td>
+					<td>
+						<span >
+							<tr *ngFor="let j of i.timeLog">
+								<td>{{j.dateTime}}</td>
+							</tr>
+						</span>
+					</td>
+				</tr>	
+			</table>
+		</div>

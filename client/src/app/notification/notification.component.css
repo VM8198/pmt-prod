@@ -1,0 +1,190 @@
+li{
+	padding: 12px 0px;
+	border-bottom: 1px solid #efebeb;
+}
+.dropdown-menu{
+	background-color: transparent;
+	box-shadow: none; 
+	padding: 10px;
+	float: right;
+	top: -30px!important;
+	left: -24px!important;
+}
+.leaveInfo{
+	text-align: center;
+}
+/* .btn-primary{
+	background-color: 
+} */
+.notification_button{
+	cursor: pointer;
+}
+.leaveInfo p{
+	margin: 0;
+}
+.leaveHeading{
+	margin: 20px;
+	font-weight: bold;
+	padding: 10px;
+}
+.leaveCount{
+	padding: 0px;	
+}
+.nav-item{
+	padding: 0px 0px;
+}
+.leave_icon img{
+	height: 30px;
+	width: 30px;
+}
+select.browser-default {
+	display: block;
+	margin: 25px 0px;
+}
+.card_custom{
+	width: 20%;
+	border-radius: 3px;
+	background-color: #00dbc7;
+	padding: 10px;
+	margin-right: 117px;
+	margin-left: 23px;
+	text-align: center;
+}
+.task li{
+	border-bottom: 1px solid blue;
+	border-left: 5px solid lightblue;
+}
+.tab-pane ul li {
+	margin-top: 10px;
+	background-color: #fff;
+}
+.header_top{
+	background-color: lightgray;
+	width: 100%;
+}
+.notification ul li{
+	padding: 10px 2px;
+}
+.notification span{
+	font-size: 16px;
+	padding: 3px 6px;
+	border-radius: 4px;
+}
+.notification i{
+	font-size: 25px;
+}
+.content p{
+	margin: 0;
+}
+.content label{
+	color: black;
+	font-size: 14px;
+}
+.task_span{
+	color: #256dde;
+	margin: 0px 15px;
+	border: 1px solid #256dde;
+	padding: 5px;
+	border-radius: 4px;
+	display: inline-block;
+}
+.leave_span{
+	color: #008a00;
+	margin: 0px 15px;
+	border: 1px solid #008a00;
+	padding: 5px;
+	border-radius: 4px;
+	display: inline-block;
+}
+.leave1_span{
+	color: red;
+	margin: 0px 15px;
+	border: 1px solid red;
+	padding: 5px;
+	border-radius: 4px;
+	display: inline-block;
+}
+.other1_span{
+	color: #76008a;
+	margin: 0px 15px;
+	border: 1px solid #c87bd5;
+	padding: 5px;
+	border-radius: 4px;
+	display: inline-block;
+}
+.comment_span{
+	color: orange;
+	margin: 0px 15px;
+	border: 1px solid #e8c076;
+	padding: 5px;
+	border-radius: 4px;
+	display: inline-block;
+}
+.leave_rejected span{
+	color: red;	
+}
+.leave_approved span{
+	color: green;
+}
+.comment1 span{
+	color: orange;
+}
+.other1 span{
+	color: purple;
+}
+.task a{
+	background-color: red;
+}
+.task a:visited{
+	background-color: transparent;
+}
+.unread{
+	background-color: #f1eaff;
+}
+.accepted {
+	color: #008a00!important;
+	border: 1px solid #008a00;
+}
+.rejected{
+	color: red!important;
+	border: 1px solid red;
+}
+table, th, td {
+	margin-top: 10px;
+	border: 1px solid #c7c7c7;
+	padding: 10px 17px;
+}
+
+.notification_type {
+    display: inline-block;
+    min-width: 150px;
+    padding: 0px 15px;
+}
+.notification_date {
+    min-width: 100px;
+    padding: 0px 10px;
+}
+.notification_content {
+    width: calc(100% - 250px);
+}
+@media (max-width: 1199px){
+}
+@media (max-width: 991px){
+}
+@media (max-width: 767px){
+	.notification_content {
+    width: calc(100% - 150px);
+    padding-right: 15px;
+}
+.notification_date{
+	min-width: auto;
+	padding-top: 10px;
+}
+}
+@media (max-width: 575px){
+	.notification_content{
+		width: 100%;
+		padding: 10px 15px 0px;
+	}
+}
+

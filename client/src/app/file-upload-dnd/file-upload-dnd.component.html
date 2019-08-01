@@ -1,0 +1,36 @@
+<div draggable="true" ngClass="{{dragAreaClass}}">
+	<div class="text-center overlay_dragarea" *ngIf="files.length<=0 || errors.length>0" (click)="file.click()"  style="cursor: pointer; border: 3px dotted lightgray; padding: 20px; margin-bottom: 10px;">
+		<div class="pdf_img">	
+			<img src="../assets/attach.png">
+		</div>
+		<span for="addFile">{{dragAreaContent}}</span>
+		<input type="file" #file id="addFile" file-name="filename" [multiple]="(maxFiles > 1)" accept=".jpg, .png, .jpeg, .pdf" (change) = "onFileChange($event)" 
+		style="display:none" />
+	</div>
+	<div class="row" *ngIf="errors.length<=0">
+		<div *ngIf="files.length>0" style="display: contents;">
+			<div class="col-sm-3" *ngFor="let i of file; let x=index ">
+				<div class="default_cover_images" *ngIf="i.type == 'image/png' || i.type == 'image/jpg' || i.type == 'image/jpeg'" style="position: relative;">
+					<img id="blah_{{x}}" src="#" alt="your image" />
+					<span title="Remove Image" style="position: absolute;top: 0px;right: 0;left: 0; bottom: 0; z-index: 1;cursor: pointer;color: #dc3545;height: 60px;width: 60px;text-align: center;background-color: rgba(255,255,255,0.6);border-radius: 50%;margin: auto;" (click)="deleteFile(i, x)"><i class="fa fa-trash" aria-hidden="true" style="font-size: 30px;top: 0;bottom: 0;left: 0;right: 0;margin: auto;position: absolute;height: 30px;width: 30px;line-height: 30px;"></i></span>
+				</div>
+				<div class="default_cover_images" *ngIf="i.type == 'application/pdf'" style="position: relative;">
+					{{i.name}}
+					<div style="display: contents;">
+						<span for="addFile"><img src="assets/file.jpg" style="position: absolute; height: 100px;width: 100px;"></span>
+					</div>
+					<span title="Remove Image" style="position: absolute;top: 0px;right: 0;left: 0; bottom: 0; z-index: 1;cursor: pointer;color: #dc3545;height: 60px;width: 60px;text-align: center;background-color: rgba(255,255,255,0.6);border-radius: 50%;margin: auto;" (click)="deleteFile(i, x)"><i class="fa fa-trash" aria-hidden="true" style="font-size: 30px;top: 0;bottom: 0;left: 0;right: 0;margin: auto;position: absolute;height: 30px;width: 30px;line-height: 30px;"></i></span>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="default_cover_images" style="position: relative;" *ngIf="(maxFiles > 1)">
+					<input type="file" id="moreImage" [multiple]="(maxFiles > 1)" accept=".jpg, .png, .jpeg, .pdf" (change) = "onFileChange($event)" style="display:none" />
+					<label class="upload_cover_image" for="moreImage" style="position: absolute;top: 0px;right: 0;left: 0; bottom: 0; z-index: 1;cursor: pointer;height: 60px;width: 60px;text-align: center;background-color: rgba(255,255,255,0.6);border-radius: 50%;margin: auto;">
+						<i class="fa fa-camera" aria-hidden="true" style="font-size: 30px;top: 0;bottom: 0;left: 0;right: 0;margin: auto;position: absolute;height: 30px;width: 30px;line-height: 30px;"></i>
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

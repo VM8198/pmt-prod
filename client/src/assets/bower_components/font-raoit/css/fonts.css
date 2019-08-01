@@ -1,0 +1,71 @@
+/*WEB SAFE FONTS*/
+
+.font-Arial{ font-family : "Arial" }
+.font-ArialB{ font-family : "Arial Black" }
+.font-ArialN{ font-family : "Arial Narrow" }
+.font-CenturyG{ font-family: "Century Gothic", sans-serif; }
+.font-Copperplate{  font-family : "Copperplate / Copperplate Gothic Light", sans-serif; }
+.font-Courier{ font-family: 'Courier New', Courier, monospace;  }
+.font-Georgia{font-family: Georgia, Serif;}
+.font-Impact{ font-family : "Impact" }
+.font-Lucida{  font-family : "Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+.font-Palatino{ font-family: "Palatino Linotype", "Book Antiqua", "Palatino", serif; }
+.font-Tahoma{ font-family : Tahoma, Geneva, sans-serif }
+.font-Times{ font-family: "Times New Roman", Georgia, Serif;}
+.font-Trebuchet{ font-family : "Trebuchet MS" }
+.font-Verdana{ font-family : "Verdana" }
+
+
+
+
+.text-bold{ font-weight: bold !important }
+.text-italic{ font-style: italic !important }
+.text-underline{ text-decoration: underline !important }
+
+
+.font-7{ font-size:7px !important; }
+.font-8{ font-size:8px !important; }
+.font-10{ font-size:10px !important; }
+.font-11{ font-size:11px !important; }
+.font-12{ font-size:12px !important; }
+.font-13{ font-size:13px !important; }
+.font-14{ font-size:14px !important; }
+.font-15{ font-size:15px !important; }
+.font-16{ font-size:16px !important; }
+.font-17{ font-size:17px !important; }
+.font-18{ font-size:18px !important; }
+.font-19{ font-size:19px !important; }
+.font-20{ font-size:20px !important; }
+.font-21{ font-size:21px !important; }
+.font-22{ font-size:22px !important; }
+.font-23{ font-size:23px !important; }
+.font-24{ font-size:24px !important; }
+.font-25{ font-size:25px !important; }
+.font-26{ font-size:26px !important; }
+.font-27{ font-size:27px !important; }
+.font-28{ font-size:28px !important; }
+.font-32{ font-size:32px !important; }
+.font-48{ font-size:48px !important; }
+.font-56{ font-size:56px !important; }
+.font-64{ font-size:64px !important; }
+.font-72{ font-size:72px !important; }
+
+
+.text-left{ text-align: left !important }
+.text-right{ text-align: right !important }
+.text-center{ text-align: center !important }
+.text-justify{ text-align: justify!important }
+
+
+
+.text-indent-5{ text-indent: 5px !important }
+.text-indent-10{ text-indent: 10px !important }
+.text-indent-15{ text-indent: 15px !important }
+.text-indent-20{ text-indent: 20px !important }
+
+
+.text-uppercase{ text-transform: uppercase; }
+.text-lowercase{ text-transform: lowercase; }
+.text-capitalize{ text-transform: capitalize; }
+
+

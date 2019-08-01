@@ -1,0 +1,113 @@
+<div class="loader" [hidden]="!loader">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+<div [hidden]="loader">
+	<h3 class="card-header-title mb-1"><span class="icon-note"></span> Edit User Profile</h3>
+	<div class="card">
+		<div class="card-body">
+			<form [formGroup]="editEmployeeForm" autocomplete="off">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="md-form form-group" *ngIf="userDetails">
+							<label class="active" for="name">Full Name</label> 
+							<input type="text" (input)="validateName(editEmployeeForm.value)" formControlName="name" class="form-control" id="name" [(ngModel)]="userDetails.name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" autocomplete="off"/>
+							<span id="message1" style="color: red; font-size: 14px;"></span>
+							<div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+								<div *ngIf="f.name.errors.required">Name is required</div>
+								<div *ngIf="f.name.errors.minlength">Name must be at least 2 characters</div>
+								<div *ngIf="f.name.errors.maxlength">Name must be only 20 characters</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="col-md-4">
+						<div class="md-form form-group" *ngIf="userDetails">
+							<label class="active" for="email">Email</label>
+							<input type="email" formControlName="email" class="form-control" id="email" [(ngModel)]="userDetails.email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" autocomplete="off" >
+							<div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+								<div *ngIf="f.email.errors.required">Email is required</div>
+								<div *ngIf="f.email.errors.email">Please enter valid email</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="md-form form-group" *ngIf="userDetails">
+							<label class="active" for="mobile">Phone No.</label>
+							<input type="text" (input)="validatePhone(editEmployeeForm.value)" formControlName="phone" class="form-control" id="mobile" [(ngModel)]="userDetails.phone" [(ngModel)]="userDetails.phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" autocomplete="off" />
+							<span id="message" style="color: red; font-size: 14px;"></span>
+							<div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+								<div *ngIf="f.phone.errors.minlength">Phone must be only 10 digits</div>
+								<div *ngIf="f.phone.errors.maxlength">Phone must be only 10 digits</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="col-md-4">
+						<label class="float-left" for="userrole" *ngIf="userDetails">UserRole</label>
+						<div class="md-form form-group" *ngIf="userDetails">
+							<select class="custom-select custom-select mb-1" formControlName="userRole" [(ngModel)]="userDetails.userRole" [ngClass]="{ 'is-invalid': submitted && f.userRole.errors }">
+								<option value="admin">Admin</option>
+								<option value="projectManager">Project Manager</option>
+								<option value="developer">Developer</option>
+								<div *ngIf="submitted && f.userRole.errors" class="invalid-feedback">
+									<div *ngIf="f.userRole.errors.required">Please select userRole</div>
+								</div>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="md-form form-group" *ngIf="userDetails">
+							<label class="active" for="experience">Experience</label>
+							<input type="text" formControlName="experience" class="form-control" id="experience" [(ngModel)]="userDetails.experience">
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="col-md-4">
+						<div class="md-form form-group" *ngIf="userDetails">
+							<label class="active" for="experience">Joining Date</label>
+							<input type="text" formControlName="joiningDate" class="form-control datepicker" id="joiningDate" ngModel="{{userDetails.joiningDate | date }}" [ngClass]="{ 'is-invalid': submitted && f.userRole.errors }">
+						</div>
+						<div *ngIf="submitted && f.joiningDate.errors" class="invalid-feedback">
+							<div *ngIf="f.joiningDate.errors.required">Joining date is required</div>
+						</div>
+
+					</div>
+
+					<div class="col-md-12">
+						<div class="md-form form-group file-field" *ngIf="userDetails">
+							<div class="btn btn-primary btn-sm float-left waves-effect waves-light" (click)="cv.click()">Choose files
+								<input type="file" #cv formControlName="cv" class="form-control" (change)="addFile($event)" accept=".pdf" hidden>
+							</div>
+							<div class="file-path-wrapper">
+								<div class="row">
+									<div class="col-1" style="margin: auto;
+									left: 66px;">
+									<span class="far fa-file-pdf" ></span>
+								</div>
+								<div class="col-11">
+									<input class="file-path validate" [ngModelOptions]="{standalone: true}" type="text" placeholder="Upload Your CV" [(ngModel)]="userDetails.CV" readonly>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row float-left ml-2 mt-1">
+						<div class="md-form form-group" *ngIf="userDetails">
+							<button type="submit" class="btn btn-default" (click)="updateProfile(editEmployeeForm.value)" [disabled] = "isDisable">Save changes</button>
+							<button type="submit" class="btn btn-primary" routerLink="/reset-password" *ngIf= "currentUser.userRole != 'admin' ">Reset Password</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</div>

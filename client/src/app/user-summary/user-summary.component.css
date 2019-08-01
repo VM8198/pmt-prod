@@ -1,0 +1,81 @@
+.cont{
+
+    background-color: #fff;
+}
+
+.table-bordered {
+    border: 2px solid darkgrey;
+}
+.top{
+
+    margin-top: 30px;
+    font-size: 20px;
+}
+.min-chart {
+    margin-top: 0px;
+    margin-bottom: -36px;
+}
+
+.header{
+    margin-top: -10px;
+} 
+.for_title{
+    text-align: left;
+
+}
+.number_of_task{
+    margin-top: 25px;
+}
+.task_table{
+    text-align: center;
+}
+.priority_base_task{
+    margin-top: 25px;
+}
+.border1{
+
+    display: block;
+    width: 540px;
+    height: 270px;
+    border: 1px solid #ff0000;
+}
+.border2{
+
+    display: block;
+    width: 540px;
+    height: 270px;
+    border: 1px solid #ff8100;
+}
+.border3{
+
+    display: block;
+    width: 540px;
+    height: 270px;
+    border: 1px solid #ffee21;
+}
+.border4{
+
+    display: block;
+    width: 540px;
+    height: 270px;
+    border: 1px solid #0087ff;
+}
+
+.custom-select {
+    display: inline-block;
+    width: 25% !important;
+    height: calc(2.25rem + 2px);
+    padding: .375rem 1.75rem .375rem .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    vertical-align: middle;
+    background: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e) no-repeat right .75rem center/8px 10px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+}

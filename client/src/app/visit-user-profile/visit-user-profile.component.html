@@ -1,0 +1,177 @@
+<div class="loader" *ngIf="loader">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+
+ <div class="row">
+ 	<div class="col-md-3">
+ 		<div  class="border_custom">
+ 			<div class="row p-2">
+ 				<div class="col-md-4 p-0">
+ 					<div class="profile_image">
+ 						<img onerror="this.src='../assets/man.png'" src="{{path}}{{currentUser.profilePhoto}}">
+ 					</div>
+ 				</div>
+ 				<div class="col-md-8 p-0">
+ 					<div class="mx-0 my-auto">
+ 						<div class="name">
+ 							<span>{{currentUser.name | uppercase}}</span>
+ 						</div>
+ 						<p style="padding-left: 10px;">{{currentUser.userRole}}</p>
+ 					</div>
+ 				</div>
+
+ 			</div>
+ 			<div class="tabs_div">
+ 				<ul class="nav md-tabs row text-center mt-2" id="myTabMD" role="tablist">
+ 					<li class="nav-item col-md-12">
+ 						<a class="nav-link active" id="home-tab-md" data-toggle="tab" href="#home-md" role="tab" aria-controls="home-md"
+ 						aria-selected="true"><span class="icon-user mr-1"></span>About</a>
+ 					</li>
+ 					<li class="nav-item col-md-12">
+ 						<a class="nav-link" id="profile-tab-md" data-toggle="tab" href="#profile-md" role="tab" aria-controls="profile-md"
+ 						aria-selected="false"><span class="icon-list mr-1"></span> Projects</a>
+ 					</li>
+ 					<li class="nav-item col-md-12">
+ 						<a class="nav-link" id="contact-tab-md" data-toggle="tab" href="#contact-md" role="tab" aria-controls="contact-md"
+ 						aria-selected="false"><span class="icon-docs mr-1"></span> Leaves</a>
+ 					</li>
+ 				</ul>
+ 			</div>
+ 		</div>
+ 	</div>
+ 	<div class="col-md-9">
+ 		<div class="tab-content p-0" id="myTabContentMD">
+ 			<div class="tab-pane fade show active" id="home-md" role="tabpanel" aria-labelledby="home-tab-md">
+ 				<div class="card profile padding-15">
+ 					<h2><span class="icon-user mr-1"></span> About</h2>
+ 					<h3>{{currentUser.name}}</h3>
+ 					<p><span class="icon-envelope mr-1"></span><a style="color: black!important;" href="mailto: {{currentUser.email}}">  {{currentUser.email}}</a></p>
+ 					<p *ngIf = "currentUser.phone"><span class="icon-screen-smartphone mr-1"></span><a style="color: black!important;" href="tel:+91{{currentUser.phone}}"> {{currentUser.phone}}</a></p>
+ 				</div>
+ 			</div>
+ 			<div class="tab-pane fade" id="profile-md" role="tabpanel" aria-labelledby="profile-tab-md">
+ 				<div class="card">
+ 					<h2><span class="icon-list"></span> Projects</h2>
+ 					<div *ngIf="!finalArr.length">
+ 						<p style="text-align: center;">No projects Found</p>
+ 					</div>
+ 					<div class="project">
+ 						<div class="row border-bottom" *ngFor="let project of finalArr">
+ 							<div class="col-md-1 mb-10" *ngIf="project" >
+ 								<div class="project_img">
+ 									<img src="{{path}}{{project.avatar}}" class="avatar_image" onerror="this.src='../assets/4.jpeg'" >
+ 								</div>
+ 							</div>
+ 							<div class="col-md-11" *ngIf="project">
+ 								<label class="txt_label1" routerLink="/user-summary/{{currentUser._id}}/{{project._id}}">{{project.title}}</label>
+ 							</div>
+ 						</div>
+ 					</div>
+ 				</div>
+ 			</div>
+ 			<div  class="tab-pane fade" id="contact-md" role="tabpanel" aria-labelledby="contact-tab-md">
+				<div class="card">
+					<h2><span class="icon-list"></span> Leaves</h2>
+					<h5 style="color: #330867;">Total Leaves: <span *ngFor="let leave of leavescount"> {{leave.leavesPerYear}} </span>
+						<span style="margin-left: 10px; color: #330867;">Available Leaves:</span><span *ngFor="let leave of leavescount"> {{leave.leavesLeft}}</span></h5>
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-6">
+									<h2 class="text-center pt-2">Leaves Type</h2>
+									<p class="text-center" *ngIf="approvedLeaves">
+									{{approvedLeaves.length}} responses</p>
+									<canvas id="pieChart"></canvas>
+								</div>            
+								<div class="col-sm-6">
+									<h2 class="text-center pt-2">Duration</h2>
+									<p class="text-center" *ngIf="leaveApp">{{approvedLeaves.length}} responses</p>
+									<canvas id="pieChart1"></canvas>
+								</div>
+							</div>
+							<div class="row" style="margin-top:20px;">
+								<div class="col-md-12">
+									<!-- <h2 class="text-center pt-2">Leave</h2> -->
+									<div class="row txtcolor">
+										<div class="col-md-3 text-center">
+											<span> {{Personal_Leave.length}}</span>
+										</div>
+										<div class="col-md-3 text-center">
+											<span> {{Sick_Leave.length}}</span>
+										</div>
+										<div class="col-sm-3 text-center">
+											<span> {{Emergency_Leave.length}}</span>
+										</div>
+										<div class="col-sm-3 text-center">
+											<span>{{Leave_WithoutPay.length}}</span>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-3 text-center">
+											<span>Personal Leave</span>
+										</div>
+										<div class="col-sm-3 text-center">
+											<span>Sick Leave</span>
+										</div>
+										<div class="col-sm-3 text-center">
+											<span>Emergency Leave</span>
+										</div>
+										<div class="col-sm-3 text-center">
+											<span>Leave WithoutPay</span>
+										</div>
+									</div>
+									<!-- <div  *ngFor="let leave of leavescount"> -->
+										<!-- <div class="row">	 -->
+											<!-- <span>{{leave.typeOfLeave}}</span> -->
+										<!-- </div> -->
+										<!-- <div class="row"> -->
+											<!-- <span>{{leave.leavesTaken}}</span> -->
+											
+										<!-- </div> -->
+									<!-- </div> -->
+								</div>
+							
+								<!-- <div class="col-md-5">
+
+									<div class="row txtcolor">
+										<div class="col-md-4 text-center">
+											<span> {{Half_Day.length}}</span>
+										</div>
+										<div class="col-md-4 text-center">
+											<span> {{Full_Day.length}}</span>
+										</div>
+										<div class="col-sm-4 text-center">
+											<span> {{More_Day.length}}</span>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-4 text-center">
+											<span>Half Day</span>
+										</div>
+										<div class="col-sm-4 text-center">
+											<span>Full Day</span>
+										</div>
+										<div class="col-sm-4 text-center">
+											<span>More Day</span>
+										</div>
+									</div>
+
+								</div>
+							</div> -->
+
+						<!-- </div> -->
+						<!-- </div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			<!-- </div> -->
+
+
+		<!-- </div> -->
+
+	<!-- </div> -->
+
+
+
+
