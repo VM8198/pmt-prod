@@ -1,0 +1,28 @@
+{
+  "name": "spacing-raoit",
+  "homepage": "https://github.com/tnr2394/spacing-raoit",
+  "description": "Css for margin and padding",
+  "main": "",
+  "authors": [
+    "Tirthraj Barot"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "1.0.1",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.1",
+    "commit": "44a73f52760576b0fe577ada16e907060eb54036"
+  },
+  "_source": "https://github.com/tnr2394/spacing-raoit.git",
+  "_target": "^1.0.1",
+  "_originalSource": "https://github.com/tnr2394/spacing-raoit.git",
+  "_direct": true
+}

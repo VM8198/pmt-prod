@@ -1,0 +1,15 @@
+{
+  "name": "color-raoit",
+  "homepage": "https://github.com/tnr2394/color-raoit",
+  "version": "1.0.1",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.1",
+    "commit": "82f62998d486e151cbac6e475079477e005be0fb"
+  },
+  "_source": "https://github.com/tnr2394/color-raoit.git",
+  "_target": "^1.0.1",
+  "_originalSource": "https://github.com/tnr2394/color-raoit.git",
+  "_direct": true
+}
