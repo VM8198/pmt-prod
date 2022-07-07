@@ -21,7 +21,7 @@
     "http-errors": "~1.6.2",
     "jsonwebtoken": "^8.4.0",
     "mkdirp": "^0.5.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.4.19",
     "mongoose-bcrypt": "^1.6.0",
     "morgan": "~1.9.0",
