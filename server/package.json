@@ -14,7 +14,7 @@
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
     "email-templates": "^5.0.4",
-    "express": "~4.16.0",
+    "express": "~4.17.3",
     "express-fileupload": "^1.1.1-alpha.3",
     "express-session": "^1.15.6",
     "fs-js": "^1.0.6",
