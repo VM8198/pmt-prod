@@ -19,7 +19,7 @@
     "express-session": "^1.15.6",
     "fs-js": "^1.0.6",
     "http-errors": "~1.6.2",
-    "jsonwebtoken": "^8.4.0",
+    "jsonwebtoken": "^9.0.0",
     "mkdirp": "^0.5.1",
     "moment": "^2.24.0",
     "mongoose": "^5.4.19",
